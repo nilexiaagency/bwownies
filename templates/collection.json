@@ -1,0 +1,72 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "blocks": {
+        "shape_divider_NMcPWY": {
+          "type": "shape_divider",
+          "settings": {
+            "target_section": "above",
+            "target_section_color_scheme": "scheme1",
+            "style": "clouds-shape_1400x161",
+            "flip_horizontal": false,
+            "enable_animation": false,
+            "animation_direction": ""
+          }
+        }
+      },
+      "block_order": [
+        "shape_divider_NMcPWY"
+      ],
+      "settings": {
+        "no_products": 8,
+        "display_on_card": false,
+        "enable_quick_buy": true,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 4,
+        "enable_filtering": false,
+        "enable_sorting": false,
+        "expand_filters": false,
+        "show_filter_count": false,
+        "enable_color_swatch_filters": false,
+        "color_scheme": "scheme3",
+        "use_gradient_background": false
+      }
+    },
+    "featured-image": {
+      "type": "main-collection-image",
+      "settings": {
+        "style": "full",
+        "height": "pt-two-thirds-screen-height",
+        "color_scheme": "",
+        "use_gradient_background": false
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "display_on_card": false,
+        "show_collection_title": true,
+        "show_collection_description": true,
+        "linklist": "",
+        "color_scheme": "scheme3",
+        "use_gradient_background": false
+      }
+    }
+  },
+  "order": [
+    "product-grid",
+    "featured-image",
+    "banner"
+  ]
+}

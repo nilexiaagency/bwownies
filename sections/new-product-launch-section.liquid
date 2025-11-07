@@ -1,0 +1,165 @@
+<section
+  class="relative bg-scheme-background text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} overflow-hidden"
+  data-color-scheme="{{ section.settings.color_scheme }}"
+>
+  <div class="section-content relative z-10 px-section py-section-vertical-spacing">
+    <div class="mx-auto max-w-site grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-10">
+      
+      <!-- Newsletter Column -->
+      <div class="w-full px-4 mb-10 lg:mb-0 lg:flex lg:items-center">
+        <div class="{{ section.settings.content_width_desktop }} {% if section.settings.display_on_card %}card{% endif %} w-full">
+          <div class="{% if section.settings.display_on_card %}card__surface p-5 lg:p-10{% endif %} text-center w-full">
+            {% if section.settings.title != blank %}
+              <h2 class="inline-heading-rte font-heading heading-standard heading-style break-words text-center {{ settings.heading_drop_shadow_style }}">
+                {{ section.settings.title }}
+              </h2>
+            {% endif %}
+            {% if section.settings.richtext != blank %}
+              <div class="rte mt-5 text-center font-main leading-snug">
+                {{ section.settings.richtext }}
+              </div>
+            {% endif %}
+            <div class="{% if section.settings.title != '' or section.settings.richtext != blank %}section-content-top-margin{% endif %}">
+              {% assign form_id = 'customer-form-' | append: section.id %}
+              {% form 'customer', id: form_id %}
+                {% if form.errors %}
+                  <p class="text-scheme-error" id="Newsletter-error--{{ section.id }}">
+                    {{ form.errors.translated_fields.email | capitalize }}
+                    {{ form.errors.messages.email }}
+                  </p>
+                {% endif %}
+
+                {% if form.posted_successfully? %}
+                  <p id="Newsletter-success--{{ section.id }}">
+                    {{ 'general.newsletter_form.confirmation' | t }}
+                  </p>
+                {% else %}
+                  <div class="items-center justify-center lg:flex">
+                    <input type="hidden" name="contact[tags]" value="newsletter">
+                    <label for="NewsletterForm-{{ section.id }}" class="sr-only">
+                      {{ 'general.newsletter_form.newsletter_email' | t }}
+                    </label>
+                    <div class="w-full flex-grow lg:mr-2">
+                      <input
+                        id="NewsletterForm-{{ section.id }}"
+                        type="email"
+                        name="contact[email]"
+                        class="input-group-field w-full placeholder:text-scheme-text {% if form.errors %}border-scheme-error{% else %}border-scheme-text{% endif %}"
+                        value="{{ form.email }}"
+                        placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+                        required
+                        autocorrect="off"
+                        autocapitalize="off"
+                        autocomplete="email"
+                        {% if form.errors %}autofocus aria-invalid="true" aria-describedby="Newsletter-error--{{ section.id }}"{% elsif form.posted_successfully? %}aria-describedby="Newsletter-success--{{ section.id }}"{% endif %}
+                      >
+                    </div>
+                    <button
+                      type="submit"
+                      class="push-btn push-btn--pop mt-2.5 w-full lg:mt-0 lg:w-auto"
+                      name="commit"
+                      id="Subscribe-{{ section.id }}"
+                    >
+                      <span class="push-btn__surface w-full">
+                        {{ 'general.newsletter_form.submit' | t }}
+                      </span>
+                    </button>
+                  </div>
+                {% endif %}
+              {% endform %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Custom Liquid Column -->
+      <div class="w-full px-0">
+        {% if section.settings.custom_title != '' %}
+          <h2 class="inline-heading-rte font-heading heading-standard heading-style break-words text-center {{ settings.heading_drop_shadow_style }}">
+            {{ section.settings.custom_title }}
+          </h2>
+        {% endif %}
+
+        <div {% if section.settings.custom_title != '' %}class="mt-10"{% endif %}>
+          {{ section.settings.custom_liquid }}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  {%- liquid
+    for block in section.blocks
+      case block.type
+        when 'background_shape'
+          render 'block-background-shape', block: block
+        when 'background_pattern'
+          render 'block-background-pattern', block: block, scheme: section.settings.color_scheme
+      endcase
+    endfor
+  -%}
+</section>
+
+{%- liquid
+  assign stickers = section.blocks | where: 'type', 'sticker'
+  assign shape_dividers = section.blocks | where: 'type', 'shape_divider'
+  for sticker in stickers
+    render 'block-sticker', block: sticker
+  endfor
+  for shape_divider in shape_dividers
+    render 'block-shape-divider', block: shape_divider
+  endfor
+-%}
+
+{% schema %}
+{
+  "name": "Split Newsletter",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Newsletter title",
+      "default": "Sign up to our newsletter"
+    },
+    {
+      "type": "richtext",
+      "id": "richtext",
+      "label": "Newsletter text",
+      "default": "<p>Receive special offers and first look at new products.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "display_on_card",
+      "label": "Display newsletter on card"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "custom_title",
+      "label": "Custom Liquid title",
+      "default": "Custom Content"
+    },
+    {
+      "id": "custom_liquid",
+      "type": "liquid",
+      "label": "Custom Liquid content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "scheme1",
+      "label": "Color scheme"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_gradient_background",
+      "label": "Use gradient background"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Split Newsletter"
+    }
+  ]
+}
+{% endschema %}

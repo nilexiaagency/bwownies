@@ -1,0 +1,71 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "custom_css": [],
+      "settings": {
+        "home_page_only": false,
+        "display": "scrolling_text",
+        "text": "FREE DELIVERY OVER £50",
+        "link": "shopify://products/classic-triple-chocolate",
+        "color_scheme": "scheme5",
+        "use_gradient_background": false,
+        "repeat_text": true,
+        "shape_between_text": "10_point_star",
+        "animate_shape_between_text": true,
+        "speed": 80,
+        "direction": ""
+      }
+    },
+    "header": {
+      "type": "header",
+      "custom_css": [
+        ".site-header {border: none !important; /* Remove any existing border */ outline: none !important; /* Remove any existing outline */}",
+        ".site-header {border: 2px solid #ff129f !important; /* Bright pink border */}"
+      ],
+      "settings": {
+        "logo": "shopify://shop_images/Untitled_design_81.png",
+        "logo_max_width": 110,
+        "main_linklist": "main-menu",
+        "nested_nav_style": "mega_menu",
+        "showcase_top_level_collections": false,
+        "show_all_navigation_links": false,
+        "showcase_second_level_links": false,
+        "crop": "",
+        "header_layout": "navigation_left_logo_center",
+        "header_show_search": false,
+        "sticky_header": false,
+        "show_icons": true,
+        "enable_overlay_on_homepage": false,
+        "enable_overlay_on_collection_pages": false,
+        "enable_overlay_on_product_pages": false,
+        "overlay_color_scheme": "scheme1",
+        "transparent_when_overlaid_and_stuck": false,
+        "overlay_show_separator_border": false,
+        "overlay_first_section_padding_top_desktop": 6,
+        "overlay_first_section_padding_top_mobile": 6,
+        "color_scheme": "scheme1",
+        "active_color_scheme": "",
+        "mobile_main_linklist": "",
+        "sidebar_menu_font_size": "heading-secondary",
+        "sidebar_show_footer_menu": false,
+        "sidebar_show_social_icons": false
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

@@ -1,0 +1,109 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page-contact",
+      "blocks": {
+        "shape_divider_Am9zdj": {
+          "type": "shape_divider",
+          "settings": {
+            "target_section": "above",
+            "target_section_color_scheme": "scheme1",
+            "style": "clouds-shape_1400x161",
+            "flip_horizontal": false,
+            "enable_animation": false,
+            "animation_direction": ""
+          }
+        }
+      },
+      "block_order": [
+        "shape_divider_Am9zdj"
+      ],
+      "settings": {
+        "display_on_card": true,
+        "color_scheme": "scheme4",
+        "use_gradient_background": false
+      }
+    },
+    "rich_text_4A6zAG": {
+      "type": "rich-text",
+      "blocks": {
+        "shape_divider_B76R8a": {
+          "type": "shape_divider",
+          "settings": {
+            "target_section": "above",
+            "target_section_color_scheme": "scheme3",
+            "style": "waves-2-patterned_1200x43",
+            "flip_horizontal": false,
+            "enable_animation": false,
+            "animation_direction": ""
+          }
+        },
+        "shape_divider_hpAKFy": {
+          "type": "shape_divider",
+          "settings": {
+            "target_section": "below",
+            "target_section_color_scheme": "scheme3",
+            "style": "waves-2-patterned_1200x43",
+            "flip_horizontal": false,
+            "enable_animation": false,
+            "animation_direction": ""
+          }
+        }
+      },
+      "block_order": [
+        "shape_divider_B76R8a",
+        "shape_divider_hpAKFy"
+      ],
+      "settings": {
+        "title": "Slide into our DM's",
+        "heading_size": "heading-standard",
+        "rich_text": "<p>Hey, you! Yes, you reading this! We’d love to hear from you, especially if you have a query about us, our products or an order you’ve placed. If not, we’d still like to hear what you have to say. Maybe you have a fantastic flavour idea or just want to tell us what you had for breakfast today.</p><p></p><p>Please be patient with us as I am currently baking your bWOWnies!</p>",
+        "display_on_card": false,
+        "content_width_desktop": "lg:w-2/3",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "",
+        "use_gradient_background": false
+      }
+    },
+    "feature_logo_with_image_CdzUUe": {
+      "type": "feature-logo-with-image",
+      "custom_css": [
+        ".block-class {outline: none !important;}"
+      ],
+      "settings": {
+        "logo": "shopify://shop_images/Untitled_design_81.png",
+        "alignment": "center",
+        "logo_max_width": 60,
+        "button_link": "",
+        "button_label": "Shop Now",
+        "image": "shopify://shop_images/IMG_7278.jpg",
+        "crop": "aspect-w-1 aspect-h-1",
+        "image_shape": "default",
+        "blob_type": 1,
+        "rotate_image": 0,
+        "disable_media_style": false,
+        "max_width_image_mobile": 100,
+        "image_offset_mobile": 2.5,
+        "max_width_image_desktop": 80,
+        "image_offset_desktop": 6,
+        "color_scheme": "scheme3",
+        "use_gradient_background": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_4A6zAG",
+    "feature_logo_with_image_CdzUUe"
+  ]
+}

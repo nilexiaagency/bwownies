@@ -1,0 +1,107 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "rich_text_8JtQEU": {
+      "type": "rich-text",
+      "blocks": {
+        "shape_divider_AJYdP9": {
+          "type": "shape_divider",
+          "settings": {
+            "target_section": "below",
+            "target_section_color_scheme": "scheme2",
+            "style": "clouds-shape_1400x161",
+            "flip_horizontal": false,
+            "enable_animation": false,
+            "animation_direction": ""
+          }
+        }
+      },
+      "block_order": [
+        "shape_divider_AJYdP9"
+      ],
+      "name": "t:sections.rich_text.name",
+      "settings": {
+        "title": "The Secret Is Out... Bwownie Bites are Here!!",
+        "heading_size": "heading-standard",
+        "rich_text": "<h5>This is the future of BWOWNIES<br/><br/>So if you want to be one of the first to try them,<br/><br/>SIGN UP BELOW<br/><br/>Let’s make history... Together!</h5>",
+        "display_on_card": false,
+        "content_width_desktop": "lg:w-2/3",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "",
+        "use_gradient_background": false
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "max_width": "medium",
+        "display_on_card": true,
+        "color_scheme": "",
+        "use_gradient_background": false
+      }
+    },
+    "17455911735d530d23": {
+      "type": "apps",
+      "blocks": {
+        "klaviyo_email_marketing_sms_form_embed_block_AfpVm6": {
+          "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/form-embed-block/2632fe16-c075-4321-a88b-50b567f42507",
+          "settings": {
+            "formId": "<div class=\"klaviyo-form-R9qa8j\"></div>"
+          }
+        }
+      },
+      "block_order": [
+        "klaviyo_email_marketing_sms_form_embed_block_AfpVm6"
+      ],
+      "settings": {
+        "apply_vertical_spacing": true,
+        "apply_horizontal_spacing": true,
+        "display_on_card": false,
+        "content_width_desktop": "lg:w-full",
+        "color_scheme": "scheme2",
+        "use_gradient_background": false
+      }
+    },
+    "image_with_text_Ery9qr": {
+      "type": "image-with-text",
+      "disabled": true,
+      "name": "t:sections.image_with_text.name",
+      "settings": {
+        "display_on_card": false,
+        "image": "shopify://shop_images/WhatsApp_Image_2025-03-26_at_11.46.23.jpg",
+        "crop": "",
+        "image_shape": "default",
+        "blob_type": 1,
+        "rotate_image": 0,
+        "image_position": "right",
+        "image_size": "half",
+        "disable_media_style": false,
+        "title": "",
+        "heading_size": "heading-feature",
+        "richtext": "",
+        "text_alignment": "text-left",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "scheme2",
+        "use_gradient_background": false
+      }
+    }
+  },
+  "order": [
+    "rich_text_8JtQEU",
+    "main",
+    "17455911735d530d23",
+    "image_with_text_Ery9qr"
+  ]
+}

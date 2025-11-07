@@ -1,0 +1,483 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_with_logo_overlay_hzLd8e": {
+      "type": "image-with-logo-overlay",
+      "blocks": {
+        "shape_divider_BPeMKb": {
+          "type": "shape_divider",
+          "settings": {
+            "target_section": "above",
+            "target_section_color_scheme": "scheme1",
+            "style": "clouds-shape_1400x161",
+            "flip_horizontal": false,
+            "enable_animation": false,
+            "animation_direction": ""
+          }
+        },
+        "shape_divider_JAC3xC": {
+          "type": "shape_divider",
+          "settings": {
+            "target_section": "below",
+            "target_section_color_scheme": "scheme1",
+            "style": "waves-1-shape_1440x261",
+            "flip_horizontal": false,
+            "enable_animation": false,
+            "animation_direction": ""
+          }
+        },
+        "sticker_bpFEiP": {
+          "type": "sticker",
+          "settings": {
+            "width": 180,
+            "half_width_on_mobile": false,
+            "text": "",
+            "shape": "star_1",
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Untitled_design_79.png",
+            "horizontal_position": 5,
+            "vertical_position": 90,
+            "rotate": 20,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "rotate_when_scrolling",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color_scheme": "scheme1",
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-contrast"
+          }
+        },
+        "sticker_GmVXjP": {
+          "type": "sticker",
+          "settings": {
+            "width": 170,
+            "half_width_on_mobile": false,
+            "text": "",
+            "shape": "star_1",
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Untitled_design_79.png",
+            "horizontal_position": 94,
+            "vertical_position": 25,
+            "rotate": -20,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "rotate_when_scrolling",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color_scheme": "scheme1",
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-contrast"
+          }
+        }
+      },
+      "block_order": [
+        "shape_divider_BPeMKb",
+        "shape_divider_JAC3xC",
+        "sticker_bpFEiP",
+        "sticker_GmVXjP"
+      ],
+      "custom_css": [
+        ".site-header {border: none !important; /* Remove any existing border */ outline: none !important; /* Remove any existing outline */}",
+        ".site-header {border: 10px solid #ff129f !important; /* Bright pink border */}",
+        "@media screen and (min-width: 990px) {.mx-auto.w-full {max-width: 35% !important; }}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Bwownies_Site_Hero.png",
+        "image_mobile": "shopify://shop_images/IMG_7276_cce3e6dc-5707-4aea-9a64-57c60520dcbf.jpg",
+        "style": "full",
+        "height": "pt-screen-height",
+        "logo": "shopify://shop_images/Cropped-Untitled_design_77.png",
+        "logo_max_width": 90,
+        "cta_url": "shopify://collections/all",
+        "cta_text": "Shop Now",
+        "color_scheme": "scheme1",
+        "use_gradient_background": false
+      }
+    },
+    "feature_text_columns_rxUEXM": {
+      "type": "feature-text-columns",
+      "blocks": {
+        "column_pxG8r8": {
+          "type": "column",
+          "settings": {
+            "title": "Choose your favourite flavour!",
+            "subheading": ""
+          }
+        },
+        "column_bVhDcF": {
+          "type": "column",
+          "settings": {
+            "title": "Choose a treat for you, or someone else?",
+            "subheading": ""
+          }
+        },
+        "column_UpJ6Ep": {
+          "type": "column",
+          "settings": {
+            "title": "Sit back, relax and bWOWnie!",
+            "subheading": ""
+          }
+        },
+        "shape_divider_RnTKTD": {
+          "type": "shape_divider",
+          "settings": {
+            "target_section": "below",
+            "target_section_color_scheme": "scheme3",
+            "style": "waves-1-shape_1440x261",
+            "flip_horizontal": false,
+            "enable_animation": false,
+            "animation_direction": ""
+          }
+        },
+        "sticker_pigkgr": {
+          "type": "sticker",
+          "settings": {
+            "width": 160,
+            "half_width_on_mobile": false,
+            "text": "",
+            "shape": "star_1",
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Untitled_design_84.png",
+            "horizontal_position": 95,
+            "vertical_position": 90,
+            "rotate": -22,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "rotate_when_scrolling",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color_scheme": "scheme1",
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-contrast"
+          }
+        }
+      },
+      "block_order": [
+        "column_pxG8r8",
+        "column_bVhDcF",
+        "column_UpJ6Ep",
+        "shape_divider_RnTKTD",
+        "sticker_pigkgr"
+      ],
+      "custom_css": [],
+      "settings": {
+        "display_on_card": true,
+        "title": "How it works?",
+        "heading_size": "heading-secondary",
+        "subheading_font": "heading",
+        "color_scheme": "",
+        "use_gradient_background": false
+      }
+    },
+    "featured_collection_pV9Qck": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "",
+        "subheading": "",
+        "collection": "frontpage",
+        "no_products": 15,
+        "show_view_all": false,
+        "enable_quick_buy": false,
+        "display_on_card": false,
+        "layout": "carousel",
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 2,
+        "slideshow_focus": "left",
+        "mobile_slide_width": "full_width",
+        "desktop_slide_width": 30,
+        "autoscroll_mode": "1",
+        "product_tiles_aspect_ratio": "natural",
+        "image_shape": "squircle",
+        "color_scheme": "scheme3",
+        "use_gradient_background": false
+      }
+    },
+    "scrolling_text_with_icons_JyQqt6": {
+      "type": "scrolling-text-with-icons",
+      "blocks": {
+        "text_FGmVV6": {
+          "type": "text",
+          "settings": {
+            "text": "Free Shipping Nationwide",
+            "icon": "truck"
+          }
+        },
+        "text_ENbrDE": {
+          "type": "text",
+          "settings": {
+            "text": "Fudgy & Freaking Delicious",
+            "icon": "heart"
+          }
+        },
+        "text_p3bWEL": {
+          "type": "text",
+          "settings": {
+            "text": "Handmade in UK",
+            "icon": "person"
+          }
+        },
+        "text_rcMQTX": {
+          "type": "text",
+          "settings": {
+            "text": "Sustainable",
+            "icon": "leaf"
+          }
+        },
+        "text_R7ryVP": {
+          "type": "text",
+          "settings": {
+            "text": "Super Chocolatey Brownies",
+            "icon": "star"
+          }
+        },
+        "text_6YDhVg": {
+          "type": "text",
+          "settings": {
+            "text": "Locally Sourced",
+            "icon": "star"
+          }
+        },
+        "text_qhd7pY": {
+          "type": "text",
+          "settings": {
+            "text": "Premium Ingredients",
+            "icon": "star"
+          }
+        }
+      },
+      "block_order": [
+        "text_FGmVV6",
+        "text_ENbrDE",
+        "text_p3bWEL",
+        "text_rcMQTX",
+        "text_R7ryVP",
+        "text_6YDhVg",
+        "text_qhd7pY"
+      ],
+      "custom_css": [
+        ".site-header {border: none !important; /* Remove any existing border */ outline: none !important; /* Remove any existing outline */}"
+      ],
+      "settings": {
+        "repeat_text": true,
+        "link": "",
+        "font": "body",
+        "gap": "gap-20",
+        "icon_size": "size-8",
+        "speed": 160,
+        "direction": "reverse",
+        "icon_thickness": 1.8,
+        "background_color": "bg-transparent text-scheme-text",
+        "show_border": true,
+        "color_scheme": "scheme5",
+        "use_gradient_background": false
+      }
+    },
+    "testimonials_UrXqnE": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_FtdabU": {
+          "type": "testimonial",
+          "settings": {
+            "rating": "5_stars",
+            "quote": "Literally the best brownies I have ever tried in my 41 years!!!! They are gorgeous and you brightened our Wednesday morning with a lovely handwritten note. You really understand customer service.  Love everything about your story, company and product – you deserve to go far and more importantly be happy! - You put the wow in Bwownies!! 😃",
+            "source": "Henry Yelland"
+          }
+        },
+        "testimonial_M8artf": {
+          "type": "testimonial",
+          "settings": {
+            "rating": "5_stars",
+            "quote": "I tried the 3 newest flavours. Reeses has thick smooth peanut butter, they are super rich and flavourful, the perfect balance of sweet and salty! Salted caramel is for the sweet toothers with the slab of salty caramel inbetween. Choc orange is dark chocolate bwownie flavoured with orange and white chocolate pieces like the original bwownie!",
+            "source": "Annabelle Lucia"
+          }
+        },
+        "testimonial_L7fziE": {
+          "type": "testimonial",
+          "settings": {
+            "rating": "5_stars",
+            "quote": "I honestly don’t think I’ve ever tried better brownies before, they’re the right consistency, great flavour and honestly for the price they’re great. I think the choc orange is my favourite so far! I’ve cut the bwownies up into 4s so they are easier to share around (or eat a piece every time I open the fridge or cupboard). I think you can freeze any leftovers, not that there are ever any lol.",
+            "source": "Toby Arnold"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_FtdabU",
+        "testimonial_M8artf",
+        "testimonial_L7fziE"
+      ],
+      "settings": {
+        "display_on_card": true,
+        "title": "",
+        "max_width": 100,
+        "disable_media_style": false,
+        "crop": "",
+        "image_shape": "squircle",
+        "desktop_slide_width": 20,
+        "autoscroll_mode": "0",
+        "color_scheme": "scheme3",
+        "use_gradient_background": false
+      }
+    },
+    "vertical_video_embeds_FdyThA": {
+      "type": "vertical-video-embeds",
+      "blocks": {
+        "video_embed_mhj3tK": {
+          "type": "video_embed",
+          "settings": {
+            "video_url": "https://www.tiktok.com/@bwownies/video/7426046318637829409",
+            "video_embed_code": ""
+          }
+        },
+        "video_embed_aViwCQ": {
+          "type": "video_embed",
+          "settings": {
+            "video_url": "https://www.tiktok.com/@bwownies/video/7424209984444976417",
+            "video_embed_code": ""
+          }
+        },
+        "video_embed_T4XrzW": {
+          "type": "video_embed",
+          "settings": {
+            "video_url": "https://www.tiktok.com/@bwownies/video/7423445823242980640",
+            "video_embed_code": ""
+          }
+        },
+        "video_embed_bkYBfG": {
+          "type": "video_embed",
+          "settings": {
+            "video_url": "https://www.tiktok.com/@bwownies/video/7415258279506496800",
+            "video_embed_code": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_embed_mhj3tK",
+        "video_embed_aViwCQ",
+        "video_embed_T4XrzW",
+        "video_embed_bkYBfG"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Vertical video embeds",
+        "subheading": "Use this text to share information.",
+        "slideshow_focus": "center",
+        "autoscroll_mode": "1",
+        "color_scheme": "",
+        "use_gradient_background": false
+      }
+    },
+    "scrolling_logos_CBXGwm": {
+      "type": "scrolling-logos",
+      "blocks": {
+        "logo_EyCmKT": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Daily_mirror.png",
+            "link": ""
+          }
+        },
+        "logo_pajWtk": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Delish_logo.png",
+            "link": ""
+          }
+        },
+        "logo_xfJXkT": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Good_housekeeping.png",
+            "link": ""
+          }
+        },
+        "logo_RAG4qD": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Delicious_magazine_1.png",
+            "link": ""
+          }
+        },
+        "logo_6qAd49": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Daily_mirror.png",
+            "link": ""
+          }
+        },
+        "logo_4LGWAj": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/BWOWNIES_2.png",
+            "link": ""
+          }
+        },
+        "shape_divider_paA6bP": {
+          "type": "shape_divider",
+          "settings": {
+            "target_section": "above",
+            "target_section_color_scheme": "scheme1",
+            "style": "waves-3-patterned_1200x84",
+            "flip_horizontal": false,
+            "enable_animation": false,
+            "animation_direction": ""
+          }
+        },
+        "sticker_PWjTbt": {
+          "type": "sticker",
+          "settings": {
+            "width": 160,
+            "half_width_on_mobile": false,
+            "text": "",
+            "shape": "star_1",
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Untitled_design_84.png",
+            "horizontal_position": 10,
+            "vertical_position": 0,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "rotate_when_scrolling",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color_scheme": "scheme1",
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-contrast"
+          }
+        }
+      },
+      "block_order": [
+        "logo_EyCmKT",
+        "logo_pajWtk",
+        "logo_xfJXkT",
+        "logo_RAG4qD",
+        "logo_6qAd49",
+        "logo_4LGWAj",
+        "shape_divider_paA6bP",
+        "sticker_PWjTbt"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "as seen in...",
+        "max_width": 100,
+        "speed": 100,
+        "direction": "normal",
+        "color_scheme": "scheme3",
+        "use_gradient_background": false
+      }
+    }
+  },
+  "order": [
+    "image_with_logo_overlay_hzLd8e",
+    "feature_text_columns_rxUEXM",
+    "featured_collection_pV9Qck",
+    "scrolling_text_with_icons_JyQqt6",
+    "testimonials_UrXqnE",
+    "vertical_video_embeds_FdyThA",
+    "scrolling_logos_CBXGwm"
+  ]
+}

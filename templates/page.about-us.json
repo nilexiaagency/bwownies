@@ -1,0 +1,267 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "max_width": "medium",
+        "display_on_card": true,
+        "color_scheme": "scheme3",
+        "use_gradient_background": false
+      }
+    },
+    "image_with_text_overlay_KJcYgF": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "shape_divider_4HBLPB": {
+          "type": "shape_divider",
+          "settings": {
+            "target_section": "above",
+            "target_section_color_scheme": "scheme1",
+            "style": "clouds-shape_1400x161",
+            "flip_horizontal": false,
+            "enable_animation": false,
+            "animation_direction": ""
+          }
+        }
+      },
+      "block_order": [
+        "shape_divider_4HBLPB"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/IMG_7162_3e7d2ec9-edf4-48ef-bf46-08dc8fe35c6b.jpg",
+        "display_on_card": true,
+        "display_content_below_image_on_mobile": true,
+        "style": "inset",
+        "height": "pt-three-quarters-screen-height",
+        "place_content": "place-content-center-center",
+        "text_align": "text-center",
+        "title": "Our Founder, Keelan",
+        "heading_size": "heading-feature",
+        "richtext": "When Keelan was just 16, juggling sixth form and shifts at Mcdonalds, BWOWNIES was born. Fast forward today and Keelan heads up his own brownie empire! Join us on our journey to create the BEST brownie brand in the world!!!!",
+        "cta_url": "",
+        "cta_text": "Shop Now",
+        "color_scheme": "scheme3",
+        "use_gradient_background": false
+      }
+    },
+    "feature_text_9CcGxp": {
+      "type": "feature-text",
+      "blocks": {
+        "shape_divider_47Kb7t": {
+          "type": "shape_divider",
+          "settings": {
+            "target_section": "above",
+            "target_section_color_scheme": "scheme3",
+            "style": "waves-2-patterned_1200x43",
+            "flip_horizontal": false,
+            "enable_animation": false,
+            "animation_direction": ""
+          }
+        },
+        "shape_divider_H8NFta": {
+          "type": "shape_divider",
+          "settings": {
+            "target_section": "below",
+            "target_section_color_scheme": "scheme3",
+            "style": "waves-2-patterned_1200x43",
+            "flip_horizontal": false,
+            "enable_animation": false,
+            "animation_direction": ""
+          }
+        }
+      },
+      "block_order": [
+        "shape_divider_47Kb7t",
+        "shape_divider_H8NFta"
+      ],
+      "settings": {
+        "rich_text": "These aren’t brownies at all… they’re BWOWNIES! (Brownies with a WOW)",
+        "mobile_text_scale": 3,
+        "desktop_text_scale": 4,
+        "display_on_card": false,
+        "apply_effects": false,
+        "content_width_desktop": "lg:w-full",
+        "button_link": "shopify://collections/all",
+        "button_label": "Shop Now",
+        "color_scheme": "",
+        "use_gradient_background": false
+      }
+    },
+    "image_focus_carousel_Q6JQg6": {
+      "type": "image-focus-carousel",
+      "blocks": {
+        "image_3tKBQb": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2024-10-20_at_17.20.52.png",
+            "crop": "aspect-w-1 aspect-h-1",
+            "image_shape": "default",
+            "heading": "",
+            "caption": "In every good story, the main character has to overcome hardship and prove people wrong before they get their ‘happily ever after’.  The same is true in our story, with Bwownies founder Keelan, whose determination for success formed at the age of 16 when he was told by his English teacher that he would never go to university. This did nothing but add fuel to the fire. Keelan was ready to defy the odds.",
+            "button_text": "",
+            "url": ""
+          }
+        },
+        "image_XaEAw4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2024-10-20_at_17.21.02.png",
+            "crop": "aspect-w-1 aspect-h-1",
+            "image_shape": "default",
+            "heading": "",
+            "caption": "Whilst studying at Sixth Form Keelan realised his true dream: to work at McDonald’s (not really, he just needed the money!) It wasn’t all bad though, it certainly taught him some valuable life lessons and introduced him to the world of work.",
+            "button_text": "",
+            "url": ""
+          }
+        },
+        "image_QTGbiD": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2024-10-20_at_17.21.06.png",
+            "crop": "aspect-w-1 aspect-h-1",
+            "image_shape": "default",
+            "heading": "",
+            "caption": "What started as a hobby became a fan favourite, with Keelan’s friends and family falling for his homemade brownies, often requesting them for birthdays (something we seriously recommend).",
+            "button_text": "",
+            "url": ""
+          }
+        },
+        "image_nPje3R": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2024-10-20_at_17.21.10.png",
+            "crop": "aspect-w-1 aspect-h-1",
+            "image_shape": "default",
+            "heading": "",
+            "caption": "It was actually Keelan’s Nan that suggested he should start selling them and create a small business (I suppose you have her to thank for getting your brownie fix)! They were on the way back from a cricket game where they were listing numerous names, until the last one…BWOWNIES. Keelan immediately knew he had something special.",
+            "button_text": "",
+            "url": ""
+          }
+        },
+        "image_pf6U47": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2024-10-20_at_17.21.15.png",
+            "crop": "aspect-w-1 aspect-h-1",
+            "image_shape": "default",
+            "heading": "",
+            "caption": "As is the way these days, the first step to any new business venture starts online! He started up a social media page and decided to take some BWOWNIE samples in for his friends to try. He struck a deal with his fellow students: If they shared the BWOWNIE’S social media page they’d earn themselves a tasty treat.",
+            "button_text": "",
+            "url": ""
+          }
+        },
+        "image_zanUV4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2024-10-20_at_17.21.19.png",
+            "crop": "aspect-w-1 aspect-h-1",
+            "image_shape": "default",
+            "heading": "",
+            "caption": "You’d imagine running around school grounds like he was on an episode of the apprentice and trying to drum up business would be somewhat frowned upon by the school, and whilst he did try to be discreet where possible, some teachers inevitably found out. For legal reasons we can’t go into it, but there may or may not have been a BWOWNIE type bribe given to these teachers, who may or may not have become regular paying customers😉",
+            "button_text": "",
+            "url": ""
+          }
+        },
+        "image_Tq3jeh": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2024-10-20_at_17.21.23.png",
+            "crop": "aspect-w-1 aspect-h-1",
+            "image_shape": "default",
+            "heading": "",
+            "caption": "The business began to grow and something had to give, with careful consideration and his parent’s blessing he decided to leave his high-flying job as a fast-food worker (he figured McDonald’s would probably manage without him).",
+            "button_text": "",
+            "url": ""
+          }
+        },
+        "image_VYfy6i": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2024-10-20_at_17.21.28.png",
+            "crop": "aspect-w-1 aspect-h-1",
+            "image_shape": "default",
+            "heading": "",
+            "caption": "After a summer of selling BWOWNIES around sixth form. University came calling! Despite being told he would never make it Keelan proved them wrong. Keelan was off to the University of Exeter to study sport science (ironic considering he failed GCSE science)!",
+            "button_text": "",
+            "url": ""
+          }
+        },
+        "image_xnrgcb": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2024-10-20_at_17.21.37.png",
+            "crop": "aspect-w-1 aspect-h-1",
+            "image_shape": "default",
+            "heading": "",
+            "caption": "By this point it was early 2020 and as we can all recall Lockdown hit, unfortunately pressing pause on Keelan's university experience.  With everyone locked in their homes, online retail blowing up, and no studying for Keelan to do, it was the perfect recipe for a BWOWNIE relaunch complete with a website he built all by himself with no knowledge at all!!!",
+            "button_text": "",
+            "url": ""
+          }
+        },
+        "image_Grf4Uw": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2024-10-20_at_17.21.51.png",
+            "crop": "aspect-w-1 aspect-h-1",
+            "image_shape": "default",
+            "heading": "",
+            "caption": "This is where the BWOWNIES story starts to get a bit mental. Keelan sent a box of BWOWNIES out to Joe Moruzzi the founder of <a href=\"https://www.instagram.com/pleesecakes/\">PLEESECAKES</a>. Inside the box was a letter explaining the story so far. He shared this onto his social media pages and overnight BWOWNIES blew up!!! The chocolate smiths then started to get involved which is just mental!!! Keelan received thousands of followers overnight and the orders began to increase!!!",
+            "button_text": "",
+            "url": ""
+          }
+        },
+        "image_GE6dN8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2024-10-20_at_17.21.54.png",
+            "crop": "aspect-w-1 aspect-h-1",
+            "image_shape": "default",
+            "heading": "",
+            "caption": "With no signs of stopping, Keelan’s set his sights on the small goal of making BWOWNIES into a household name, selling in shops throughout the UK and eventually taking over the world with BWOWNIES.",
+            "button_text": "",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_3tKBQb",
+        "image_XaEAw4",
+        "image_QTGbiD",
+        "image_nPje3R",
+        "image_pf6U47",
+        "image_zanUV4",
+        "image_Tq3jeh",
+        "image_VYfy6i",
+        "image_xnrgcb",
+        "image_Grf4Uw",
+        "image_GE6dN8"
+      ],
+      "settings": {
+        "title": "Our Story",
+        "subheading": "",
+        "enlarge_active_slide": true,
+        "disable_media_style": false,
+        "mobile_slide_width": "three_fifths",
+        "desktop_slide_width": 30,
+        "color_scheme": "scheme3",
+        "use_gradient_background": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_overlay_KJcYgF",
+    "feature_text_9CcGxp",
+    "image_focus_carousel_Q6JQg6"
+  ]
+}

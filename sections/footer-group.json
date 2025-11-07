@@ -1,0 +1,71 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "tagline_and_social_links_xMAPA4": {
+          "type": "tagline_and_social_links",
+          "settings": {
+            "tagline": "<strong>STOP LOOKING AT MY BOTTOM, THE BWOWNIES ARE FURTHER UP! </strong>",
+            "show_social_icons": true
+          }
+        },
+        "newsletter-0": {
+          "type": "newsletter",
+          "disabled": true,
+          "settings": {
+            "newsletter_heading": "Win a years supply of bWOWnies..."
+          }
+        },
+        "shape_divider_R9H8fi": {
+          "type": "shape_divider",
+          "settings": {
+            "target_section": "above",
+            "target_section_color_scheme": "scheme3",
+            "style": "clouds-shape_1400x161",
+            "flip_horizontal": true,
+            "enable_animation": false,
+            "animation_direction": ""
+          }
+        }
+      },
+      "block_order": [
+        "tagline_and_social_links_xMAPA4",
+        "newsletter-0",
+        "shape_divider_R9H8fi"
+      ],
+      "settings": {
+        "show_payment_icons": true,
+        "show_country_selector": true,
+        "show_locale_selector": true,
+        "color_scheme": "scheme1",
+        "use_gradient_background": false
+      }
+    },
+    "custom_liquid_minKyp": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom_liquid.name",
+      "settings": {
+        "title": "",
+        "custom_liquid": "",
+        "full_width": false,
+        "color_scheme": ""
+      }
+    }
+  },
+  "order": [
+    "footer",
+    "custom_liquid_minKyp"
+  ]
+}

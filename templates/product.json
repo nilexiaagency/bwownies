@@ -1,0 +1,494 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "loox_reviews_loox_rating_Di8mH9": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "contentSize": 16,
+            "pattern": "",
+            "hideText": false,
+            "alignment": "",
+            "layout": "",
+            "textColor": "",
+            "starColor": "",
+            "showAllReviews": false,
+            "looxOpenFloatingWidget": false,
+            "emptyRatingWidget": false
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "display_on_card": false,
+            "text_align": "text-left"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "display_on_card": true,
+            "show_on_sale_sticker": true,
+            "text_align": "text-left"
+          }
+        },
+        "features_list_kCkDAD": {
+          "type": "features_list",
+          "settings": {
+            "display_on_card": true,
+            "uppercase_text": true,
+            "title_1": "HANDMADE IN THE UK🧑🏻‍🍳",
+            "title_2": "{{ product.metafields.custom.per_brownie_1 | metafield_text }}",
+            "title_3": "",
+            "title_4": "",
+            "title_5": "",
+            "title_6": "",
+            "border_between_rows": true,
+            "border_top_bottom": false
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {
+            "display_on_card": false,
+            "show_label": true
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "display_on_card": false,
+            "option_style": "drop_down",
+            "full_width_buttons": false,
+            "hide_option_labels": false,
+            "enable_color_swatches": false
+          }
+        },
+        "popup_xKk8LW": {
+          "type": "popup",
+          "settings": {
+            "display_on_card": false,
+            "icon": "price_tag",
+            "text": "CLICK ME but don't tell anyone!",
+            "page": "only-3-per-bwownie"
+          }
+        },
+        "appstle_subscription_appstle_subscription_product_page_widget_E7GzKm": {
+          "type": "shopify://apps/appstle-subscription/blocks/appstle-subscription-product-page-widget/fe257d39-6f88-4f35-ab08-bd437e3aa94e",
+          "settings": {}
+        },
+        "baf3083e-d14d-435d-bca3-100d6ac490ce": {
+          "type": "buy_buttons",
+          "settings": {
+            "display_on_card": true,
+            "show_price": true,
+            "enable_payment_button": true,
+            "show_pickup_availability": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "shape_divider_rGQ9gi": {
+          "type": "shape_divider",
+          "settings": {
+            "target_section": "above",
+            "target_section_color_scheme": "scheme1",
+            "style": "clouds-shape_1400x161",
+            "flip_horizontal": false,
+            "enable_animation": false,
+            "animation_direction": ""
+          }
+        },
+        "tabs_4zKJy4": {
+          "type": "tabs",
+          "settings": {
+            "display_on_card": false,
+            "uppercase_heading": false,
+            "heading_1": "About",
+            "content_1": "<p>{{ product.metafields.custom.about | metafield_tag }}</p>",
+            "page_content_1": "",
+            "heading_2": "Ingredients",
+            "content_2": "<p>{{ product.metafields.custom.ingredients_ | metafield_tag }}</p>",
+            "page_content_2": "",
+            "heading_3": "Allergens",
+            "content_3": "<p>For allergens, see ingredients in <strong>CAPS.</strong> Contain NUTS and PEANUTS. All products are handmade so we cannot guarantee cross-contamination.</p>",
+            "page_content_3": "",
+            "tab_style": "underline",
+            "tab_color": "text"
+          }
+        },
+        "comparative_scale_G9yVtt": {
+          "type": "comparative_scale",
+          "settings": {
+            "display_on_card": false,
+            "uppercase_text": true,
+            "left_label": "Fudgy",
+            "right_label": "FILLED",
+            "marker_position": 80,
+            "marker_position_alt": "{{ product.metafields.custom.scale.value }}"
+          }
+        },
+        "complementary_T3PV4k": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Upgrade & Save?",
+            "product_list_limit": 2,
+            "product_tile_style": "standard",
+            "enable_quick_buy": true
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_rating_Di8mH9",
+        "title",
+        "price",
+        "features_list_kCkDAD",
+        "quantity_selector",
+        "variant_picker",
+        "popup_xKk8LW",
+        "appstle_subscription_appstle_subscription_product_page_widget_E7GzKm",
+        "baf3083e-d14d-435d-bca3-100d6ac490ce",
+        "shape_divider_rGQ9gi",
+        "tabs_4zKJy4",
+        "comparative_scale_G9yVtt",
+        "complementary_T3PV4k"
+      ],
+      "settings": {
+        "crop": "",
+        "image_shape": "default",
+        "desktop_media_width": "lg:col-span-6_lg:col-span-6",
+        "show_slideshow_arrows_on_desktop": false,
+        "enable_image_zoom": false,
+        "enable_video_looping": true,
+        "autoplay_videos_on_desktop": true,
+        "media_mobile_width": "w-full",
+        "thumbnails_position": "under",
+        "thumbnail_crop": "aspect-w-1 aspect-h-1",
+        "thumbnail_shape": "squircle",
+        "thumbnail_size": "large",
+        "show_thumbnails_on_mobile": false,
+        "hide_media_shadow": false,
+        "color_scheme": "scheme3",
+        "use_gradient_background": false
+      }
+    },
+    "1746519873ba4b3e53": {
+      "type": "apps",
+      "blocks": {
+        "klaviyo_email_marketing_sms_form_embed_block_LkaLAk": {
+          "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/form-embed-block/2632fe16-c075-4321-a88b-50b567f42507",
+          "settings": {
+            "formId": "<div class=\"klaviyo-form-QZLSp9\"></div>"
+          }
+        }
+      },
+      "block_order": [
+        "klaviyo_email_marketing_sms_form_embed_block_LkaLAk"
+      ],
+      "settings": {
+        "apply_vertical_spacing": true,
+        "apply_horizontal_spacing": true,
+        "display_on_card": false,
+        "content_width_desktop": "lg:w-1/3",
+        "color_scheme": "scheme2",
+        "use_gradient_background": false
+      }
+    },
+    "rich_text_KGe3yY": {
+      "type": "rich-text",
+      "blocks": {
+        "shape_divider_ynJJig": {
+          "type": "shape_divider",
+          "settings": {
+            "target_section": "below",
+            "target_section_color_scheme": "scheme3",
+            "style": "waves-2-patterned_1200x43",
+            "flip_horizontal": false,
+            "enable_animation": false,
+            "animation_direction": ""
+          }
+        },
+        "shape_divider_yzTypm": {
+          "type": "shape_divider",
+          "settings": {
+            "target_section": "above",
+            "target_section_color_scheme": "scheme2",
+            "style": "waves-2-patterned_1200x43",
+            "flip_horizontal": false,
+            "enable_animation": false,
+            "animation_direction": ""
+          }
+        }
+      },
+      "block_order": [
+        "shape_divider_ynJJig",
+        "shape_divider_yzTypm"
+      ],
+      "settings": {
+        "title": "These aren’t brownies at all… they’re BWOWNIES! (Brownies with a WOW)",
+        "heading_size": "heading-feature",
+        "rich_text": "",
+        "display_on_card": false,
+        "content_width_desktop": "lg:w-2/3",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "",
+        "use_gradient_background": false
+      }
+    },
+    "faq_HmU4mr": {
+      "type": "faq",
+      "blocks": {
+        "question_ekcK7t": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "title": "How long do they last for?",
+            "answer": "<p>BWOWNIES last up to 10 days in the fridge.</p>"
+          }
+        },
+        "question_H7VCgC": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "title": "Can they be frozen?",
+            "answer": "<p>YES!!! They last up to 2 months in the freezer. The day before you want to use them, pop them into the fridge to defrost. </p><p>Impatient? Pop them into the microwave in 10 second blasts until they are perfect!</p>"
+          }
+        },
+        "question_YHtgig": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "title": "Suitable for vegetarians?",
+            "answer": "<p>Yes, most of them are, but please check the ingredients in the product descriptions.</p>"
+          }
+        },
+        "question_GRL86m": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "title": "What's the nutritional info?",
+            "answer": "<p>We're working on providing nutritional information for each flavour, but for now, you can find the information for our standard BWOWNIE mix below:</p><p><strong>Calories: </strong>333Kcal</p><p><strong>Total Fat: </strong>20grams</p><p><strong>Total Carbohydrates: </strong>34grams</p><p><strong>Total Protein: </strong>4.16</p>"
+          }
+        },
+        "question_RRnVHn": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "title": "Can you include a note?",
+            "answer": "<p>Sure! Please let us know if you'd like a message, and what you want to be written, in the note section at checkout! You can find this just above the section where you select the payment type, titled 'Personalised Note And/Or Order Notes<strong>'</strong>.</p><p>*Disclaimer* Do not judge my handwriting 😉</p>"
+          }
+        },
+        "question_PF4B4G": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "title": "How to avoid eating them all in one day?",
+            "answer": "<p>Haha (yes, I laugh at my own jokes). If your box of BWOWNIES lasts more than a day you aren’t doing it correctly!!!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_ekcK7t",
+        "question_H7VCgC",
+        "question_YHtgig",
+        "question_GRL86m",
+        "question_RRnVHn",
+        "question_PF4B4G"
+      ],
+      "settings": {
+        "display_on_card": true,
+        "heading_text_style": "heading",
+        "two_columns_desktop": true,
+        "title": "Got questions?",
+        "richtext": "We've got answers...",
+        "color_scheme": "scheme3",
+        "use_gradient_background": false
+      }
+    },
+    "scrolling_text_with_icons_8bQTfh": {
+      "type": "scrolling-text-with-icons",
+      "blocks": {
+        "text_QaNPhw": {
+          "type": "text",
+          "settings": {
+            "text": "Locally Sourced Ingredients",
+            "icon": "like"
+          }
+        },
+        "text_AhjMFy": {
+          "type": "text",
+          "settings": {
+            "text": "Sustainable",
+            "icon": "leaf"
+          }
+        },
+        "text_KF9kJj": {
+          "type": "text",
+          "settings": {
+            "text": "More Chocolate Than Any Other Brownie!",
+            "icon": "price_tag"
+          }
+        },
+        "text_64jjgC": {
+          "type": "text",
+          "settings": {
+            "text": "Fudgy & Freaking Delicious",
+            "icon": "price_tag"
+          }
+        },
+        "text_Vn66XP": {
+          "type": "text",
+          "settings": {
+            "text": "Free Shipping Nationwide",
+            "icon": "truck"
+          }
+        },
+        "text_eyQCJi": {
+          "type": "text",
+          "settings": {
+            "text": "Handmade In UK",
+            "icon": "person"
+          }
+        }
+      },
+      "block_order": [
+        "text_QaNPhw",
+        "text_AhjMFy",
+        "text_KF9kJj",
+        "text_64jjgC",
+        "text_Vn66XP",
+        "text_eyQCJi"
+      ],
+      "settings": {
+        "repeat_text": true,
+        "link": "",
+        "font": "body",
+        "gap": "gap-36",
+        "icon_size": "size-8",
+        "speed": 250,
+        "direction": "",
+        "icon_thickness": 1.5,
+        "background_color": "bg-transparent text-scheme-text",
+        "show_border": true,
+        "color_scheme": "",
+        "use_gradient_background": false
+      }
+    },
+    "17300324748a745aa4": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_dynamic_section_R8H4Kx": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "only_photos": false,
+            "aggregated": true,
+            "limit": 6,
+            "hide_thumbnails": false,
+            "maxwidth": 1080,
+            "is_sample": true
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_dynamic_section_R8H4Kx"
+      ],
+      "settings": {
+        "apply_vertical_spacing": true,
+        "apply_horizontal_spacing": true,
+        "display_on_card": false,
+        "content_width_desktop": "lg:w-full",
+        "color_scheme": "scheme3",
+        "use_gradient_background": false
+      }
+    },
+    "rich_text_Vdb64H": {
+      "type": "rich-text",
+      "blocks": {
+        "shape_divider_aAE8Vj": {
+          "type": "shape_divider",
+          "settings": {
+            "target_section": "above",
+            "target_section_color_scheme": "scheme3",
+            "style": "waves-2-patterned_1200x43",
+            "flip_horizontal": false,
+            "enable_animation": false,
+            "animation_direction": ""
+          }
+        }
+      },
+      "block_order": [
+        "shape_divider_aAE8Vj"
+      ],
+      "settings": {
+        "title": "Thank You",
+        "heading_size": "heading-standard",
+        "rich_text": "<p>I can’t wait for you to taste these brownies and hear what you think!! <br/><br/>You’re the reason we do this. Love Keelan 🍫<br/></p>",
+        "display_on_card": false,
+        "content_width_desktop": "lg:w-2/3",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "",
+        "use_gradient_background": false
+      }
+    },
+    "featured_collection_cMLUBh": {
+      "type": "featured-collection",
+      "blocks": {
+        "shape_divider_Mz3mTe": {
+          "type": "shape_divider",
+          "settings": {
+            "target_section": "above",
+            "target_section_color_scheme": "scheme1",
+            "style": "waves-2-patterned_1200x43",
+            "flip_horizontal": false,
+            "enable_animation": false,
+            "animation_direction": ""
+          }
+        }
+      },
+      "block_order": [
+        "shape_divider_Mz3mTe"
+      ],
+      "settings": {
+        "title": "More you'll love...",
+        "subheading": "",
+        "collection": "frontpage",
+        "no_products": 4,
+        "show_view_all": false,
+        "enable_quick_buy": false,
+        "display_on_card": false,
+        "layout": "grid",
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 4,
+        "slideshow_focus": "center",
+        "mobile_slide_width": "three_fifths",
+        "desktop_slide_width": 40,
+        "autoscroll_mode": "1",
+        "product_tiles_aspect_ratio": "",
+        "image_shape": "",
+        "color_scheme": "scheme3",
+        "use_gradient_background": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1746519873ba4b3e53",
+    "rich_text_KGe3yY",
+    "faq_HmU4mr",
+    "scrolling_text_with_icons_8bQTfh",
+    "17300324748a745aa4",
+    "rich_text_Vdb64H",
+    "featured_collection_cMLUBh"
+  ]
+}
