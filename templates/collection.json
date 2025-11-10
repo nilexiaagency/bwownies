@@ -33,7 +33,7 @@
         "enable_quick_buy": true,
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 4,
-        "enable_filtering": true,
+        "enable_filtering": false,
         "enable_sorting": true,
         "expand_filters": false,
         "show_filter_count": false,
