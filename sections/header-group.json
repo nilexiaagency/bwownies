@@ -31,8 +31,7 @@
     "header": {
       "type": "header",
       "custom_css": [
-        ".site-header {border: none !important; /* Remove any existing border */ outline: none !important; /* Remove any existing outline */}",
-        ".site-header {border: 2px solid #ff129f !important; /* Bright pink border */}"
+        ".site-header {border: none !important; /* Remove any existing border */ outline: none !important; /* Remove any existing outline */}"
       ],
       "settings": {
         "logo": "shopify://shop_images/Untitled_design_81.png",
@@ -43,15 +42,15 @@
         "show_all_navigation_links": false,
         "showcase_second_level_links": false,
         "crop": "aspect-w-1 aspect-h-1",
-        "header_layout": "logo_left_navigation_center",
+        "header_layout": "navigation_left_logo_center",
         "header_show_search": false,
         "sticky_header": false,
         "show_icons": true,
-        "enable_overlay_on_homepage": true,
-        "enable_overlay_on_collection_pages": true,
-        "enable_overlay_on_product_pages": true,
+        "enable_overlay_on_homepage": false,
+        "enable_overlay_on_collection_pages": false,
+        "enable_overlay_on_product_pages": false,
         "overlay_color_scheme": "scheme1",
-        "transparent_when_overlaid_and_stuck": false,
+        "transparent_when_overlaid_and_stuck": true,
         "overlay_show_separator_border": false,
         "overlay_first_section_padding_top_desktop": 6,
         "overlay_first_section_padding_top_mobile": 6,
