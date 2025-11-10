@@ -25,8 +25,8 @@
           "type": "menus",
           "settings": {
             "show_menu_headings": false,
-            "linklist_1": "footer",
-            "linklist_2": "footer",
+            "linklist_1": "",
+            "linklist_2": "",
             "linklist_3": "footer-menu-26"
           }
         },
