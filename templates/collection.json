@@ -14,6 +14,7 @@
       "blocks": {
         "shape_divider_NMcPWY": {
           "type": "shape_divider",
+          "disabled": true,
           "settings": {
             "target_section": "above",
             "target_section_color_scheme": "scheme1",
