@@ -32,7 +32,7 @@
         <span class="flex items-center gap-2">
           {{ link_title | default: link.title }}
           {% if new_tag %}
-            <span class="tag">NEW</span>
+            {% render 'badge', t_key: 'badges.new' %}
           {% endif %}
         </span>
         <div class="ml-auto">
@@ -141,7 +141,7 @@
         <span class="flex items-center gap-2">
           {{ link_title | default: link.title }}
           {% if new_tag %}
-            <span class="tag">NEW</span>
+            {% render 'badge', t_key: 'badges.new' %}
           {% endif %}
         </span>
         <div class="ml-auto">
@@ -173,7 +173,7 @@
     >
       {{ link_title | default: link.title }}
       {% if new_tag %}
-        <span class="tag">NEW</span>
+        {% render 'badge', t_key: 'badges.new' %}
       {% endif %}
     </a>
   {% endif %}

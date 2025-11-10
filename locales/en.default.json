@@ -572,5 +572,8 @@
     "not_started_html": "Spend {{ amount }} to get free shipping",
     "not_achieved_html": "Spend another {{ amount }} and get free shipping",
     "achieved": "You’ve unlocked free shipping!"
+  },
+  "badges": {
+    "new": "New!"
   }
 }

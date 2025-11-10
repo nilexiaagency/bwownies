@@ -1,0 +1,22 @@
+{% doc %}
+  Renders a badge
+
+  @param {string} [t_key] - The translation key of the badge text
+  @param {string} [text] - Custom badge text
+  @param {string} [class] - Custom badge classes
+{% enddoc %}
+
+{% liquid
+  assign badge_class = 'tag'
+  if class
+    assign badge_class = badge_class | append: ' ' | append: class
+  endif
+%}
+
+<span class="{{ badge_class }}">
+  {% if t_key %}
+    {{ t_key | t }}
+  {% else %}
+    {{ text }}
+  {% endif %}
+</span>

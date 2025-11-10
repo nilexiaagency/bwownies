@@ -8,12 +8,15 @@
     <li class="showcase-tile lg:col-span-2">
       <a href="{{ product.url }}" class="block h-full w-full">
         {%- if product.featured_media -%}
-          <div class="{% unless crop == '' or crop == blank %}object-wrapper {{ crop }}{% endunless %}">
+          <div class="{% unless crop == '' or crop == blank %}object-wrapper {{ crop }}{% endunless %} featured-collection">
             {{
               product.featured_media
               | image_url: width: 1400
               | image_tag: class: 'media__styled-element', sizes: 'calc(100vw / 12 * 2)'
             }}
+            {% if product.metafields.custom.badge_text != blank %}
+              {% render 'badge', text: product.metafields.custom.badge_text %}
+            {% endif %}
           </div>
         {%- endif -%}
         <div class="mt-2 text-center">

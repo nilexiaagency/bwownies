@@ -243,7 +243,7 @@
                 %}
                 <span class="inline-block pr-1">{{ link_title | default: link.title }}</span>
                 {% if new_tag %}
-                  <span class="tag">NEW</span>
+                  {% render 'badge', t_key: 'badges.new' %}
                 {% endif %}
                 <span class="svg-scale rotate ml-1 mr-1 inline-block h-2 w-2 shrink-0 origin-center transform align-middle transition-transform duration-150" :class="{'rotate-180': menuOpen.menu{{ counter }}}">{% render 'icon-chevron-down' %}</span>
               </span>
