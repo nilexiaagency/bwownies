@@ -25,9 +25,9 @@
           "type": "menus",
           "settings": {
             "show_menu_headings": false,
-            "linklist_1": "footer-menu-26",
-            "linklist_2": "",
-            "linklist_3": ""
+            "linklist_1": "footer",
+            "linklist_2": "footer",
+            "linklist_3": "footer-menu-26"
           }
         },
         "newsletter-0": {
