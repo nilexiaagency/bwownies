@@ -1,0 +1,24 @@
+.tag {
+  font-size: 0.75rem;
+  display: block;
+  background-color: #710049;
+  padding-block: 0.5rem;
+  padding-inline: 0.45rem;
+  line-height: 0.25rem;
+  border-radius: 999rem;
+  margin-inline: 0.25rem;
+  text-transform: uppercase;
+  font-family: Paytone;
+}
+
+.featured-collection {
+  position: relative;
+  isolation: isolate;
+
+  .tag {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 10;
+  }
+}

@@ -1,10 +1,10 @@
 {% liquid
   assign collection = link.object
-  assign layout_classes = 'grid grid-flow-row-dense grid-cols-1 lg:grid-cols-12 lg:gap-10'
+  assign layout_classes = 'grid grid-flow-row-dense grid-cols-2 gap-4 my-4'
 %}
 
 <ul class="{{ layout_classes }}">
-  {%- for product in collection.products limit: 6 -%}
+  {%- for product in collection.products limit: 4 -%}
     <li class="showcase-tile lg:col-span-2">
       <a href="{{ product.url }}" class="block h-full w-full">
         {%- if product.featured_media -%}
@@ -26,8 +26,8 @@
     </li>
   {%- endfor -%}
 </ul>
-<div class="mt-5 text-center">
-  {%- if collection.all_products_count > 6 -%}
+<div class="my-5 text-center">
+  {%- if collection.all_products_count > 4 -%}
     <a href="{{ collection.url }}" class="push-btn inline-block">
       <span class="push-btn__surface">
         {{- 'collections.general.all_of_collection' | t: collection: collection.title -}}

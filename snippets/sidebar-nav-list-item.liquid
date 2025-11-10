@@ -2,6 +2,16 @@
   First level
 {% endcomment %}
 {% assign showcase_link_tiles = '' %}
+{% liquid
+  if link.title contains '[NEW]'
+    assign new_tag = true
+    assign link_title = link.title | split: '[NEW]' | first
+  endif
+
+  if link.type == 'collection_link' and section.settings.showcase_top_level_collections == true
+    assign show_collection = true
+  endif
+%}
 <li
   class="text-lg lg:text-xl"
   style="--first-delay-tap: {% increment first_delay_tap %};"
@@ -19,7 +29,12 @@
         @click="expanded = ! expanded"
         :aria-expanded="expanded"
       >
-        <span>{{ link.title }}</span>
+        <span class="flex items-center gap-2">
+          {{ link_title | default: link.title }}
+          {% if new_tag %}
+            {% render 'badge', t_key: 'badges.new' %}
+          {% endif %}
+        </span>
         <div class="ml-auto">
           <span
             class="block h-3 w-3"
@@ -99,9 +114,7 @@
                     {% render 'showcase-tile', object: object, crop: section.settings.crop, sizes: '(min-width: 1024px) calc(41.67vw / 2), (min-width: 768px) calc(58.33vw / 2), calc(91.67vw / 2)' %}
                   </li>
                 {%- endcapture -%}
-              {%- assign showcase_link_tiles = showcase_link_tiles
-                | append: link_tile
-              -%}
+              {%- assign showcase_link_tiles = showcase_link_tiles | append: link_tile -%}
             {%- endunless -%}
           {% endfor %}
         </ul>
@@ -112,12 +125,56 @@
         {% endif %}
       </div>
     </data-island>
+  {% elsif show_collection %}
+    <data-island
+      x-data="
+        {
+          expanded: {% if forloop.first and section.settings.auto_expand %}true{% else %}false{% endif %}
+        }
+      "
+    >
+      <button
+        class="font-heading flex w-full flex-row items-center justify-between py-2.5 text-left {{ section.settings.sidebar_menu_font_size }}"
+        @click="expanded = ! expanded"
+        :aria-expanded="expanded"
+      >
+        <span class="flex items-center gap-2">
+          {{ link_title | default: link.title }}
+          {% if new_tag %}
+            {% render 'badge', t_key: 'badges.new' %}
+          {% endif %}
+        </span>
+        <div class="ml-auto">
+          <span
+            class="block h-3 w-3"
+            :class="{'rotate-180': expanded}"
+          >
+            {%- render 'icon-chevron-down' -%}
+          </span>
+        </div>
+      </button>
+      <div x-show="expanded" x-collapse>
+        {%- render 'mobile-nav-featured-collection-links',
+          link: link,
+          crop: 'aspect-w-1 aspect-h-1',
+          nested_nav_style: nested_nav_style
+        -%}
+        {% if showcase_link_tiles != '' %}
+          <ul class="nav-item mb-5 grid grid-cols-2 gap-5">
+            {{ showcase_link_tiles }}
+          </ul>
+        {% endif %}
+      </div>
+    </data-island>
   {% else %}
     <a
-      class="font-heading block py-2.5 {{ section.settings.sidebar_menu_font_size }}"
+      class="font-heading py-2.5 flex items-center gap-2 {{ section.settings.sidebar_menu_font_size }}"
       href="{{ link.url }}"
     >
-      {{ link.title }}
+      {{ link_title | default: link.title }}
+      {% if new_tag %}
+        {% render 'badge', t_key: 'badges.new' %}
+      {% endif %}
     </a>
   {% endif %}
 </li>

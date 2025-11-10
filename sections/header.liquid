@@ -234,7 +234,17 @@
                   <span x-cloak :class="{ 'opacity-100': menuOpen.menu{{ counter }}, 'opacity-0': !menuOpen.menu{{ counter }} }" class="pointer-events-none absolute inset-0 z-0 bg-scheme-background" data-color-scheme="{{ active_color_scheme }}"></span>
                 {% endif %}
               <span class="relative flex h-full items-center {% if layout contains 'navigation_center' and nested_nav_style == 'mega_menu' %}text-center{% else %}text-left{% endif %}">
-                <span class="inline-block pr-1">{{ link.title }}</span>
+                {% liquid
+                  if link.title contains '[NEW]'
+                    assign new_tag = true
+                    assign link_title = link.title | split: '[NEW]' | first
+                    else 
+                  endif
+                %}
+                <span class="inline-block pr-1">{{ link_title | default: link.title }}</span>
+                {% if new_tag %}
+                  {% render 'badge', t_key: 'badges.new' %}
+                {% endif %}
                 <span class="svg-scale rotate ml-1 mr-1 inline-block h-2 w-2 shrink-0 origin-center transform align-middle transition-transform duration-150" :class="{'rotate-180': menuOpen.menu{{ counter }}}">{% render 'icon-chevron-down' %}</span>
               </span>
             </button>
@@ -835,9 +845,7 @@
               {{ cart_button }}
             </div>
 
-            {% if has_feature_desktop_button
-              and feature_desktop_link_position == 'right_of_cart'
-            %}
+            {% if has_feature_desktop_button and feature_desktop_link_position == 'right_of_cart' %}
               <div class="relative z-10 ml-5 hidden items-center {% if show_icons %}py-2.5{% else %}py-2{% endif %} lg:flex">
                 <div class="{% unless hide_button_shadow %}{% if settings.button_shadow_direction contains 'top' %}pt-button-shadow{% else %}pb-button-shadow{% endif %}{% endunless %}">
                   {{ feature_desktop_link }}
@@ -876,9 +884,7 @@
 {% endif %}
 {%- if enable_overlay -%}
   <script>
-    document
-      .getElementById('shopify-section-{{ section.id }}')
-      .classList.add('has-no-height');
+    document.getElementById('shopify-section-{{ section.id }}').classList.add('has-no-height');
   </script>
   <style>
     #MainContent .shopify-section:first-child > section:not(.full-bleed-section),
@@ -930,10 +936,7 @@
 </script>
 
 {% if request.page_type == 'index' %}
-  {% assign potential_action_target = shop.url
-    | append: routes.search_url
-    | append: '?q={search_term_string}'
-  %}
+  {% assign potential_action_target = shop.url | append: routes.search_url | append: '?q={search_term_string}' %}
   <script type="application/ld+json">
     {
       "@context": "http://schema.org",

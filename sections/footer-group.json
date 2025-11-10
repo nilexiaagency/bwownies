@@ -21,6 +21,15 @@
             "show_social_icons": true
           }
         },
+        "menus_Mwwkah": {
+          "type": "menus",
+          "settings": {
+            "show_menu_headings": false,
+            "linklist_1": "",
+            "linklist_2": "",
+            "linklist_3": "footer-menu-26"
+          }
+        },
         "newsletter-0": {
           "type": "newsletter",
           "disabled": true,
@@ -42,6 +51,7 @@
       },
       "block_order": [
         "tagline_and_social_links_xMAPA4",
+        "menus_Mwwkah",
         "newsletter-0",
         "shape_divider_R9H8fi"
       ],
