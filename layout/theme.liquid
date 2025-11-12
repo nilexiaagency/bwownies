@@ -266,7 +266,7 @@
 
     <script src="{{ 'global.bundle.js' | asset_url }}" type="module"></script>
 
-    {% if settings.enable_sticky_add_to_cart and template.name == 'product' %}
+    {% if settings.enable_sticky_add_to_cart and template.name == 'product' and product.available %}
       {% render 'sticky-add-to-cart' %}
     {% endif %}
 

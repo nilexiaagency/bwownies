@@ -4,7 +4,7 @@
       x-show="$store.modals.rightDrawer.open"
       @keydown.escape.prevent.stop="$store.modals.close('rightDrawer')"
       @click="$store.modals.close('rightDrawer')"
-      class="fixed inset-0 z-50"
+      class="fixed inset-0 z-50 {% if template.name == "product" %}product-right-drawer{% endif %}"
       data-color-scheme="{{ settings.drawer_color_scheme }}"
       id="modals-rightDrawer"
     >
