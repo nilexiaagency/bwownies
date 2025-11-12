@@ -1,10 +1,32 @@
 {% liquid
   assign product_variants = product.variants | sort: 'price'
+
+  assign cart_value = cart.items_subtotal_price
+  assign free_shipping_threshold = settings.free_shipping_threshold | times: 100
+  assign variant_price = product.selected_or_first_available_variant.price
+  assign cart_value_plus_price = cart_value | plus: variant_price
+
+  if cart_value >= free_shipping_threshold
+    assign free_shipping_qualified = true
+  elsif cart_value_plus_price >= free_shipping_threshold
+    assign add_to_qualify = true
+  else
+    assign get_closer = true
+  endif
 %}
 
 <div class="sticky-atc" x-data="stickyForm">
-  <div class="free-delivery-bar">
-    <p class="" x-ref="freeDeliveryText"></p>
+  <div class="sticky-atc__free-delivery-bar">
+    <p class="sticky-atc__free-delivery-text" x-ref="freeDeliveryText">
+      {% if free_shipping_qualified %}
+        {{ 'products.product.sticky_add_to_cart.free_shipping.qualified' }}
+      {% elsif add_to_qualify %}
+        {{ 'products.product.sticky_add_to_cart.free_shipping.add_to_qualify' }}
+      {% elsif get_closer %}
+        {% assign price_string = variant_price | money %}
+        {{ 'products.product.sticky_add_to_cart.free_shipping.get_closer_html' | t: price: price_string }}
+      {% endif %}
+    </p>
   </div>
   {% form 'product', product %}
     <div class="sticky-atc__form" @change="updateShippingBar">
@@ -39,14 +61,17 @@
   document.addEventListener('alpine:init', () => {
     Alpine.data('stickyForm', () => ({
       shippingBarTexts: {
-        get_closer: "{{ 'products.product.sticky_add_to_cart.free_shipping.get_closer_html' | t: price: 100 }}",
-        add_to_qualify: "{{ 'products.product.sticky_add_to_cart.free_shipping.add_to_qualify' | t }}",
+        getCloser: "{{ 'products.product.sticky_add_to_cart.free_shipping.get_closer_html' | t: price: 100 }}",
+        addToQualify: "{{ 'products.product.sticky_add_to_cart.free_shipping.add_to_qualify' | t }}",
         qualified: "{{ 'products.product.sticky_add_to_cart.free_shipping.qualified' | t }}",
       },
+      cartValue: {{ cart_value }},
+      freeShippingThreshold: {{ free_shipping_threshold }}
 
       updateShippingBar() {
-        console.log('update shipping bar');
-        this.$refs.freeDeliveryText.innerHTML = this.shippingBarTexts.qualified;
+        // if they've already qualified for free shipping, don't do anything - it doesn't need to update.
+        // if the value of their cart, plus the price of the newly selected variant is above or equal to the free shipping threshold, show the addToQualify text
+        // if the value of their cart, plus the price of the newly selected variant is below the free shipping threshold, show the getCloser text
       },
     }));
   });
@@ -71,6 +96,11 @@
     border-top-left-radius: 0.375rem;
     border-top-right-radius: 0.375rem;
     filter: drop-shadow(0 -4px 4px rgba(0, 0, 0, 0.15));
+  }
+
+  .sticky-atc__free-delivery-text {
+    font-weight: 600;
+    text-align: center;
   }
 
   .sticky-atc__variants {
