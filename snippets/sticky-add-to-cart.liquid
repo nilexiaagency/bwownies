@@ -1,8 +1,8 @@
 {% liquid
   assign product_variants = product.variants | sort: 'price'
 
-  assign cart_value = cart.items_subtotal_price
-  assign free_shipping_threshold = settings.free_shipping_threshold | times: 100
+  assign cart_value = cart.items_subtotal_price | times: 1.0
+  assign free_shipping_threshold = settings.free_shipping_threshold | times: 100.0
   assign variant_price = product.selected_or_first_available_variant.price
   assign cart_value_plus_price = cart_value | plus: variant_price
 
@@ -19,14 +19,21 @@
   <div class="sticky-atc__free-delivery-bar">
     <p class="sticky-atc__free-delivery-text" x-ref="freeDeliveryText">
       {% if free_shipping_qualified %}
-        {{ 'products.product.sticky_add_to_cart.free_shipping.qualified' }}
+        {{ 'products.product.sticky_add_to_cart.free_shipping.qualified' | t }}
       {% elsif add_to_qualify %}
-        {{ 'products.product.sticky_add_to_cart.free_shipping.add_to_qualify' }}
+        {{ 'products.product.sticky_add_to_cart.free_shipping.add_to_qualify' | t }}
       {% elsif get_closer %}
         {% assign price_string = variant_price | money %}
         {{ 'products.product.sticky_add_to_cart.free_shipping.get_closer_html' | t: price: price_string }}
       {% endif %}
     </p>
+    <div class="sticky-atc__bar">
+      <div
+        class="sticky-atc__bar-inner"
+        x-ref="freeDeliveryProgress"
+        style="width: {{ cart_value | divided_by: free_shipping_threshold | times: 100}}%;"
+      ></div>
+    </div>
   </div>
   {% form 'product', product %}
     <div class="sticky-atc__form" @change="updateShippingBar">
@@ -40,6 +47,7 @@
               {% if variant == product.selected_or_first_available_variant %}
                 checked
               {% endif %}
+              data-price="{{ variant.price }}"
             >
             <span class="sticky-atc__variant-title">{{ variant.title }}</span>
             <span class="sticky-atc__variant-price-per-item" x-ref="test">
@@ -61,17 +69,48 @@
   document.addEventListener('alpine:init', () => {
     Alpine.data('stickyForm', () => ({
       shippingBarTexts: {
-        getCloser: "{{ 'products.product.sticky_add_to_cart.free_shipping.get_closer_html' | t: price: 100 }}",
+        getCloser: "{{ 'products.product.sticky_add_to_cart.free_shipping.get_closer_html' | t: price: '[[price]]' }}",
         addToQualify: "{{ 'products.product.sticky_add_to_cart.free_shipping.add_to_qualify' | t }}",
         qualified: "{{ 'products.product.sticky_add_to_cart.free_shipping.qualified' | t }}",
       },
       cartValue: {{ cart_value }},
-      freeShippingThreshold: {{ free_shipping_threshold }}
+      freeShippingThreshold: {{ free_shipping_threshold }},
+      moneyFormat: {{ shop.money_format | json }},
+
+      init() {
+        this.updateShippingBar();
+      },
+
+      formatMoney(cents) {
+        if (typeof Shopify !== 'undefined' && typeof Shopify.formatMoney === 'function') {
+          return Shopify.formatMoney(cents, this.moneyFormat);
+        }
+        const amount = (cents / 100).toFixed(2);
+        // Basic fallback: replace {{amount}} or {{ amount }} in format string
+        return (this.moneyFormat || '${{amount}}').replace(/\{\{\s*amount\s*\}\}/g, amount);
+      },
 
       updateShippingBar() {
-        // if they've already qualified for free shipping, don't do anything - it doesn't need to update.
-        // if the value of their cart, plus the price of the newly selected variant is above or equal to the free shipping threshold, show the addToQualify text
-        // if the value of their cart, plus the price of the newly selected variant is below the free shipping threshold, show the getCloser text
+        // If already qualified based on current cart, show qualified text and stop.
+        if (this.cartValue >= this.freeShippingThreshold) {
+          this.$refs.freeDeliveryText.innerHTML = this.shippingBarTexts.qualified;
+          return;
+        }
+
+        // Determine selected variant price (cents) from the checked radio input
+        const selected = this.$root.querySelector('input[name="id"]:checked');
+        const variantPrice = selected ? parseInt(selected.dataset.price || '0', 10) : 0;
+        const prospectiveTotal = this.cartValue + variantPrice;
+
+        // If adding the selected variant qualifies for free shipping, show addToQualify
+        if (prospectiveTotal >= this.freeShippingThreshold) {
+          this.$refs.freeDeliveryText.innerHTML = this.shippingBarTexts.addToQualify;
+          return;
+        }
+
+        // Otherwise, show how much this item gets you closer (the item price)
+        const formattedItemPrice = this.formatMoney(variantPrice);
+        this.$refs.freeDeliveryText.innerHTML = this.shippingBarTexts.getCloser.replace('[[price]]', formattedItemPrice);
       },
     }));
   });
@@ -96,6 +135,29 @@
     border-top-left-radius: 0.375rem;
     border-top-right-radius: 0.375rem;
     filter: drop-shadow(0 -4px 4px rgba(0, 0, 0, 0.15));
+  }
+
+  .sticky-atc__free-delivery-bar {
+    display: grid;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  .sticky-atc__bar {
+    width: 20rem;
+    height: 0.5rem;
+    border-radius: 999rem;
+    background-color: #ffeef9;
+    position: relative;
+  }
+
+  .sticky-atc__bar-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #3f062a;
+    transition: width 0.3s ease-in-out;
+    border-radius: 999rem;
+    height: 100%;
   }
 
   .sticky-atc__free-delivery-text {
