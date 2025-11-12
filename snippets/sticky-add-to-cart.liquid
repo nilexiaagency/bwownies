@@ -15,7 +15,7 @@
   endif
 %}
 
-<div class="sticky-atc" x-data="stickyForm">
+<div class="sticky-atc" x-data="stickyForm" data-color-scheme="scheme3">
   <div class="sticky-atc__free-delivery-bar">
     <p class="sticky-atc__free-delivery-text" x-ref="freeDeliveryText">
       {% if free_shipping_qualified %}
@@ -31,7 +31,7 @@
       <div
         class="sticky-atc__bar-inner"
         x-ref="freeDeliveryProgress"
-        style="width: {{ cart_value | divided_by: free_shipping_threshold | times: 100}}%;"
+        style="transform: scaleX({{ cart_value | divided_by: free_shipping_threshold }});"
       ></div>
     </div>
   </div>
@@ -43,6 +43,7 @@
             <input
               type="radio"
               name="id"
+              value="{{ variant.id }}"
               id="Sticky-Cart-Option-{{ variant.id }}"
               {% if variant == product.selected_or_first_available_variant %}
                 checked
@@ -60,7 +61,14 @@
           </label>
         {% endfor %}
       </div>
-      <div class="sticky-atc__buttons"></div>
+      <div class="sticky-atc__buttons">
+        <button type="submit" class="add-to-cart-btn push-btn w-full">
+          <span class="push-btn__surface push-btn__surface--secondary w-full">
+            {{ 'products.product.add_to_cart' | t }}
+            <span x-ref="variantPrice" class="add-to-cart-btn__price">{{ variant_price | money }}</span>
+          </span>
+        </button>
+      </div>
     </div>
   {% endform %}
 </div>
@@ -94,6 +102,10 @@
         // If already qualified based on current cart, show qualified text and stop.
         if (this.cartValue >= this.freeShippingThreshold) {
           this.$refs.freeDeliveryText.innerHTML = this.shippingBarTexts.qualified;
+          // Progress is 100% when already qualified
+          if (this.$refs.freeDeliveryProgress) {
+            this.$refs.freeDeliveryProgress.style.width = '100%';
+          }
           return;
         }
 
@@ -101,6 +113,14 @@
         const selected = this.$root.querySelector('input[name="id"]:checked');
         const variantPrice = selected ? parseInt(selected.dataset.price || '0', 10) : 0;
         const prospectiveTotal = this.cartValue + variantPrice;
+        // Update progress bar based on cart + selected variant vs threshold
+        if (this.$refs.freeDeliveryProgress && this.freeShippingThreshold > 0) {
+          let fraction = prospectiveTotal / this.freeShippingThreshold;
+          fraction = Math.max(0, Math.min(1, fraction));
+          // round for stability in the transition
+          const rounded = Math.round(fraction * 10000) / 10000;
+          this.$refs.freeDeliveryProgress.style.transform = `scaleX(${rounded})`;
+        }
 
         // If adding the selected variant qualifies for free shipping, show addToQualify
         if (prospectiveTotal >= this.freeShippingThreshold) {
@@ -119,6 +139,9 @@
 {% stylesheet %}
   .sticky-atc {
     --border-and-text-colour: #3f062a;
+    --color-scheme-secondary-background: 255, 255, 255 !important;
+    --color-scheme-secondary-text: 63, 6, 42 !important;
+    --color-button-shadow: var(--color-scheme-accent-1) !important;
     display: grid;
     gap: 1rem;
     position: fixed;
@@ -148,6 +171,7 @@
     border-radius: 999rem;
     background-color: #ffeef9;
     position: relative;
+    overflow: clip;
   }
 
   .sticky-atc__bar-inner {
@@ -155,14 +179,23 @@
     top: 0;
     left: 0;
     background-color: #3f062a;
-    transition: width 0.3s ease-in-out;
-    border-radius: 999rem;
+    width: 100%;
+    transform-origin: left center;
+    transform: scaleX(0);
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+    border-radius: calc(infinity * 1px);
     height: 100%;
   }
 
   .sticky-atc__free-delivery-text {
     font-weight: 600;
     text-align: center;
+  }
+
+  .sticky-atc__form {
+    display: grid;
+    gap: 0.625rem;
   }
 
   .sticky-atc__variants {
@@ -210,6 +243,20 @@
   .sticky-atc__variant-price-per-item {
     font-size: 0.75rem;
     color: var(--price-per-item-color);
+  }
+
+  .sticky-atc__buttons {
+    display: flex;
+    gap: 0.625rem;
+  }
+
+  .add-to-cart-btn .push-btn__surface {
+    font-weight: 700;
+  }
+
+  .add-to-cart-btn__price {
+    font-weight: 600;
+    opacity: 60%;
   }
 
   @media (width >= 990px) {
