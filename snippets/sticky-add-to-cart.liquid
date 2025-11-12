@@ -36,7 +36,7 @@
     </div>
   </div>
   {% form 'product', product %}
-    <div class="sticky-atc__form" @change="updateShippingBar">
+    <div class="sticky-atc__form" @change="onStickyVariantChange">
       <div class="sticky-atc__variants">
         {% for variant in product_variants %}
           <label for="Sticky-Cart-Option-{{ variant.id }}" class="sticky-atc__variant">
@@ -84,9 +84,29 @@
       cartValue: {{ cart_value }},
       freeShippingThreshold: {{ free_shipping_threshold }},
       moneyFormat: {{ shop.money_format | json }},
+      productRootEl: null,
 
       init() {
+        // Try to cache the main product root immediately so sticky interactions work first
+        this.productRootEl =
+          document.querySelector('data-island[data-product-root][x-data^=\"Product\" ]') ||
+          document.querySelector('[data-product-root]') ||
+          this.productRootEl;
         this.updateShippingBar();
+        // Sync with main product variant changes
+        document.addEventListener('theme:variant:change', (e) => {
+          const { productRootEl, variant } = e.detail || {};
+          if (!variant) return;
+          this.productRootEl = productRootEl || this.productRootEl;
+          // Check the corresponding sticky radio
+          const radio = this.$root.querySelector(`input[name="id"][value="${variant.id}"]`);
+          if (radio) radio.checked = true;
+          // Update price and bar
+          if (this.$refs.variantPrice) {
+            this.$refs.variantPrice.innerHTML = this.formatMoney(variant.price);
+          }
+          this.updateShippingBar();
+        });
       },
 
       formatMoney(cents) {
@@ -131,6 +151,31 @@
         // Otherwise, show how much this item gets you closer (the item price)
         const formattedItemPrice = this.formatMoney(variantPrice);
         this.$refs.freeDeliveryText.innerHTML = this.shippingBarTexts.getCloser.replace('[[price]]', formattedItemPrice);
+      },
+
+      onStickyVariantChange(event) {
+        // Update text and progress
+        this.updateShippingBar();
+        // Update sticky button price text
+        const selected = this.$root.querySelector('input[name="id"]:checked');
+        const variantPrice = selected ? parseInt(selected.dataset.price || '0', 10) : 0;
+        if (this.$refs.variantPrice) {
+          this.$refs.variantPrice.innerHTML = this.formatMoney(variantPrice);
+        }
+        // Inform the main product to change its variant, if possible
+        const variantId = selected ? selected.value : null;
+        // Ensure we have a reference to the main product root before dispatching
+        if (!this.productRootEl) {
+          this.productRootEl =
+            document.querySelector('data-island[data-product-root][x-data^=\"Product\" ]') ||
+            document.querySelector('[data-product-root]') ||
+            null;
+        }
+        if (variantId && this.productRootEl) {
+          this.productRootEl.dispatchEvent(new CustomEvent('theme:change:variant', {
+            detail: { variantId: Number(variantId) }
+          }));
+        }
       },
     }));
   });
