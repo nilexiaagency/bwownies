@@ -569,9 +569,9 @@
     }
   },
   "free_shipping_progress": {
-    "not_started_html": "Spend {{ amount }} to get free shipping",
-    "not_achieved_html": "Spend another {{ amount }} and get free shipping",
-    "achieved": "You’ve unlocked free shipping!"
+    "not_started_html": "SPEND {{ amount }} TO GET FREE SHIPPING! 🚚",
+    "not_achieved_html": "SPEND ANOTHER {{ amount }} AND GET FREE SHIPPING! <a href=\"https://bwownies.com/products/bwownies-bites\">TRY BWOWNIES BITES</a> 🚚",
+    "achieved": "YOU'VE UNLOCKED FREE SHIPPING! 🚚"
   },
   "badges": {
     "new": "New!"
