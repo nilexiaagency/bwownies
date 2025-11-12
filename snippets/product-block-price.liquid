@@ -42,38 +42,40 @@
     </span>
   {% endif %}
 
-  <div
-    x-show="currentVariant && currentVariant.unit_price"
-    {% if product.selected_or_first_available_variant.unit_price_measurement
-        == null
-    %}
-      style="display: none;"
-    {% endif %}
-  >
-    <div class="mt-2.5 text-sm text-scheme-text" data-unit-price-wrapper>
-      <span class="sr-only">
-        {{- 'products.product.unit_price_label' | t -}}
-      </span>
-      <span x-html="formatMoney(currentVariant.unit_price)">
-        {{- current_variant.unit_price | money -}}
-      </span>
-      <span aria-hidden="true"> / </span>
-      <span class="sr-only">
-        {{- 'general.accessibility.unit_price_separator' | t -}}
-      </span>
-      <span
-        x-html="currentVariant.unit_price_measurement && currentVariant.unit_price_measurement.reference_value != 1 ? currentVariant.unit_price_measurement.reference_value : ''"
-      >
-        {%- if current_variant.unit_price_measurement.reference_value != 1 -%}
-          {{- current_variant.unit_price_measurement.reference_value -}}
-        {%- endif -%}
-      </span>
-      <!--  -->
-      <span x-html="currentVariant.unit_price_measurement?.reference_unit">
-        {{- current_variant.unit_price_measurement.reference_unit -}}
-      </span>
+  {% comment %}
+    <div
+      x-show="currentVariant && currentVariant.unit_price"
+      {% if product.selected_or_first_available_variant.unit_price_measurement
+          == null
+      %}
+        style="display: none;"
+      {% endif %}
+    >
+      <div class="mt-2.5 text-sm text-scheme-text" data-unit-price-wrapper>
+        <span class="sr-only">
+          {{- 'products.product.unit_price_label' | t -}}
+        </span>
+        <span x-html="formatMoney(currentVariant.unit_price)">
+          {{- current_variant.unit_price | money -}}
+        </span>
+        <span aria-hidden="true"> / </span>
+        <span class="sr-only">
+          {{- 'general.accessibility.unit_price_separator' | t -}}
+        </span>
+        <span
+          x-html="currentVariant.unit_price_measurement && currentVariant.unit_price_measurement.reference_value != 1 ? currentVariant.unit_price_measurement.reference_value : ''"
+        >
+          {%- if current_variant.unit_price_measurement.reference_value != 1 -%}
+            {{- current_variant.unit_price_measurement.reference_value -}}
+          {%- endif -%}
+        </span>
+        <!--  -->
+        <span x-html="currentVariant.unit_price_measurement?.reference_unit">
+          {{- current_variant.unit_price_measurement.reference_unit -}}
+        </span>
+      </div>
     </div>
-  </div>
+  {% endcomment %}
 
   {%- if cart.taxes_included -%}
     <div class="product__tax caption mt-2.5 text-sm">
@@ -90,10 +92,7 @@
         assign id = 'on-sale-sticker-' | append: product.id
         assign shape = settings.on_sale_badge_shape
       -%}
-      {%- render 'static-sticker-defs',
-        shape: settings.on_sale_badge_shape,
-        id: id
-      -%}
+      {%- render 'static-sticker-defs', shape: settings.on_sale_badge_shape, id: id -%}
       {%- render 'static-sticker',
         static_id: id,
         shape: shape,

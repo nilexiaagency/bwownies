@@ -3590,6 +3590,16 @@
       },
       {
         "type": "header",
+        "content": "Sticky add to cart"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_sticky_add_to_cart",
+        "label": "Enable sticky add to cart",
+        "default": true
+      },
+      {
+        "type": "header",
         "content": "t:settings_schema.cart.settings.header_free_shipping_progress"
       },
       {

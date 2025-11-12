@@ -21,9 +21,7 @@
       </span>
     </div>
     <div class="price__sale {% unless on_sale %}hidden{% endunless %}">
-      {%- unless variant.price_varies == false
-        and variant.compare_at_price_varies
-      %}
+      {%- unless variant.price_varies == false and variant.compare_at_price_varies %}
         <span class="visually-hidden visually-hidden--inline">
           {{- 'products.product.price.regular_price' | t -}}
         </span>
@@ -44,25 +42,27 @@
         {{ money_price }}
       </span>
     </div>
-    <small class="unit-price caption{% if variant.unit_price_measurement == nil %} hidden{% endif %}">
-      <span class="visually-hidden">
-        {{- 'products.product.price.unit_price' | t -}}
-      </span>
-      <span class="price-item price-item--last">
-        <span>{{- variant.unit_price | money -}}</span>
-        <span aria-hidden="true">/</span>
-        <span class="visually-hidden"
-          >&nbsp;
-          {{- 'general.accessibility.unit_price_separator' | t -}}
-          &nbsp;</span
-        >
-        <span>
-          {%- if variant.unit_price_measurement.reference_value != 1 -%}
-            {{- variant.unit_price_measurement.reference_value -}}
-          {%- endif -%}
-          {{ variant.unit_price_measurement.reference_unit }}
+    {% comment %}
+      <small class="unit-price caption{% if variant.unit_price_measurement == nil %} hidden{% endif %}">
+        <span class="visually-hidden">
+          {{- 'products.product.price.unit_price' | t -}}
         </span>
-      </span>
-    </small>
+        <span class="price-item price-item--last">
+          <span>{{- variant.unit_price | money -}}</span>
+          <span aria-hidden="true">/</span>
+          <span class="visually-hidden"
+            >&nbsp;
+            {{- 'general.accessibility.unit_price_separator' | t -}}
+            &nbsp;</span
+          >
+          <span>
+            {%- if variant.unit_price_measurement.reference_value != 1 -%}
+              {{- variant.unit_price_measurement.reference_value -}}
+            {%- endif -%}
+            {{ variant.unit_price_measurement.reference_unit }}
+          </span>
+        </span>
+      </small>
+    {% endcomment %}
   </div>
 </div>

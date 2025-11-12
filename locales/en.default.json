@@ -470,6 +470,14 @@
       "related_products_title": "Related Products"
     },
     "product": {
+      "sticky_add_to_cart": {
+        "free_shipping": {
+          "get_closer_html": "Add this item to get {{ price }} closer to free delivery!",
+          "add_to_qualify": "Add this item to qualify for free delivery! 🎉",
+          "qualified": "You've got free delivery! 🎉"
+        },
+        "per_item_price": "{{ price }} / {{ unit }}"
+      },
       "sold_out": "Sold Out",
       "on_sale": "On Sale",
       "on_sale_from_html": "<strong>On Sale</strong> from {{ price }}",
