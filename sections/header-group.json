@@ -13,6 +13,7 @@
   "sections": {
     "announcement-bar": {
       "type": "announcement-bar",
+      "disabled": true,
       "custom_css": [],
       "settings": {
         "home_page_only": false,
@@ -25,6 +26,23 @@
         "shape_between_text": "10_point_star",
         "animate_shape_between_text": true,
         "speed": 80,
+        "direction": ""
+      }
+    },
+    "free_shipping_bar_cKCepT": {
+      "type": "free-shipping-bar",
+      "name": "t:sections.free_shipping_bar.name",
+      "settings": {
+        "display": "scrolling_text",
+        "color_scheme": "scheme5",
+        "use_gradient_background": false,
+        "show_bottom_border": true,
+        "progress_bar_color": "bg-scheme-accent-2 text-scheme-accent-2-contrast",
+        "show_progress_bar": true,
+        "repeat_text": true,
+        "shape_between_text": "10_point_star",
+        "animate_shape_between_text": true,
+        "speed": 120,
         "direction": ""
       }
     },
@@ -65,6 +83,7 @@
   },
   "order": [
     "announcement-bar",
+    "free_shipping_bar_cKCepT",
     "header"
   ]
 }
