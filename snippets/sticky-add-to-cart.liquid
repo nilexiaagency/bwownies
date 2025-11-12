@@ -15,72 +15,83 @@
   endif
 %}
 
-<div class="sticky-atc" x-data="stickyForm" data-color-scheme="scheme3">
-  <div class="sticky-atc__free-delivery-bar">
-    <p class="sticky-atc__free-delivery-text" x-ref="freeDeliveryText">
-      {% if free_shipping_qualified %}
-        {{ 'products.product.sticky_add_to_cart.free_shipping.qualified' | t }}
-      {% elsif add_to_qualify %}
-        {{ 'products.product.sticky_add_to_cart.free_shipping.add_to_qualify' | t }}
-      {% elsif get_closer %}
-        {% assign price_string = variant_price | money %}
-        {{ 'products.product.sticky_add_to_cart.free_shipping.get_closer_html' | t: price: price_string }}
-      {% endif %}
-    </p>
-    <div class="sticky-atc__bar">
-      <div
-        class="sticky-atc__bar-inner"
-        x-ref="freeDeliveryProgress"
-        style="transform: scaleX({{ cart_value | divided_by: free_shipping_threshold }});"
-      ></div>
+<div
+  x-cloak
+  x-init="
+    (function(){
+      if (!Alpine.store('stickyATC')) Alpine.store('stickyATC', { shown: true });
+      else Alpine.store('stickyATC').shown = true;
+    })()
+  "
+  x-show="$store.stickyATC && $store.stickyATC.shown && isMaxLgBreakpoint"
+>
+  <div class="sticky-atc" x-data="stickyForm" data-color-scheme="scheme3">
+    <div class="sticky-atc__free-delivery-bar">
+      <p class="sticky-atc__free-delivery-text" x-ref="freeDeliveryText">
+        {% if free_shipping_qualified %}
+          {{ 'products.product.sticky_add_to_cart.free_shipping.qualified' | t }}
+        {% elsif add_to_qualify %}
+          {{ 'products.product.sticky_add_to_cart.free_shipping.add_to_qualify' | t }}
+        {% elsif get_closer %}
+          {% assign price_string = variant_price | money %}
+          {{ 'products.product.sticky_add_to_cart.free_shipping.get_closer_html' | t: price: price_string }}
+        {% endif %}
+      </p>
+      <div class="sticky-atc__bar">
+        <div
+          class="sticky-atc__bar-inner"
+          x-ref="freeDeliveryProgress"
+          style="transform: scaleX({{ cart_value | divided_by: free_shipping_threshold }});"
+        ></div>
+      </div>
     </div>
+    {% form 'product',
+      product,
+      class: 'shopify-product-form',
+      id: 'sticky-atc-form',
+      data-product-form: '',
+      x-ref: 'stickyForm'
+    %}
+      <div class="sticky-atc__form" @change="onStickyVariantChange">
+        <div class="sticky-atc__variants">
+          {% for variant in product_variants %}
+            {% if variant.available %}
+              <label for="Sticky-Cart-Option-{{ variant.id }}" class="sticky-atc__variant">
+                <input
+                  type="radio"
+                  name="id"
+                  value="{{ variant.id }}"
+                  id="Sticky-Cart-Option-{{ variant.id }}"
+                  {% if variant == product.selected_or_first_available_variant %}
+                    checked
+                  {% endif %}
+                  data-price="{{ variant.price }}"
+                  data-available="true"
+                >
+                <span class="sticky-atc__variant-title">{{ variant.title }}</span>
+                <span class="sticky-atc__variant-price-per-item" x-ref="test">
+                  {% assign money_string = variant.unit_price | money %}
+                  {{-
+                    'products.product.sticky_add_to_cart.per_item_price'
+                    | t: price: money_string, unit: product.metafields.custom.unit_price_type
+                  -}}
+                </span>
+              </label>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="sticky-atc__buttons">
+          <button type="submit" class="add-to-cart-btn push-btn w-full">
+            <span class="push-btn__surface push-btn__surface--secondary w-full">
+              {{ 'products.product.add_to_cart' | t }}
+              <span x-ref="variantPrice" class="add-to-cart-btn__price">{{ variant_price | money }}</span>
+            </span>
+          </button>
+          {{ form | payment_button }}
+        </div>
+      </div>
+    {% endform %}
   </div>
-  {% form 'product',
-    product,
-    class: 'shopify-product-form',
-    id: 'sticky-atc-form',
-    data-product-form: '',
-    x-ref: 'stickyForm'
-  %}
-    <div class="sticky-atc__form" @change="onStickyVariantChange">
-      <div class="sticky-atc__variants">
-        {% for variant in product_variants %}
-          {% if variant.available %}
-            <label for="Sticky-Cart-Option-{{ variant.id }}" class="sticky-atc__variant">
-              <input
-                type="radio"
-                name="id"
-                value="{{ variant.id }}"
-                id="Sticky-Cart-Option-{{ variant.id }}"
-                {% if variant == product.selected_or_first_available_variant %}
-                  checked
-                {% endif %}
-                data-price="{{ variant.price }}"
-                data-available="true"
-              >
-              <span class="sticky-atc__variant-title">{{ variant.title }}</span>
-              <span class="sticky-atc__variant-price-per-item" x-ref="test">
-                {% assign money_string = variant.unit_price | money %}
-                {{-
-                  'products.product.sticky_add_to_cart.per_item_price'
-                  | t: price: money_string, unit: product.metafields.custom.unit_price_type
-                -}}
-              </span>
-            </label>
-          {% endif %}
-        {% endfor %}
-      </div>
-      <div class="sticky-atc__buttons">
-        <button type="submit" class="add-to-cart-btn push-btn w-full">
-          <span class="push-btn__surface push-btn__surface--secondary w-full">
-            {{ 'products.product.add_to_cart' | t }}
-            <span x-ref="variantPrice" class="add-to-cart-btn__price">{{ variant_price | money }}</span>
-          </span>
-        </button>
-        {{ form | payment_button }}
-      </div>
-    </div>
-  {% endform %}
 </div>
 
 <script>

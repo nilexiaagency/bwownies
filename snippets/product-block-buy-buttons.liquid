@@ -77,10 +77,8 @@
 
     <div
       class=""
-      {% if has_sticky_buy_buttons %}
-        x-intersect:enter="stickyAddToCartShown = false"
-        x-intersect:leave="stickyAddToCartShown = true"
-      {% endif %}
+      x-intersect:enter="$store.stickyATC && ($store.stickyATC.shown = false); stickyAddToCartShown = false"
+      x-intersect:leave="$store.stickyATC && ($store.stickyATC.shown = true); stickyAddToCartShown = true"
     >
       <div class="w-full">
         <button
