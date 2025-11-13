@@ -142,17 +142,13 @@
             %}
             <div class="px-section lg:px-0">
               <div
-                {% if first_media.media_type == 'image'
-                  and section.settings.enable_image_zoom
-                %}
+                {% if first_media.media_type == 'image' and section.settings.enable_image_zoom %}
                   data-product-media-type-image data-product-image-index="0"
                   {% assign image_index = image_index | plus: 1 %}
                 {% endif %}
               >
                 <div
-                  {% if section.settings.enable_image_zoom
-                    and first_media.media_type == 'image'
-                  %}
+                  {% if section.settings.enable_image_zoom and first_media.media_type == 'image' %}
                     class="cursor-zoom-in"
                     @click.prevent="openZoom('{{ product.media[0].id }}')"
                     @keyup.space.prevent="openZoom('{{ product.media[0].id }}')"
@@ -184,9 +180,7 @@
             <div>
               <div class="relative grid grid-cols-1 gap-5 lg:grid-cols-12">
                 <div class="{% if section.settings.thumbnails_position == 'left' %}{% if section.settings.thumbnail_size == 'standard' %}col-span-2{% else %}col-span-3{% endif %}{% else %}col-span-full{% endif %} hidden lg:block">
-                  {%- assign thumbnails_id = 'thumbnails-'
-                    | append: section.id
-                  -%}
+                  {%- assign thumbnails_id = 'thumbnails-' | append: section.id -%}
                   {%- render 'collection-shape-defs',
                     shape: section.settings.thumbnail_shape,
                     section_id: thumbnails_id,
@@ -281,9 +275,7 @@
                             {% endif %}
                           >
                             <div
-                              {% if section.settings.enable_image_zoom
-                                and media.media_type == 'image'
-                              %}
+                              {% if section.settings.enable_image_zoom and media.media_type == 'image' %}
                                 @click.prevent="openZoom('{{ media.id }}')"
                                 @keyup.space.prevent="openZoom('{{ media.id }}')"
                                 @keyup.enter.prevent="openZoom('{{ media.id }}')"
@@ -309,10 +301,7 @@
                     </div>
                     {% # theme-check-disable VariableName %}
                     {% # https://github.com/Shopify/theme-tools/issues/397 %}
-                    {% assign first_3d_model = product.media
-                      | where: 'media_type', 'model'
-                      | first
-                    %}
+                    {% assign first_3d_model = product.media | where: 'media_type', 'model' | first %}
                     {% # theme-check-enable VariableName %}
                     {%- if first_3d_model -%}
                       <div class="mt-2.5 px-section lg:mb-0">
@@ -379,11 +368,8 @@
                       </div>
                     {%- endif -%}
 
-                    {%- if section.settings.show_thumbnails_on_mobile == true
-                    -%}
-                      {%- assign mobile_thumbnails_id = 'mobile-thumbnails-'
-                        | append: section.id
-                      -%}
+                    {%- if section.settings.show_thumbnails_on_mobile == true -%}
+                      {%- assign mobile_thumbnails_id = 'mobile-thumbnails-' | append: section.id -%}
                       {%- render 'collection-shape-defs',
                         shape: section.settings.thumbnail_shape,
                         section_id: mobile_thumbnails_id,
@@ -445,15 +431,13 @@
 
                 {%- if section.blocks.size > 1 -%}
                   {%- if card_start -%}
-                    {{-
-                      card_wrapper_html
-                      | split: '||__card-content__||'
-                      | first
-                    -}}
+                    {{- card_wrapper_html | split: '||__card-content__||' | first -}}
                   {%- endif -%}
                 {%- endif -%}
 
                 {% case block.type %}
+                  {% when 'sticky_add_to_cart' %}
+
                   {% when '@app' %}
                     {% render block %}
                   {% when 'title' %}
@@ -520,10 +504,7 @@
                       block_base_classes: block_base_classes
                     %}
                   {%- when 'text' -%}
-                    {% render 'product-block-text',
-                      block: block,
-                      block_base_classes: block_base_classes
-                    %}
+                    {% render 'product-block-text', block: block, block_base_classes: block_base_classes %}
                   {%- when 'description' -%}
                     {% render 'product-block-description',
                       product: product,
@@ -537,25 +518,13 @@
                       block_base_classes: block_base_classes
                     %}
                   {%- when 'popup' -%}
-                    {% render 'product-block-popup',
-                      block: block,
-                      block_base_classes: block_base_classes
-                    %}
+                    {% render 'product-block-popup', block: block, block_base_classes: block_base_classes %}
                   {%- when 'collapsible_tab' -%}
-                    {% render 'product-block-collapsible-tab',
-                      block: block,
-                      block_base_classes: block_base_classes
-                    %}
+                    {% render 'product-block-collapsible-tab', block: block, block_base_classes: block_base_classes %}
                   {%- when 'icon_row' -%}
-                    {% render 'product-block-icon-row',
-                      block: block,
-                      block_base_classes: block_base_classes
-                    %}
+                    {% render 'product-block-icon-row', block: block, block_base_classes: block_base_classes %}
                   {%- when 'image_row' -%}
-                    {% render 'product-block-image-row',
-                      block: block,
-                      block_base_classes: block_base_classes
-                    %}
+                    {% render 'product-block-image-row', block: block, block_base_classes: block_base_classes %}
                   {%- when 'nutritional_information' -%}
                     {% render 'product-block-nutritional-information',
                       block: block,
@@ -567,10 +536,7 @@
                       block_base_classes: block_base_classes
                     %}
                   {%- when 'comparative_scale' -%}
-                    {% render 'product-block-comparative-scale',
-                      block: block,
-                      block_base_classes: block_base_classes
-                    %}
+                    {% render 'product-block-comparative-scale', block: block, block_base_classes: block_base_classes %}
                   {%- when 'complementary' -%}
                     {% liquid
                       if recommendations.products_count == 1
@@ -622,9 +588,7 @@
                       class="{{ block_base_classes }} text-sm"
                       {{ block.shopify_attributes }}
                     >
-                      {%- if recommendations.performed
-                        and recommendations.products_count > 0
-                      -%}
+                      {%- if recommendations.performed and recommendations.products_count > 0 -%}
                         <div class="related-products">
                           {%- if block.settings.block_heading != blank -%}
                             <h2 class="font-heading break-word heading-secondary mb-5">
@@ -633,8 +597,7 @@
                           {%- endif -%}
                           <ul class="mt-5 grid {{ grid_cols_class }} gap-5">
                             {%- for product in recommendations.products -%}
-                              {%- if block.settings.product_tile_style == 'mini'
-                              -%}
+                              {%- if block.settings.product_tile_style == 'mini' -%}
                                 {%- render 'product-tile-mini',
                                   product: product,
                                   shape_id: shape_id,
@@ -698,25 +661,13 @@
                       block_base_classes: block_base_classes
                     %}
                   {%- when 'features_list' -%}
-                    {% render 'product-block-features-list',
-                      block: block,
-                      block_base_classes: block_base_classes
-                    %}
+                    {% render 'product-block-features-list', block: block, block_base_classes: block_base_classes %}
                   {%- when 'dot_rating' -%}
-                    {% render 'product-block-dot-rating',
-                      block: block,
-                      block_base_classes: block_base_classes
-                    %}
+                    {% render 'product-block-dot-rating', block: block, block_base_classes: block_base_classes %}
                   {%- when 'tabs' -%}
-                    {% render 'product-block-tabs',
-                      block: block,
-                      block_base_classes: block_base_classes
-                    %}
+                    {% render 'product-block-tabs', block: block, block_base_classes: block_base_classes %}
                   {%- when 'information_list' -%}
-                    {% render 'product-block-information-list',
-                      block: block,
-                      block_base_classes: block_base_classes
-                    %}
+                    {% render 'product-block-information-list', block: block, block_base_classes: block_base_classes %}
                   {%- when 'spacer' -%}
                     {% render 'product-block-spacer', block: block %}
                 {% endcase %}
@@ -805,9 +756,7 @@
         if (errors) return;
 
         if (!window.ShopifyXR) {
-          document.addEventListener('shopify_xr_initialized', () =>
-            this.setupShopifyXR()
-          );
+          document.addEventListener('shopify_xr_initialized', () => this.setupShopifyXR());
           return;
         }
 
@@ -821,9 +770,7 @@
 
     window.addEventListener('DOMContentLoaded', () => {
       if (Shopify.designMode) {
-        document
-          .querySelectorAll('[data-shopify-xr-hidden]')
-          .forEach((element) => element.classList.add('hidden'));
+        document.querySelectorAll('[data-shopify-xr-hidden]').forEach((element) => element.classList.add('hidden'));
       }
       if (window.ProductModel) window.ProductModel.loadShopifyXR();
     });

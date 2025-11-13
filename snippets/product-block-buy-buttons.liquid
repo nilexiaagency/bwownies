@@ -20,9 +20,7 @@
     </div>
 
     <div class="{% if product.has_only_default_variant %}hidden{% else %}no-js{% endif %}">
-      <label class="{{ label_class }}" for="fallback-selector-{{ section.id }}"
-        >Variant</label
-      >
+      <label class="{{ label_class }}" for="fallback-selector-{{ section.id }}">Variant</label>
       <select
         x-ref="singleVariantSelector"
         name="id"
@@ -68,11 +66,7 @@
 
     {% if gift_card_recipient_feature_active %}
       <div class="mb-5">
-        {% render 'gift-card-recipient-form',
-          product: product,
-          form: form,
-          section: section
-        %}
+        {% render 'gift-card-recipient-form', product: product, form: form, section: section %}
       </div>
     {% endif %}
 
@@ -83,10 +77,8 @@
 
     <div
       class=""
-      {% if has_sticky_buy_buttons %}
-        x-intersect:enter="stickyAddToCartShown = false"
-        x-intersect:leave="stickyAddToCartShown = true"
-      {% endif %}
+      x-intersect:enter="$store.stickyATC && ($store.stickyATC.shown = false); stickyAddToCartShown = false"
+      x-intersect:leave="$store.stickyATC && ($store.stickyATC.shown = true); stickyAddToCartShown = true"
     >
       <div class="w-full">
         <button
@@ -130,9 +122,7 @@
                     data-compare-price
                     x-html="currentVariantHasCompareAtPrice ? formatMoney(currentVariant.compare_at_price) : ''"
                   >
-                    {% if current_variant.compare_at_price
-                        > current_variant.price
-                    %}
+                    {% if current_variant.compare_at_price > current_variant.price %}
                       {{ current_variant.compare_at_price | money }}
                     {% endif %}
                   </s>
@@ -160,9 +150,7 @@
       {% endif %}
     </div>
 
-    {%- if settings.cart_type == 'page'
-      or settings.open_modal_on_add_to_cart == false
-    -%}
+    {%- if settings.cart_type == 'page' or settings.open_modal_on_add_to_cart == false -%}
       <div
         class=" rte mb-8 mt-4"
         tabindex="-1"
@@ -179,9 +167,7 @@
         {{ 'products.product.added_to_cart' | t }}!
         {{
           'products.product.add_to_cart_confirm_html'
-          | t:
-            cart_url: routes.cart_url,
-            link_url: routes.all_products_collection_url
+          | t: cart_url: routes.cart_url, link_url: routes.all_products_collection_url
         -}}
         .
       </div>
@@ -201,10 +187,7 @@
       "
       on="idle"
     >
-      {%- render 'pickup-availability',
-        variant: current_variant,
-        inline: true
-      -%}
+      {%- render 'pickup-availability', variant: current_variant, inline: true -%}
     </data-island>
   {% endif %}
 </div>
