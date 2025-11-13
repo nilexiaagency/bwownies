@@ -33,7 +33,7 @@
       "type": "free-shipping-bar",
       "name": "t:sections.free_shipping_bar.name",
       "settings": {
-        "display": "scrolling_text",
+        "display": "static",
         "color_scheme": "scheme5",
         "use_gradient_background": false,
         "show_bottom_border": true,
