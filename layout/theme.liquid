@@ -266,7 +266,11 @@
 
     <script src="{{ 'global.bundle.js' | asset_url }}" type="module"></script>
 
-    {% if settings.enable_sticky_add_to_cart and template.name == 'product' and product.available %}
+    {% if settings.enable_sticky_add_to_cart
+      and template.name == 'product'
+      and product.available
+      and product.metafields.custom.disable_sticky_add_to_cart != true
+    %}
       {% render 'sticky-add-to-cart' %}
     {% endif %}
 
