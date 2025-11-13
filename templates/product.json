@@ -70,7 +70,7 @@
           "name": "Product Byline",
           "settings": {
             "display_on_card": false,
-            "text": "",
+            "text": "{{ product.metafields.custom.product_byline.value }}",
             "icon": "none"
           }
         },
