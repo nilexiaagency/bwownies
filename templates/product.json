@@ -12,6 +12,33 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "text_THwqmJ": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "display_on_card": false,
+            "text": "Locally sourced ingredients",
+            "icon": "map_pin"
+          }
+        },
+        "text_tf3ftB": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "display_on_card": false,
+            "text": "Freshly baked every day",
+            "icon": "clock"
+          }
+        },
+        "text_fNd38m": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "display_on_card": false,
+            "text": "Vegetarian",
+            "icon": "vegan"
+          }
+        },
         "sticky_add_to_cart_jtJKdp": {
           "type": "sticky_add_to_cart",
           "settings": {}
@@ -36,6 +63,15 @@
           "settings": {
             "display_on_card": false,
             "text_align": "text-left"
+          }
+        },
+        "text_fCxDBY": {
+          "type": "text",
+          "name": "Product Byline",
+          "settings": {
+            "display_on_card": false,
+            "text": "",
+            "icon": "none"
           }
         },
         "price": {
@@ -154,9 +190,13 @@
         }
       },
       "block_order": [
+        "text_THwqmJ",
+        "text_tf3ftB",
+        "text_fNd38m",
         "sticky_add_to_cart_jtJKdp",
         "loox_reviews_loox_rating_Di8mH9",
         "title",
+        "text_fCxDBY",
         "price",
         "features_list_kCkDAD",
         "quantity_selector",
