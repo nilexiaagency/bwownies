@@ -1,0 +1,160 @@
+<div
+  class="rte text-block font-{{ block.settings.font_style }}"
+  style="
+    --text-align: {{ block.settings.alignment }};
+    {% if block.settings.override_text_size %}
+    --text-size: {{ block.settings.custom_text_size }}px;
+    {% if block.settings.custom_text_size > 32 %}
+      --mobile-text-size: {{ block.settings.custom_text_size |  times: 0.75 }}px;
+    {% endif %}
+    {% endif %}
+    {% if block.settings.enable_custom_text_colour %}
+      --custom-text-colour: {{ block.settings.custom_text_colour }};
+    {% endif %}
+    {% if block.settings.bold_highlight %}
+      --bold-highlight-colour: {{ block.settings.bold_highlight_colour }};
+    {% endif %}
+  "
+  {{ block.shopify_attributes }}
+>
+  {{ block.settings.text }}
+</div>
+
+{% stylesheet %}
+  .text-block {
+    text-align: var(--text-align);
+    color: var(--custom-text-colour);
+    font-size: var(--mobile-text-size, var(--text-size, inherit));
+
+    @media screen and (min-width: 990px) {
+      font-size: var(--text-size, inherit);
+    }
+  }
+  .text-block strong {
+    color: var(--bold-highlight-colour, inherit);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Text",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment",
+      "label": "Alignment",
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "tag",
+      "label": "Tag",
+      "default": "p",
+      "options": [
+        {
+          "value": "p",
+          "label": "Paragraph"
+        },
+        {
+          "value": "h1",
+          "label": "Heading 1"
+        },
+        {
+          "value": "h2",
+          "label": "Heading 2"
+        },
+        {
+          "value": "h3",
+          "label": "Heading 3"
+        },
+        {
+          "value": "h4",
+          "label": "Heading 4"
+        },
+        {
+          "value": "h5",
+          "label": "Heading 5"
+        },
+        {
+          "value": "h6",
+          "label": "Heading 6"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "font_style",
+      "label": "Font style",
+      "default": "text",
+      "options": [
+        {
+          "value": "text",
+          "label": "Text"
+        },
+        {
+          "value": "heading",
+          "label": "Heading"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "override_text_size",
+      "label": "Override text size",
+      "default": false,
+      "info": "Enable to set a custom text size"
+    },
+    {
+      "type": "range",
+      "id": "custom_text_size",
+      "label": "Custom text size",
+      "min": 12,
+      "max": 148,
+      "step": 2,
+      "unit": "px",
+      "default": 16,
+      "visible_if": "{{ block.settings.override_text_size }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_custom_text_colour",
+      "label": "Enable custom text colour",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "custom_text_colour",
+      "label": "Custom text colour",
+      "default": "#000000",
+      "visible_if": "{{ block.settings.enable_custom_text_colour }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "bold_highlight",
+      "label": "Enable bold text highlight colour",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "bold_highlight_colour",
+      "label": "Bold text highlight colour",
+      "default": "#FF129F",
+      "visible_if": "{{ block.settings.enable_custom_text_colour }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Rich text block",
+      "category": "Text",
+      "settings": {
+        "text": "<p>Rich text block</p>"
+      }
+    }
+  ]
+}
+{% endschema %}

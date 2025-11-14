@@ -84,10 +84,10 @@
     },
     "password_page": {
       "opening_soon": "Opening Soon",
-      "login_form_heading": "Enter store using password",
-      "login_form_password_label": "Password",
+      "login_form_heading": "Exclusive offers for loyal customers await...",
+      "login_form_password_label": "Enter your secret code here...",
       "login_form_password_placeholder": "Your password",
-      "login_form_submit": "Enter",
+      "login_form_submit": "Enter & unlock the deals",
       "signup_form_email_label": "Email",
       "signup_form_success": "We will send you an email right before we open!",
       "admin_link_html": "Are you the store owner? <a href=\"/admin\" class=\"text-link theme-underline \">Log in here</a>",
