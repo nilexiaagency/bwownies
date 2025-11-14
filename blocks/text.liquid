@@ -5,7 +5,7 @@
     {% if block.settings.override_text_size %}
     --text-size: {{ block.settings.custom_text_size }}px;
     {% if block.settings.custom_text_size > 32 %}
-      --mobile-text-size: {{ block.settings.custom_text_size |  times: 0.75 }}px;
+      --mobile-text-size: {{ block.settings.custom_text_size |  times: 0.60 }}px;
     {% endif %}
     {% endif %}
     {% if block.settings.enable_custom_text_colour %}
