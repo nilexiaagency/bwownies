@@ -1,0 +1,46 @@
+{% liquid
+  assign inventory_quantity = 0
+  assign variant_count = 0
+
+  if product
+    for variant in product.variants
+      assign variant_inventory_quantity = variant.inventory_quantity
+      if variant_inventory_quantity <= 0
+        continue
+      endif
+
+      assign inventory_quantity = inventory_quantity | plus: variant_inventory_quantity
+      assign variant_count = variant_count | plus: 1
+    endfor
+  endif
+
+  if variant_count == 1
+    assign formatted_inventory_quantity = inventory_quantity | divided_by: 2
+    assign number_sold = 1001 | minus: formatted_inventory_quantity | times: 2
+  else
+    assign formatted_inventory_quantity = inventory_quantity | divided_by: variant_count
+    assign number_sold = 1001 | minus: formatted_inventory_quantity | times: variant_count
+  endif
+%}
+
+<div class="sticky-atc__free-delivery-bar">
+  <p class="sticky-atc__free-delivery-text uppercase">
+    {{ 'general.password_page.boxes_remaining' | t: boxes_count: formatted_inventory_quantity }}
+  </p>
+  <div class="sticky-atc__bar h-5 flex items-center justify-center isolate">
+    <div
+      class="sticky-atc__bar-inner rounded-full z-0"
+      style="width: {{ number_sold | divided_by: 1000.0 | times: 100 }}%; transform: none;"
+    ></div>
+    <span
+      class="uppercase z-10 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 font-bold text-white"
+      style="text-shadow: 0 0 3px rgba(0,0,0,0.5);"
+    >
+      {{- number_sold }} boxes sold</span
+    >
+  </div>
+  <div class="flex justify-between">
+    <span>0</span>
+    <span>1001</span>
+  </div>
+</div>

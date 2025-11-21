@@ -1,0 +1,30 @@
+{% doc %}
+  Renders the free delivery bar on the sticky add to cart section
+
+  @param {boolean} free_shipping_qualified - Whether the user has qualified for free shipping or not
+  @param {boolean} add_to_qualify - Whether adding this product will qualifiy the user for free shipping or not
+  @param {boolean} get_closer - If the user will just get closer to free shipping, rather than qualify or already qualified
+  @param {number} variant_price - The price of the current variant
+  @param {number} cart_value - The current value of the cart
+  @param {number} free_shipping_threshold - The threshold to reach free shipping
+{% enddoc %}
+
+<div class="sticky-atc__free-delivery-bar">
+  <p class="sticky-atc__free-delivery-text" x-ref="freeDeliveryText">
+    {% if free_shipping_qualified %}
+      {{ 'products.product.sticky_add_to_cart.free_shipping.qualified' | t }}
+    {% elsif add_to_qualify %}
+      {{ 'products.product.sticky_add_to_cart.free_shipping.add_to_qualify' | t }}
+    {% elsif get_closer %}
+      {% assign price_string = variant_price | money %}
+      {{ 'products.product.sticky_add_to_cart.free_shipping.get_closer_html' | t: price: price_string }}
+    {% endif %}
+  </p>
+  <div class="sticky-atc__bar">
+    <div
+      class="sticky-atc__bar-inner"
+      x-ref="freeDeliveryProgress"
+      style="transform: scaleX({{ cart_value | divided_by: free_shipping_threshold }});"
+    ></div>
+  </div>
+</div>
