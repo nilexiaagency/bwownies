@@ -26,25 +26,8 @@
   x-show="$store.stickyATC && $store.stickyATC.shown && isMaxLgBreakpoint"
 >
   <div class="sticky-atc" x-data="stickyForm" data-color-scheme="scheme3">
-    <div class="sticky-atc__free-delivery-bar">
-      <p class="sticky-atc__free-delivery-text" x-ref="freeDeliveryText">
-        {% if free_shipping_qualified %}
-          {{ 'products.product.sticky_add_to_cart.free_shipping.qualified' | t }}
-        {% elsif add_to_qualify %}
-          {{ 'products.product.sticky_add_to_cart.free_shipping.add_to_qualify' | t }}
-        {% elsif get_closer %}
-          {% assign price_string = variant_price | money %}
-          {{ 'products.product.sticky_add_to_cart.free_shipping.get_closer_html' | t: price: price_string }}
-        {% endif %}
-      </p>
-      <div class="sticky-atc__bar">
-        <div
-          class="sticky-atc__bar-inner"
-          x-ref="freeDeliveryProgress"
-          style="transform: scaleX({{ cart_value | divided_by: free_shipping_threshold }});"
-        ></div>
-      </div>
-    </div>
+    {% render 'sticky-add-to-cart-countdown' %}
+
     {% form 'product',
       product,
       class: 'shopify-product-form',
