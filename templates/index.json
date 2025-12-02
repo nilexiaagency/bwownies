@@ -20,12 +20,12 @@
         "max_width_heading": "max-w-2xl",
         "button_link": "shopify://pages/about-us",
         "button_label": "Shop Now",
-        "image": "shopify://shop_images/Bwownies_Keelan-121.jpg",
+        "image": "shopify://shop_images/Bwownies_Keelan-156.jpg",
         "crop": "",
         "image_shape": "default",
         "blob_type": 1,
         "rotate_image": 0,
-        "disable_media_style": true,
+        "disable_media_style": false,
         "max_width_image_mobile": 100,
         "image_offset_mobile": 2.5,
         "max_width_image_desktop": 80,
@@ -70,146 +70,20 @@
       "settings": {
         "title": "Shop our BWOWNIES",
         "subheading": "",
-        "collection": "shop-bwownies",
+        "collection": "bfcm-2025",
         "no_products": 15,
         "show_view_all": false,
-        "enable_quick_buy": true,
-        "display_on_card": true,
+        "enable_quick_buy": false,
+        "display_on_card": false,
         "layout": "carousel",
         "products_per_row_mobile": "1",
         "products_per_row_desktop": 2,
-        "slideshow_focus": "left",
+        "slideshow_focus": "center",
         "mobile_slide_width": "full_width",
         "desktop_slide_width": 30,
         "autoscroll_mode": "1",
-        "product_tiles_aspect_ratio": "natural",
+        "product_tiles_aspect_ratio": "aspect-w-1 aspect-h-1",
         "image_shape": "squircle",
-        "color_scheme": "scheme3",
-        "use_gradient_background": false
-      }
-    },
-    "scrolling_text_with_icons_JyQqt6": {
-      "type": "scrolling-text-with-icons",
-      "blocks": {
-        "text_FGmVV6": {
-          "type": "text",
-          "settings": {
-            "text": "Free Shipping Nationwide",
-            "icon": "truck"
-          }
-        },
-        "text_ENbrDE": {
-          "type": "text",
-          "settings": {
-            "text": "Fudgy & Freaking Delicious",
-            "icon": "heart"
-          }
-        },
-        "text_p3bWEL": {
-          "type": "text",
-          "settings": {
-            "text": "Handmade in UK",
-            "icon": "person"
-          }
-        },
-        "text_rcMQTX": {
-          "type": "text",
-          "settings": {
-            "text": "Sustainable",
-            "icon": "leaf"
-          }
-        },
-        "text_R7ryVP": {
-          "type": "text",
-          "settings": {
-            "text": "Super Chocolatey Brownies",
-            "icon": "star"
-          }
-        },
-        "text_6YDhVg": {
-          "type": "text",
-          "settings": {
-            "text": "Locally Sourced",
-            "icon": "star"
-          }
-        },
-        "text_qhd7pY": {
-          "type": "text",
-          "settings": {
-            "text": "Premium Ingredients",
-            "icon": "star"
-          }
-        }
-      },
-      "block_order": [
-        "text_FGmVV6",
-        "text_ENbrDE",
-        "text_p3bWEL",
-        "text_rcMQTX",
-        "text_R7ryVP",
-        "text_6YDhVg",
-        "text_qhd7pY"
-      ],
-      "custom_css": [
-        ".site-header {border: none !important; /* Remove any existing border */ outline: none !important; /* Remove any existing outline */}"
-      ],
-      "settings": {
-        "repeat_text": true,
-        "link": "",
-        "font": "body",
-        "gap": "gap-20",
-        "icon_size": "size-8",
-        "speed": 160,
-        "direction": "reverse",
-        "icon_thickness": 1.8,
-        "background_color": "bg-transparent text-scheme-text",
-        "show_border": true,
-        "color_scheme": "scheme5",
-        "use_gradient_background": false
-      }
-    },
-    "testimonials_UrXqnE": {
-      "type": "testimonials",
-      "blocks": {
-        "testimonial_FtdabU": {
-          "type": "testimonial",
-          "settings": {
-            "rating": "5_stars",
-            "quote": "Literally the best brownies I have ever tried in my 41 years!!!! They are gorgeous and you brightened our Wednesday morning with a lovely handwritten note. You really understand customer service.  Love everything about your story, company and product – you deserve to go far and more importantly be happy! - You put the wow in Bwownies!! 😃",
-            "source": "Henry Yelland"
-          }
-        },
-        "testimonial_M8artf": {
-          "type": "testimonial",
-          "settings": {
-            "rating": "5_stars",
-            "quote": "I tried the 3 newest flavours. Reeses has thick smooth peanut butter, they are super rich and flavourful, the perfect balance of sweet and salty! Salted caramel is for the sweet toothers with the slab of salty caramel inbetween. Choc orange is dark chocolate bwownie flavoured with orange and white chocolate pieces like the original bwownie!",
-            "source": "Annabelle Lucia"
-          }
-        },
-        "testimonial_L7fziE": {
-          "type": "testimonial",
-          "settings": {
-            "rating": "5_stars",
-            "quote": "I honestly don’t think I’ve ever tried better brownies before, they’re the right consistency, great flavour and honestly for the price they’re great. I think the choc orange is my favourite so far! I’ve cut the bwownies up into 4s so they are easier to share around (or eat a piece every time I open the fridge or cupboard). I think you can freeze any leftovers, not that there are ever any lol.",
-            "source": "Toby Arnold"
-          }
-        }
-      },
-      "block_order": [
-        "testimonial_FtdabU",
-        "testimonial_M8artf",
-        "testimonial_L7fziE"
-      ],
-      "settings": {
-        "display_on_card": true,
-        "title": "",
-        "max_width": 100,
-        "disable_media_style": false,
-        "crop": "",
-        "image_shape": "squircle",
-        "desktop_slide_width": 20,
-        "autoscroll_mode": "0",
         "color_scheme": "scheme3",
         "use_gradient_background": false
       }
@@ -359,15 +233,111 @@
         "color_scheme": "scheme3",
         "use_gradient_background": false
       }
+    },
+    "featured_product_JgpcGQ": {
+      "type": "featured-product",
+      "blocks": {
+        "shape_divider_xqFU7M": {
+          "type": "shape_divider",
+          "settings": {
+            "target_section": "below",
+            "target_section_color_scheme": "scheme3",
+            "style": "steps-2-shape_1400x105",
+            "flip_horizontal": true,
+            "enable_animation": false,
+            "animation_direction": ""
+          }
+        },
+        "shape_divider_EUURpA": {
+          "type": "shape_divider",
+          "settings": {
+            "target_section": "above",
+            "target_section_color_scheme": "scheme3",
+            "style": "steps-2-shape_1400x105",
+            "flip_horizontal": false,
+            "enable_animation": false,
+            "animation_direction": ""
+          }
+        },
+        "title_RK3yKb": {
+          "type": "title",
+          "settings": {
+            "display_on_card": false,
+            "text_align": "text-left"
+          }
+        },
+        "price_fnR6Ur": {
+          "type": "price",
+          "settings": {
+            "display_on_card": false,
+            "show_on_sale_sticker": false,
+            "text_align": "text-left"
+          }
+        },
+        "text_JQrTtV": {
+          "type": "text",
+          "settings": {
+            "display_on_card": false,
+            "text": "Our key to retail!",
+            "icon": "heart"
+          }
+        },
+        "variant_picker_fBxgjD": {
+          "type": "variant_picker",
+          "settings": {
+            "display_on_card": false,
+            "option_style": "buttons",
+            "full_width_buttons": false,
+            "hide_option_labels": true,
+            "enable_color_swatches": false
+          }
+        },
+        "buy_buttons_Qjhjk4": {
+          "type": "buy_buttons",
+          "settings": {
+            "display_on_card": false,
+            "show_price": false,
+            "enable_payment_button": true,
+            "show_pickup_availability": true,
+            "show_gift_card_recipient": false
+          }
+        }
+      },
+      "block_order": [
+        "shape_divider_xqFU7M",
+        "shape_divider_EUURpA",
+        "title_RK3yKb",
+        "price_fnR6Ur",
+        "text_JQrTtV",
+        "variant_picker_fBxgjD",
+        "buy_buttons_Qjhjk4"
+      ],
+      "name": "t:sections.featured_product.name",
+      "settings": {
+        "title": "Don't forget the bites!",
+        "product": "bwownies-bites",
+        "crop": "",
+        "image_shape": "default",
+        "media_mobile_width": "w-full",
+        "desktop_media_width": "lg:col-span-6_lg:col-span-6",
+        "enable_video_looping": true,
+        "thumbnails_position": "under",
+        "thumbnail_crop": "aspect-w-1 aspect-h-1",
+        "thumbnail_shape": "default",
+        "hide_media_shadow": false,
+        "thumbnail_size": "large",
+        "show_thumbnails_on_mobile": true,
+        "color_scheme": "",
+        "use_gradient_background": false
+      }
     }
   },
   "order": [
     "feature_text_with_image_m847aN",
     "rich_text_Q7hYhz",
     "featured_collection_pV9Qck",
-    "scrolling_text_with_icons_JyQqt6",
-    "testimonials_UrXqnE",
     "vertical_video_embeds_FdyThA",
-    "scrolling_logos_CBXGwm"
+    "scrolling_logos_CBXGwm",
+    "featured_product_JgpcGQ"
   ]
 }
