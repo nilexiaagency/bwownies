@@ -9,6 +9,51 @@
  */
 {
   "sections": {
+    "feature_text_with_image_m847aN": {
+      "type": "feature-text-with-image",
+      "name": "t:sections.feature_text_with_image.name",
+      "settings": {
+        "title": "Delivered fresh. Ridiculously fudgy. Surprisingly addictive.",
+        "mobile_text_scale": 3,
+        "desktop_text_scale": 7,
+        "apply_effects": false,
+        "max_width_heading": "max-w-2xl",
+        "button_link": "shopify://pages/about-us",
+        "button_label": "Shop Now",
+        "image": "shopify://shop_images/Bwownies_Keelan-121.jpg",
+        "crop": "",
+        "image_shape": "default",
+        "blob_type": 1,
+        "rotate_image": 0,
+        "disable_media_style": true,
+        "max_width_image_mobile": 100,
+        "image_offset_mobile": 2.5,
+        "max_width_image_desktop": 80,
+        "image_offset_desktop": 2,
+        "color_scheme": "scheme1",
+        "use_gradient_background": false
+      }
+    },
+    "collection_focus_carousel_Y8GDHd": {
+      "type": "collection-focus-carousel",
+      "name": "t:sections.collection_focus_carousel.name",
+      "settings": {
+        "title": "Featured collection",
+        "subheading": "Use this text to share information about your collection.",
+        "collection": "",
+        "no_products": 4,
+        "focused_slide_source": "description",
+        "focused_slide_metafield": "",
+        "display_on_card": false,
+        "enlarge_active_slide": true,
+        "mobile_slide_width": "three_fifths",
+        "desktop_slide_width": 40,
+        "product_tiles_aspect_ratio": "",
+        "image_shape": "",
+        "color_scheme": "",
+        "use_gradient_background": false
+      }
+    },
     "image_with_logo_overlay_hzLd8e": {
       "type": "image-with-logo-overlay",
       "blocks": {
@@ -83,6 +128,7 @@
         "sticker_bpFEiP",
         "sticker_GmVXjP"
       ],
+      "disabled": true,
       "custom_css": [
         ".site-header {border: none !important; /* Remove any existing border */ outline: none !important; /* Remove any existing outline */}",
         ".site-header {border: 10px solid #ff129f !important; /* Bright pink border */}",
@@ -178,13 +224,13 @@
     "featured_collection_pV9Qck": {
       "type": "featured-collection",
       "settings": {
-        "title": "",
+        "title": "Shop our BWOWNIES",
         "subheading": "",
-        "collection": "frontpage",
+        "collection": "shop-bwownies",
         "no_products": 15,
         "show_view_all": false,
-        "enable_quick_buy": false,
-        "display_on_card": false,
+        "enable_quick_buy": true,
+        "display_on_card": true,
         "layout": "carousel",
         "products_per_row_mobile": "1",
         "products_per_row_desktop": 2,
@@ -472,6 +518,8 @@
     }
   },
   "order": [
+    "feature_text_with_image_m847aN",
+    "collection_focus_carousel_Y8GDHd",
     "image_with_logo_overlay_hzLd8e",
     "feature_text_columns_rxUEXM",
     "featured_collection_pV9Qck",
