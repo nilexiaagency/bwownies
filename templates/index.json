@@ -34,190 +34,34 @@
         "use_gradient_background": false
       }
     },
-    "collection_focus_carousel_Y8GDHd": {
-      "type": "collection-focus-carousel",
-      "name": "t:sections.collection_focus_carousel.name",
-      "settings": {
-        "title": "Featured collection",
-        "subheading": "Use this text to share information about your collection.",
-        "collection": "",
-        "no_products": 4,
-        "focused_slide_source": "description",
-        "focused_slide_metafield": "",
-        "display_on_card": false,
-        "enlarge_active_slide": true,
-        "mobile_slide_width": "three_fifths",
-        "desktop_slide_width": 40,
-        "product_tiles_aspect_ratio": "",
-        "image_shape": "",
-        "color_scheme": "",
-        "use_gradient_background": false
-      }
-    },
-    "image_with_logo_overlay_hzLd8e": {
-      "type": "image-with-logo-overlay",
+    "rich_text_Q7hYhz": {
+      "type": "rich-text",
       "blocks": {
-        "shape_divider_BPeMKb": {
+        "shape_divider_WeVjAh": {
           "type": "shape_divider",
           "settings": {
             "target_section": "above",
             "target_section_color_scheme": "scheme1",
-            "style": "clouds-shape_1400x161",
+            "style": "waves-2-patterned_1200x43",
             "flip_horizontal": false,
             "enable_animation": false,
             "animation_direction": ""
-          }
-        },
-        "shape_divider_JAC3xC": {
-          "type": "shape_divider",
-          "settings": {
-            "target_section": "below",
-            "target_section_color_scheme": "scheme1",
-            "style": "waves-1-shape_1440x261",
-            "flip_horizontal": false,
-            "enable_animation": false,
-            "animation_direction": ""
-          }
-        },
-        "sticker_bpFEiP": {
-          "type": "sticker",
-          "settings": {
-            "width": 180,
-            "half_width_on_mobile": false,
-            "text": "",
-            "shape": "star_1",
-            "sticker_font_size": "1.563rem",
-            "image": "shopify://shop_images/Untitled_design_79.png",
-            "horizontal_position": 5,
-            "vertical_position": 90,
-            "rotate": 20,
-            "show_sticker_on_mobile": true,
-            "show_sticker_on_desktop": true,
-            "rotation_animation": "rotate_when_scrolling",
-            "enable_parallax": false,
-            "parallax_speed": 3,
-            "color_scheme": "scheme1",
-            "color": "bg-scheme-accent-1 text-scheme-accent-1-contrast"
-          }
-        },
-        "sticker_GmVXjP": {
-          "type": "sticker",
-          "settings": {
-            "width": 170,
-            "half_width_on_mobile": false,
-            "text": "",
-            "shape": "star_1",
-            "sticker_font_size": "1.563rem",
-            "image": "shopify://shop_images/Untitled_design_79.png",
-            "horizontal_position": 94,
-            "vertical_position": 25,
-            "rotate": -20,
-            "show_sticker_on_mobile": true,
-            "show_sticker_on_desktop": true,
-            "rotation_animation": "rotate_when_scrolling",
-            "enable_parallax": false,
-            "parallax_speed": 3,
-            "color_scheme": "scheme1",
-            "color": "bg-scheme-accent-1 text-scheme-accent-1-contrast"
           }
         }
       },
       "block_order": [
-        "shape_divider_BPeMKb",
-        "shape_divider_JAC3xC",
-        "sticker_bpFEiP",
-        "sticker_GmVXjP"
+        "shape_divider_WeVjAh"
       ],
-      "disabled": true,
-      "custom_css": [
-        ".site-header {border: none !important; /* Remove any existing border */ outline: none !important; /* Remove any existing outline */}",
-        ".site-header {border: 10px solid #ff129f !important; /* Bright pink border */}",
-        "@media screen and (min-width: 990px) {.mx-auto.w-full {max-width: 35% !important; }}"
-      ],
+      "name": "t:sections.rich_text.name",
       "settings": {
-        "image": "shopify://shop_images/Bwownies_Site_Hero.png",
-        "image_mobile": "shopify://shop_images/IMG_7276_cce3e6dc-5707-4aea-9a64-57c60520dcbf.jpg",
-        "style": "full",
-        "height": "pt-screen-height",
-        "logo": "shopify://shop_images/Cropped-Untitled_design_77.png",
-        "logo_max_width": 90,
-        "cta_url": "shopify://collections/all",
-        "cta_text": "Shop Now",
-        "color_scheme": "scheme1",
-        "use_gradient_background": false
-      }
-    },
-    "feature_text_columns_rxUEXM": {
-      "type": "feature-text-columns",
-      "blocks": {
-        "column_pxG8r8": {
-          "type": "column",
-          "settings": {
-            "title": "Choose your favourite flavour!",
-            "subheading": ""
-          }
-        },
-        "column_bVhDcF": {
-          "type": "column",
-          "settings": {
-            "title": "Choose a treat for you, or someone else?",
-            "subheading": ""
-          }
-        },
-        "column_UpJ6Ep": {
-          "type": "column",
-          "settings": {
-            "title": "Sit back, relax and bWOWnie!",
-            "subheading": ""
-          }
-        },
-        "shape_divider_RnTKTD": {
-          "type": "shape_divider",
-          "settings": {
-            "target_section": "below",
-            "target_section_color_scheme": "scheme3",
-            "style": "waves-1-shape_1440x261",
-            "flip_horizontal": false,
-            "enable_animation": false,
-            "animation_direction": ""
-          }
-        },
-        "sticker_pigkgr": {
-          "type": "sticker",
-          "settings": {
-            "width": 160,
-            "half_width_on_mobile": false,
-            "text": "",
-            "shape": "star_1",
-            "sticker_font_size": "1.563rem",
-            "image": "shopify://shop_images/Untitled_design_84.png",
-            "horizontal_position": 95,
-            "vertical_position": 90,
-            "rotate": -22,
-            "show_sticker_on_mobile": true,
-            "show_sticker_on_desktop": true,
-            "rotation_animation": "rotate_when_scrolling",
-            "enable_parallax": false,
-            "parallax_speed": 3,
-            "color_scheme": "scheme1",
-            "color": "bg-scheme-accent-1 text-scheme-accent-1-contrast"
-          }
-        }
-      },
-      "block_order": [
-        "column_pxG8r8",
-        "column_bVhDcF",
-        "column_UpJ6Ep",
-        "shape_divider_RnTKTD",
-        "sticker_pigkgr"
-      ],
-      "custom_css": [],
-      "settings": {
-        "display_on_card": true,
-        "title": "How it works?",
-        "heading_size": "heading-secondary",
-        "subheading_font": "heading",
-        "color_scheme": "",
+        "title": "Ridiculously rich, fudgy BWOWNIES delivered fresh to your door.",
+        "heading_size": "heading-feature",
+        "rich_text": "",
+        "display_on_card": false,
+        "content_width_desktop": "lg:w-full",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "scheme3",
         "use_gradient_background": false
       }
     },
@@ -519,9 +363,7 @@
   },
   "order": [
     "feature_text_with_image_m847aN",
-    "collection_focus_carousel_Y8GDHd",
-    "image_with_logo_overlay_hzLd8e",
-    "feature_text_columns_rxUEXM",
+    "rich_text_Q7hYhz",
     "featured_collection_pV9Qck",
     "scrolling_text_with_icons_JyQqt6",
     "testimonials_UrXqnE",
