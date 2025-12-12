@@ -1,0 +1,43 @@
+<ul class="nx:grid nx:grid-cols-2 nx:gap-2">
+  {% content_for 'blocks' %}
+</ul>
+
+{% schema %}
+{
+  "name": "Product features",
+  "settings": [],
+  "blocks": [{ "type": "_pdp-feature" }],
+  "presets": [
+    {
+      "category": "Buy box",
+      "name": "Product features",
+      "blocks": [
+        {
+          "type": "_pdp-feature",
+          "settings": {
+            "text": "Freshly baked every day"
+          }
+        },
+        {
+          "type": "_pdp-feature",
+          "settings": {
+            "text": "Locally sourced, premium ingredients"
+          }
+        },
+        {
+          "type": "_pdp-feature",
+          "settings": {
+            "text": "Handmade in Suffolk"
+          }
+        },
+        {
+          "type": "_pdp-feature",
+          "settings": {
+            "text": "Arrives in premium gift-ready packaging"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

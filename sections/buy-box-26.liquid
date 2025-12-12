@@ -1,0 +1,76 @@
+{% liquid
+  assign current_variant = product.selected_or_first_available_variant
+%}
+
+<div
+  class="nx:container nx:max-w-7xl nx:mx-auto nx:py-20 nx:px-4 nx:font-sans"
+  id="{{ section.id }}"
+  x-data="addToCartForm"
+  x-ref="addToCartForm"
+  @submit.prevent="handleSubmit"
+>
+  <div class="grid nx:lg:grid-cols-2 nx:gap-9 nx:lg:gap-18">
+    <div>
+      {% render 'pdp-images', product: product %}
+    </div>
+    {% form 'product', product, x-ref: 'productForm' %}
+      <div class="nx:grid nx:gap-6">
+        {% content_for 'blocks' %}
+      </div>
+    {% endform %}
+  </div>
+</div>
+
+{% javascript %}
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('addToCartForm', () => ({
+      init() {
+        this.sectionId = this.$el.id;
+      },
+      async updateVariant(variantId) {
+        const res = await fetch(window.location.pathname + `?variant=${variantId}` + `&section_id=${this.sectionId}`);
+        const text = await res.text();
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = text;
+
+        const newBuyBox = tempDiv.querySelector('[x-ref="productForm"]').innerHTML;
+        this.$refs.productForm.innerHTML = newBuyBox;
+      },
+      async handleSubmit() {
+        const formData = new FormData(this.$refs.productForm);
+
+        const res = await fetch(window.Shopify.routes.root + 'cart/add.js', {
+          method: 'POST',
+          body: formData,
+        });
+
+        const json = await res.json();
+
+        console.log(json);
+      },
+    }));
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Product buy box",
+  "class": "nx:bg-light-pink nx:text-plum",
+  "settings": [],
+  "blocks": [
+    { "type": "@theme" },
+    { "type": "_product-title" },
+    { "type": "_pdp-features" },
+    { "type": "_pdp-price" },
+    { "type": "_pdp-options" },
+    { "type": "_pdp-collapsible-group" },
+    { "type": "_pdp-add-to-cart" }
+  ],
+  "presets": [
+    {
+      "name": "Product buy box",
+      "category": "Products"
+    }
+  ]
+}
+{% endschema %}

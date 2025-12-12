@@ -1,0 +1,90 @@
+{% assign product = block.settings.product %}
+
+<div
+  class="nx:grid nx:gap-3 nx:p-4 nx:border nx:border-plum nx:bg-white nx:rounded-xl nx:transition-all nx:text-plum"
+  x-data="{ giftBoxShown: false }"
+>
+  <div class="nx:text-sm">
+    <button class="nx:flex nx:items-center nx:gap-2.5 nx:font-bold!" @click="giftBoxShown = !giftBoxShown">
+      <span class="nx:[&_svg]:w-3.5">
+        <span x-show="!giftBoxShown">
+          {% render 'icon-checkbox-empty' %}
+        </span>
+        <span x-show="giftBoxShown">
+          {% render 'icon-checkbox-checked' %}
+        </span>
+      </span>
+      Sending your BWOWNIES as a gift?
+    </button>
+    <input
+      type="text"
+      name="properties[Gift message]"
+      id="gift_msg"
+      x-show="giftBoxShown"
+      x-cloak
+      x-transition
+      class="nx:p-3 nx:text-sm nx:mt-2 nx:rounded nx:border nx:border-[#e6e6e6] nx:bg-transparent w-full nx:text-plum nx:placeholder:text-plum/50 nx:placeholder:font-bold nx:cursor-auto"
+      placeholder="Add your free gift message here"
+    >
+  </div>
+  <button
+    type="submit"
+    class="nx:bg-bright-pink nx:text-white nx:flex nx:items-center nx:justify-center nx:gap-2.5 nx:p-2.5 nx:rounded-lg nx:w-full"
+  >
+    <span class="nx:font-display nx:text-lg nx:leading-none"> Add to cart </span>
+    <span class="nx:font-bold nx:text-sm nx:leading-none nx:opacity-80 nx:translate-y-0.5">
+      {{ product.selected_or_first_available_variant.price | money }}
+    </span>
+  </button>
+  {% liquid
+    if block.settings.enable_guaranteed_delivery_indicator
+      render 'pdp-delivery-by', product: product
+    endif
+  %}
+</div>
+
+{% schema %}
+{
+  "name": "Add to cart",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "header",
+      "content": "Guaranteed delivery indicator"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_guaranteed_delivery_indicator",
+      "label": "Enable 'delivery by' indicator",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "override_lead_time",
+      "label": "Override lead time",
+      "default": false,
+      "visible_if": "{{ block.settings.enable_guaranteed_delivery_indicator }}"
+    },
+    {
+      "type": "text",
+      "id": "lead_time_text",
+      "label": "Lead time text",
+      "default": "{{ closest.product.metafields.nilexia.lead_time_override_text | metafield_text }}",
+      "visible_if": "{{ block.settings.override_lead_time }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Add to cart",
+      "category": "Buy box",
+      "settings": {
+        "product": "{{ closest.product }}"
+      }
+    }
+  ]
+}
+{% endschema %}

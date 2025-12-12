@@ -10,183 +10,148 @@
 {
   "sections": {
     "main": {
-      "type": "main-product",
+      "type": "buy-box-26",
       "blocks": {
-        "sticky_add_to_cart_jtJKdp": {
-          "type": "sticky_add_to_cart",
-          "settings": {}
-        },
-        "loox_reviews_loox_rating_Di8mH9": {
-          "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+        "product_title_9AGmHY": {
+          "type": "_product-title",
+          "name": "Product title",
           "settings": {
-            "contentSize": 16,
-            "pattern": "",
-            "hideText": false,
-            "alignment": "",
-            "layout": "",
-            "textColor": "",
-            "starColor": "",
-            "showAllReviews": false,
-            "looxOpenFloatingWidget": false,
-            "emptyRatingWidget": false
-          }
+            "product": "{{ closest.product }}"
+          },
+          "blocks": {}
         },
-        "title": {
-          "type": "title",
+        "text_hiBNFm": {
+          "type": "text",
+          "name": "Product Short Description",
           "settings": {
-            "display_on_card": false,
-            "text_align": "text-left"
-          }
+            "text": "{{ closest.product.metafields.custom.product_byline.value }}",
+            "alignment": "left",
+            "tag": "p",
+            "font_style": "text",
+            "override_text_size": false,
+            "custom_text_size": 16,
+            "enable_custom_text_colour": false,
+            "custom_text_colour": "#000000",
+            "bold_highlight": false,
+            "bold_highlight_colour": "#ff129f"
+          },
+          "blocks": {}
         },
-        "price": {
-          "type": "price",
+        "pdp_price_eVLUYe": {
+          "type": "_pdp-price",
+          "name": "Price",
           "settings": {
-            "display_on_card": true,
-            "show_on_sale_sticker": true,
-            "text_align": "text-left"
-          }
+            "product": "{{ closest.product }}"
+          },
+          "blocks": {}
         },
-        "features_list_kCkDAD": {
-          "type": "features_list",
+        "pdp_features_3r4ieL": {
+          "type": "_pdp-features",
+          "name": "Product features",
+          "settings": {},
+          "blocks": {
+            "pdp_feature_gbcAwH": {
+              "type": "_pdp-feature",
+              "settings": {
+                "text": "Freshly baked every day"
+              },
+              "blocks": {}
+            },
+            "pdp_feature_t98MWm": {
+              "type": "_pdp-feature",
+              "settings": {
+                "text": "Locally sourced, premium ingredients"
+              },
+              "blocks": {}
+            },
+            "pdp_feature_twF8HW": {
+              "type": "_pdp-feature",
+              "settings": {
+                "text": "Handmade in Suffolk"
+              },
+              "blocks": {}
+            },
+            "pdp_feature_8AENBr": {
+              "type": "_pdp-feature",
+              "settings": {
+                "text": "Arrives in premium gift-ready packaging"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "pdp_feature_gbcAwH",
+            "pdp_feature_t98MWm",
+            "pdp_feature_twF8HW",
+            "pdp_feature_8AENBr"
+          ]
+        },
+        "pdp_options_WYT9my": {
+          "type": "_pdp-options",
+          "name": "Product options",
           "settings": {
-            "display_on_card": true,
-            "uppercase_text": true,
-            "title_1": "HANDMADE IN THE UK🧑🏻‍🍳",
-            "title_2": "{{ product.metafields.custom.per_brownie_1 | metafield_text }}",
-            "title_3": "",
-            "title_4": "",
-            "title_5": "",
-            "title_6": "",
-            "border_between_rows": true,
-            "border_top_bottom": false
-          }
+            "product": "{{ closest.product }}"
+          },
+          "blocks": {}
         },
-        "quantity_selector": {
-          "type": "quantity_selector",
+        "pdp_add_to_cart_yzkWC7": {
+          "type": "_pdp-add-to-cart",
+          "name": "Add to cart",
           "settings": {
-            "display_on_card": false,
-            "show_label": true
-          }
+            "product": "{{ closest.product }}",
+            "enable_guaranteed_delivery_indicator": true,
+            "override_lead_time": true,
+            "lead_time_text": "{{ closest.product.metafields.nilexia.lead_time_override_text | metafield_text }}"
+          },
+          "blocks": {}
         },
-        "variant_picker": {
-          "type": "variant_picker",
-          "settings": {
-            "display_on_card": false,
-            "option_style": "drop_down",
-            "full_width_buttons": false,
-            "hide_option_labels": false,
-            "enable_color_swatches": false
-          }
-        },
-        "popup_xKk8LW": {
-          "type": "popup",
-          "disabled": true,
-          "settings": {
-            "display_on_card": false,
-            "icon": "price_tag",
-            "text": "CLICK ME but don't tell anyone!",
-            "page": "only-3-per-bwownie"
-          }
-        },
-        "appstle_subscription_appstle_subscription_product_page_widget_E7GzKm": {
-          "type": "shopify://apps/appstle-subscription/blocks/appstle-subscription-product-page-widget/fe257d39-6f88-4f35-ab08-bd437e3aa94e",
-          "settings": {}
-        },
-        "baf3083e-d14d-435d-bca3-100d6ac490ce": {
-          "type": "buy_buttons",
-          "settings": {
-            "display_on_card": true,
-            "show_price": true,
-            "enable_payment_button": true,
-            "show_pickup_availability": false,
-            "show_gift_card_recipient": false
-          }
-        },
-        "shape_divider_rGQ9gi": {
-          "type": "shape_divider",
-          "disabled": true,
-          "settings": {
-            "target_section": "above",
-            "target_section_color_scheme": "scheme1",
-            "style": "clouds-shape_1400x161",
-            "flip_horizontal": false,
-            "enable_animation": false,
-            "animation_direction": ""
-          }
-        },
-        "tabs_4zKJy4": {
-          "type": "tabs",
-          "settings": {
-            "display_on_card": false,
-            "uppercase_heading": false,
-            "heading_1": "About",
-            "content_1": "<p>{{ product.metafields.custom.about | metafield_tag }}</p>",
-            "page_content_1": "",
-            "heading_2": "Ingredients",
-            "content_2": "<p>{{ product.metafields.custom.ingredients_ | metafield_tag }}</p>",
-            "page_content_2": "",
-            "heading_3": "Allergens",
-            "content_3": "<p>For allergens, see ingredients in <strong>CAPS.</strong> Contain NUTS and PEANUTS. All products are handmade so we cannot guarantee cross-contamination.</p>",
-            "page_content_3": "",
-            "tab_style": "underline",
-            "tab_color": "text"
-          }
-        },
-        "comparative_scale_G9yVtt": {
-          "type": "comparative_scale",
-          "settings": {
-            "display_on_card": false,
-            "uppercase_text": true,
-            "left_label": "Fudgy",
-            "right_label": "FILLED",
-            "marker_position": 80,
-            "marker_position_alt": "{{ product.metafields.custom.scale.value }}"
-          }
-        },
-        "complementary_T3PV4k": {
-          "type": "complementary",
-          "settings": {
-            "block_heading": "Upgrade & Save?",
-            "product_list_limit": 2,
-            "product_tile_style": "standard",
-            "enable_quick_buy": true
-          }
+        "pdp_collapsible_group_YwGd8n": {
+          "type": "_pdp-collapsible-group",
+          "name": "Collapsible content",
+          "settings": {},
+          "blocks": {
+            "pdp_collapsible_item_mrQXM3": {
+              "type": "_pdp-collapsible-item",
+              "settings": {
+                "title": "Description",
+                "content": "{{ closest.product.description }}"
+              },
+              "blocks": {}
+            },
+            "pdp_collapsible_item_KiAgXE": {
+              "type": "_pdp-collapsible-item",
+              "settings": {
+                "title": "Ingredients",
+                "content": "<p>{{ closest.product.metafields.custom.ingredients_ |  metafield_tag }}</p>"
+              },
+              "blocks": {}
+            },
+            "pdp_collapsible_item_AXBVfQ": {
+              "type": "_pdp-collapsible-item",
+              "settings": {
+                "title": "Allergens",
+                "content": "<p>For allergens, see ingredients in <strong>CAPS. </strong>Contain NUTS and PEANUTS. All products are handmade so we cannot guarantee cross-contamination.</p>"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "pdp_collapsible_item_mrQXM3",
+            "pdp_collapsible_item_KiAgXE",
+            "pdp_collapsible_item_AXBVfQ"
+          ]
         }
       },
       "block_order": [
-        "sticky_add_to_cart_jtJKdp",
-        "loox_reviews_loox_rating_Di8mH9",
-        "title",
-        "price",
-        "features_list_kCkDAD",
-        "quantity_selector",
-        "variant_picker",
-        "popup_xKk8LW",
-        "appstle_subscription_appstle_subscription_product_page_widget_E7GzKm",
-        "baf3083e-d14d-435d-bca3-100d6ac490ce",
-        "shape_divider_rGQ9gi",
-        "tabs_4zKJy4",
-        "comparative_scale_G9yVtt",
-        "complementary_T3PV4k"
+        "product_title_9AGmHY",
+        "text_hiBNFm",
+        "pdp_price_eVLUYe",
+        "pdp_features_3r4ieL",
+        "pdp_options_WYT9my",
+        "pdp_add_to_cart_yzkWC7",
+        "pdp_collapsible_group_YwGd8n"
       ],
-      "settings": {
-        "crop": "",
-        "image_shape": "default",
-        "desktop_media_width": "lg:col-span-6_lg:col-span-6",
-        "show_slideshow_arrows_on_desktop": false,
-        "enable_image_zoom": false,
-        "enable_video_looping": true,
-        "autoplay_videos_on_desktop": true,
-        "media_mobile_width": "w-full",
-        "thumbnails_position": "under",
-        "thumbnail_crop": "aspect-w-1 aspect-h-1",
-        "thumbnail_shape": "squircle",
-        "thumbnail_size": "large",
-        "show_thumbnails_on_mobile": false,
-        "hide_media_shadow": false,
-        "color_scheme": "scheme3",
-        "use_gradient_background": false
-      }
+      "settings": {}
     },
     "1746519873ba4b3e53": {
       "type": "apps",
@@ -201,6 +166,7 @@
       "block_order": [
         "klaviyo_email_marketing_sms_form_embed_block_LkaLAk"
       ],
+      "disabled": true,
       "settings": {
         "apply_vertical_spacing": true,
         "apply_horizontal_spacing": true,
