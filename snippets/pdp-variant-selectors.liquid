@@ -1,0 +1,51 @@
+{% doc %}
+  Renders the variant selectors
+
+  @param {product} product - The product
+{% enddoc %}
+
+{% assign variants = product.variants %}
+
+<div class="nx:grid nx:gap-3">
+  {% for variant in variants %}
+    {% liquid
+      assign unit_price_type = product.metafields.custom.unit_price_type | default: 'BWOWNIE'
+      assign tagline = variant.metafields.nilexia.tagline
+      assign badge_text = variant.metafields.nilexia.badge_text
+    %}
+    <label
+      for="variant-{{ variant.id }}"
+      class="nx:p-3 nx:cursor-pointer nx:border nx:border-plum nx:rounded-2xl nx:bg-white nx:text-plum nx:items-center nx:flex nx:gap-3 nx:has-checked:bg-plum/90 nx:has-checked:text-white nx:group/variant-selector nx:flex-wrap nx:sm:flex-nowrap"
+    >
+      <input
+        @change="updateVariant($event.target.value)"
+        type="radio"
+        name="id"
+        id="variant-{{ variant.id }}"
+        value="{{ variant.id }}"
+        {% if product.selected_or_first_available_variant == variant %}
+          checked
+        {% endif %}
+        class="nx:hidden"
+      >
+      <div class="nx:group-has-checked/variant-selector:hidden">
+        {% render 'icon-checkbox-empty' %}
+      </div>
+      <div class="hidden nx:group-has-checked/variant-selector:block">
+        {% render 'icon-checkbox-checked' %}
+      </div>
+      <div>
+        <h3 class="nx:text-lg nx:font-display">
+          {{ variant.title }}
+        </h3>
+        <p class="nx:text-sm nx:font-bold">{{ variant.unit_price | money }} per {{ unit_price_type }}</p>
+        <p class="nx:text-sm">{{ tagline }}</p>
+      </div>
+      {% liquid
+        if badge_text != blank
+          render 'badge', text: variant.metafields.nilexia.badge_text, class: 'nx:bg-bright-pink nx:ml-auto nx:text-white nx:border nx:border-plum nx:group-has-checked/variant-selector:border-white nx:w-full nx:sm:w-auto nx:text-center'
+        endif
+      %}
+    </label>
+  {% endfor %}
+</div>

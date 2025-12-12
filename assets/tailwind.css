@@ -1,1 +1,10 @@
-@import "tailwindcss";
+@import "tailwindcss" prefix(nx) important;
+
+@theme {
+  --color-plum: #3f062a;
+  --color-light-pink: #ffeef9;
+  --color-bright-pink: #ff129f;
+
+  --font-display: "Paytone";
+  --font-sans: "Roboto", sans-serif;
+}

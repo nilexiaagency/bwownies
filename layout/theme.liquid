@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="{{ request.locale.iso_code }}">
   <head>
-{% render 'visually_io_sdk' %}
+    {% render 'visually_io_sdk' %}
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,6 +27,13 @@
     {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    >
 
     <title>
       {{ page_title }}
@@ -273,7 +280,7 @@
       and product.available
       and product.metafields.custom.disable_sticky_add_to_cart != true
     %}
-      {% render 'sticky-add-to-cart' %}
+      {% # render 'sticky-add-to-cart' %}
     {% endif %}
 
     <script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
@@ -313,5 +320,6 @@
         },
       });
     </script>
+    {{ 'nlx.css' | asset_url | stylesheet_tag }}
   </body>
 </html>

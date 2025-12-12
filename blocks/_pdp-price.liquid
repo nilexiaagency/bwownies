@@ -1,0 +1,25 @@
+{% assign product = block.settings.product %}
+
+{% render 'pdp-per-bwownie', product: product %}
+
+{% schema %}
+{
+  "name": "Price",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Price",
+      "category": "Buy box",
+      "settings": {
+        "product": "{{ closest.product }}"
+      }
+    }
+  ]
+}
+{% endschema %}

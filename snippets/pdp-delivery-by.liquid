@@ -1,0 +1,64 @@
+{% doc %}
+  Renders a 'guaranteed delivery' indicator.
+
+  @param {product} product - The product to use for delivery information
+  @param {block} block - The block rendering the guaranteed delivery indicator
+{% enddoc %}
+
+{% liquid
+  assign override_lead_time = block.settings.override_lead_time
+  assign lead_time_text = block.settings.lead_time_text
+%}
+
+<div
+  class="nx:flex nx:gap-2.5 nx:items-center nx:text-sm nx:font-bold"
+  x-data="deliveryBy"
+  data-lead-time="{{ product.metafields.nilexia.lead_time }}"
+  data-override="{{ override_lead_time }}"
+>
+  {% render 'icon', type: 'truck', classes: 'nx:w-5 nx:h-5' %}
+  <span class="nx:flex nx:gap-1 nx:items-center">
+    Order now for
+    <span class="nx:inline-block nx:text-white nx:p-1 nx:rounded nx:bg-plum" x-ref="date">
+      {% if override_lead_time %}
+        {{ lead_time_text }}
+      {% endif %}
+    </span>
+  </span>
+</div>
+
+{% javascript %}
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('deliveryBy', () => ({
+      leadTimeInDays: null,
+      overridden: null,
+      init() {
+        this.overridden = this.$el.dataset.override;
+        if (this.overridden === 'true') {
+          return;
+        }
+        this.leadTimeInDays = parseInt(this.$el.dataset.leadTime);
+        console.log(this.leadTimeInDays);
+        if (isNaN(this.leadTimeInDays)) {
+          this.leadTimeInDays = null;
+          return;
+        }
+
+        const date = new Date();
+        const newDate = new Date(date.setDate(date.getDate() + this.leadTimeInDays));
+
+        // Format like "7th November"
+        const getOrdinal = (n) => {
+          const suffixes = ['th', 'st', 'nd', 'rd'];
+          const v = n % 100;
+          return `${n}${suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0]}`;
+        };
+        const day = newDate.getDate();
+        const month = newDate.toLocaleString('en-GB', { month: 'long' });
+        this.formattedDeliveryDate = `${getOrdinal(day)} ${month}`;
+
+        this.$refs.date.innerText = 'Guaranteed Delivery ' + this.formattedDeliveryDate;
+      },
+    }));
+  });
+{% endjavascript %}

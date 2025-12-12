@@ -1,0 +1,40 @@
+<div class="nx:divide-y nx:divide-plum/40">
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+{
+  "name": "Collapsible content",
+  "settings": [],
+  "blocks": [{ "type": "_pdp-collapsible-item" }],
+  "presets": [
+    {
+      "name": "Collapsible content",
+      "category": "Buy box",
+      "blocks": [
+        {
+          "type": "_pdp-collapsible-item",
+          "settings": {
+            "title": "Description",
+            "content": "{{ closest.product.description }}"
+          }
+        },
+        {
+          "type": "_pdp-collapsible-item",
+          "settings": {
+            "title": "Ingredients",
+            "content": "{{ closest.product.metafields.custom.ingredients_ |  metafield_tag }}"
+          }
+        },
+        {
+          "type": "_pdp-collapsible-item",
+          "settings": {
+            "title": "Allergens",
+            "content": "<p>For allergens, see ingredients in <strong>CAPS.</strong>Contain NUTS and PEANUTS. All products are handmade so we cannot guarantee cross-contamination.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

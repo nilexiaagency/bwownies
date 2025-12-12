@@ -1,0 +1,28 @@
+<div class="" x-data="{ currentImage: 1 }">
+  <div class="nx:mb-2.5">
+    {% for image in product.images %}
+      <div
+        {% unless forloop.first %}
+          x-cloak
+        {% endunless %}
+        x-show="currentImage == {{ forloop.index }}"
+      >
+        {{ image | image_url: width: 700 | image_tag: class: 'nx:aspect-square nx:rounded-2xl nx:object-cover' }}
+      </div>
+    {% endfor %}
+  </div>
+  <div class="nx:grid nx:grid-cols-5">
+    {% for image in product.images %}
+      <button
+        @click="currentImage = {{ forloop.index }}"
+        class="nx:p-1 nx:rounded-lg nx:border"
+        :class="currentImage == {{ forloop.index }} ? 'nx:border-plum' : 'nx:border-transparent'"
+      >
+        {{ image | image_url: width: 110 | image_tag: class: 'nx:aspect-square nx:rounded-lg nx:object-cover' }}
+      </button>
+    {% endfor %}
+  </div>
+</div>
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,23 @@
+<li class="nx:flex nx:items-start nx:gap-2.5">
+  {% render 'icon', type: 'check-filled-circle', classes: 'nx:text-plum nx:w-4.5 nx:min-w-4.5' %}
+  {{ block.settings.text }}
+</li>
+
+{% schema %}
+{
+  "name": "Feature",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Freshly baked every day"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Feature"
+    }
+  ]
+}
+{% endschema %}

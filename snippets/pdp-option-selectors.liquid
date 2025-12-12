@@ -1,0 +1,56 @@
+{% doc %}
+  Renders the variant selectors
+
+  @param {product} product - The product
+{% enddoc %}
+
+{% assign variants = product.variants %}
+
+<div
+  class="nx:grid nx:gap-4"
+  x-data="optionSelectors({ variants: {{ variants | json | escape }}, optionNames: {{ product.options | json | escape }}, initialOptions: {{ product.selected_or_first_available_variant.options | json | escape }}, selectedVariantId: {{ product.selected_or_first_available_variant.id }} })"
+>
+  {% for option in product.options_with_values %}
+    <div>
+      <dt class="nx:font-bold nx:mb-2 nx:text-sm">{{ option.name }}</dt>
+      <dd class="nx:flex nx:flex-wrap nx:gap-2">
+        {% for value in option.values %}
+          <label class="nx:p-2 nx:cursor-pointer nx:rounded nx:border nx:border-black nx:flex nx:bg-white nx:font-bold nx:has-checked:bg-plum/90 nx:has-checked:text-white">
+            <input
+              type="radio"
+              class="nx:hidden"
+              name="{{ option.name }}"
+              id="{{ option.id }}-{{ value.id }}"
+              value="{{ value }}"
+              @change="setOption({{ forloop.parentloop.index0 }}, $event.target.value)"
+              {% if value.selected %}
+                checked
+              {% endif %}
+            >
+            {{ value }}
+          </label>
+        {% endfor %}
+      </dd>
+    </div>
+  {% endfor %}
+  <input type="hidden" name="id" :value="variantId" x-ref="variantId">
+</div>
+
+{% javascript %}
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('optionSelectors', (config) => ({
+      variants: config.variants,
+      optionValuesByIndex: [...config.initialOptions],
+      variantId: config.selectedVariantId,
+      setOption(index, value) {
+        this.optionValuesByIndex[index] = value;
+        const match = this.variants.find((variant) =>
+          variant.options.every((opt, i) => opt === this.optionValuesByIndex[i])
+        );
+        if (match) {
+          this.variantId = match.id;
+        }
+      },
+    }));
+  });
+{% endjavascript %}

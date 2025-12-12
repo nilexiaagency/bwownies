@@ -1,0 +1,16 @@
+{% doc %}
+  Renders the unit price (price per BWOWNIE)
+
+  @param {product} product - The product
+{% enddoc %}
+
+{% liquid
+  assign variant = product.selected_or_first_available_variant
+  assign quantity = variant.unit_price_measurement.quantity_value | split: '.' | first
+  assign unit_price_type = product.metafields.custom.unit_price_type | default: 'BWOWNIE'
+%}
+
+<div class="nx:grid nx:gap-1">
+  <div class="nx:font-display nx:text-3xl">{{ variant.unit_price | money }} per {{ unit_price_type }}</div>
+  <p class="nx:font-semibold">{{ variant.price | money }} for the full box of {{ quantity -}}</p>
+</div>

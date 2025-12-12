@@ -1,0 +1,34 @@
+<details name="{{ section.id }}--collapsible-item" class="nx:group">
+  <summary class="nx:font-display nx:text-lg nx:py-3 nx:flex nx:justify-between nx:items-center">
+    {{ block.settings.title }}
+    {% render 'icon', type: 'chevron-down', classes: 'nx:group-open:rotate-180 nx:transition-all' %}
+  </summary>
+  <div class="nx:py-3">
+    {{ block.settings.content }}
+  </div>
+</details>
+
+{% schema %}
+{
+  "name": "Item",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Collapsible content title"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>Collapsible content info</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Item"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,25 @@
+{% assign product = block.settings.product %}
+
+{% render 'pdp-options', product: product %}
+
+{% schema %}
+{
+  "name": "Product options",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product options",
+      "category": "Buy box",
+      "settings": {
+        "product": "{{ closest.product }}"
+      }
+    }
+  ]
+}
+{% endschema %}
