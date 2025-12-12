@@ -3,13 +3,15 @@
 <div class="nx:space-y-2!">
   <h1 class="nx:text-[2.5rem]!">{{ prod.title }}</h1>
   <div class="nx:font-bold nx:flex nx:items-center nx:gap-2">
-    <span>Rated</span>
-    <div
-      class="loox-rating"
-      data-fetch
-      data-id="{{ prod.id }}"
-      data-pattern="by [count] BWOWNIE lovers"
-    ></div>
+    {% if prod.metafields.loox.num_reviews > 0 %}
+      <span>Rated</span>
+      <div
+        class="loox-rating"
+        data-fetch
+        data-id="{{ prod.id }}"
+        data-pattern="by [count] BWOWNIE lovers"
+      ></div>
+    {% endif %}
   </div>
   <p class="nx:italic">
     “Great taste, well worth the cost and love supporting a small business” - <strong>Sarah B</strong>
