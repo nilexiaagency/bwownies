@@ -28,8 +28,8 @@
           "settings": {
             "target_section": "below",
             "target_section_color_scheme": "scheme1",
-            "style": "waves-1-shape_1440x261",
-            "flip_horizontal": false,
+            "style": "waves-3-patterned_1200x84",
+            "flip_horizontal": true,
             "enable_animation": false,
             "animation_direction": ""
           }
