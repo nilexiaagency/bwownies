@@ -11,7 +11,7 @@
       </div>
     {% endfor %}
   </div>
-  <div class="nx:flex nx:gap-1 nx:overflow-auto nx:flex-nowrap">
+  <div class="nx:grid nx:grid-cols-5">
     {% for image in product.images %}
       <button
         @click="currentImage = {{ forloop.index }}"

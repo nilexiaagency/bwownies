@@ -5,7 +5,11 @@
   x-data="{ giftBoxShown: false }"
 >
   <div class="nx:text-sm">
-    <button class="nx:flex nx:items-center nx:gap-2.5 nx:font-bold!" @click="giftBoxShown = !giftBoxShown">
+    <button
+      class="nx:flex nx:items-center nx:gap-2.5 nx:font-bold!"
+      @click="giftBoxShown = !giftBoxShown"
+      type="button"
+    >
       <span class="nx:[&_svg]:w-3.5">
         <span x-show="!giftBoxShown">
           {% render 'icon-checkbox-empty' %}
@@ -31,7 +35,9 @@
     type="submit"
     class="nx:bg-bright-pink nx:text-white nx:flex nx:items-center nx:justify-center nx:gap-2.5 nx:p-2.5 nx:rounded-lg nx:w-full"
   >
-    <span class="nx:font-display nx:text-lg nx:leading-none"> Add to cart </span>
+    <span class="nx:font-display nx:text-lg nx:leading-none" x-text="addingToCart ? 'Adding...' : 'Add to cart'"
+      >Add to cart</span
+    >
     <span class="nx:font-bold nx:text-sm nx:leading-none nx:opacity-80 nx:translate-y-0.5">
       {{ product.selected_or_first_available_variant.price | money }}
     </span>

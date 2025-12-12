@@ -6,7 +6,7 @@
 
 {% liquid
   if product.options.size > 1
-    echo 'ADD THE OPTION SELECTORS!!'
+    render 'pdp-option-selectors', product: product
   else
     render 'pdp-variant-selectors', product: product
   endif

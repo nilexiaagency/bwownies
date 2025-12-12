@@ -9,7 +9,7 @@
   x-ref="addToCartForm"
   @submit.prevent="handleSubmit"
 >
-  <div class="grid nx:lg:grid-cols-2 nx:gap-9 nx:lg:gap-18">
+  <div class="grid nx:grid-cols-1 nx:lg:grid-cols-2 nx:gap-9 nx:lg:gap-18">
     <div>
       {% render 'pdp-images', product: product %}
     </div>
@@ -24,6 +24,7 @@
 {% javascript %}
   document.addEventListener('alpine:init', () => {
     Alpine.data('addToCartForm', () => ({
+      addingToCart: false,
       init() {
         this.sectionId = this.$el.id;
       },
@@ -35,18 +36,43 @@
 
         const newBuyBox = tempDiv.querySelector('[x-ref="productForm"]').innerHTML;
         this.$refs.productForm.innerHTML = newBuyBox;
+
+        // Reflect the selected variant in the URL without reloading
+        const url = new URL(window.location.href);
+        url.searchParams.set('variant', variantId);
+        window.history.replaceState({}, '', url.toString());
       },
       async handleSubmit() {
         const formData = new FormData(this.$refs.productForm);
+        const formId = this.$refs.productForm.getAttribute('id');
 
-        const res = await fetch(window.Shopify.routes.root + 'cart/add.js', {
-          method: 'POST',
-          body: formData,
-        });
+        this.addingToCart = true;
 
-        const json = await res.json();
+        try {
+          const res = await fetch(window.Shopify.routes.root + 'cart/add.js', {
+            method: 'POST',
+            body: formData,
+          });
+          const data = await res.json().catch(() => null);
+          if (!res.ok || (data && data.status)) return;
 
-        console.log(json);
+          // Fire theme cart add event (used by ModalCart to open the drawer)
+          document.body.dispatchEvent(
+            new CustomEvent('shapes:cart:afteradditem', {
+              bubbles: true,
+              detail: { response: data, sourceId: formId },
+            })
+          );
+
+          // Use existing theme events to refresh and open the cart drawer
+          document.dispatchEvent(new CustomEvent('theme:update:cart'));
+          document.dispatchEvent(new CustomEvent('theme:open:cart-drawer'));
+        } catch (_) {
+          // Silently ignore errors
+          return;
+        }
+
+        this.addingToCart = false;
       },
     }));
   });
