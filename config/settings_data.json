@@ -98,7 +98,7 @@
     "social_linkedin_link": "https://www.linkedin.com/company/bwownies/",
     "cart_icon": "bag",
     "enable_free_shipping_progress_in_cart": true,
-    "free_shipping_threshold": "50",
+    "free_shipping_threshold": "35",
     "shipping_bar_color_scheme": "scheme3",
     "shipping_progress_bar_color": "bg-scheme-text",
     "enable_custom_cursor_default": false,
