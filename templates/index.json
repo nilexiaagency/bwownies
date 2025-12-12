@@ -9,10 +9,10 @@
  */
 {
   "sections": {
-    "image_with_logo_overlay_hzLd8e": {
-      "type": "image-with-logo-overlay",
+    "image_with_text_overlay_9q3emm": {
+      "type": "image-with-text-overlay",
       "blocks": {
-        "shape_divider_BPeMKb": {
+        "shape_divider_4CmxAR": {
           "type": "shape_divider",
           "settings": {
             "target_section": "above",
@@ -23,7 +23,7 @@
             "animation_direction": ""
           }
         },
-        "shape_divider_JAC3xC": {
+        "shape_divider_UzyDV3": {
           "type": "shape_divider",
           "settings": {
             "target_section": "below",
@@ -33,71 +33,27 @@
             "enable_animation": false,
             "animation_direction": ""
           }
-        },
-        "sticker_bpFEiP": {
-          "type": "sticker",
-          "settings": {
-            "width": 180,
-            "half_width_on_mobile": false,
-            "text": "",
-            "shape": "star_1",
-            "sticker_font_size": "1.563rem",
-            "image": "shopify://shop_images/Untitled_design_79.png",
-            "horizontal_position": 5,
-            "vertical_position": 90,
-            "rotate": 20,
-            "show_sticker_on_mobile": true,
-            "show_sticker_on_desktop": true,
-            "rotation_animation": "rotate_when_scrolling",
-            "enable_parallax": false,
-            "parallax_speed": 3,
-            "color_scheme": "scheme1",
-            "color": "bg-scheme-accent-1 text-scheme-accent-1-contrast"
-          }
-        },
-        "sticker_GmVXjP": {
-          "type": "sticker",
-          "settings": {
-            "width": 170,
-            "half_width_on_mobile": false,
-            "text": "",
-            "shape": "star_1",
-            "sticker_font_size": "1.563rem",
-            "image": "shopify://shop_images/Untitled_design_79.png",
-            "horizontal_position": 94,
-            "vertical_position": 25,
-            "rotate": -20,
-            "show_sticker_on_mobile": true,
-            "show_sticker_on_desktop": true,
-            "rotation_animation": "rotate_when_scrolling",
-            "enable_parallax": false,
-            "parallax_speed": 3,
-            "color_scheme": "scheme1",
-            "color": "bg-scheme-accent-1 text-scheme-accent-1-contrast"
-          }
         }
       },
       "block_order": [
-        "shape_divider_BPeMKb",
-        "shape_divider_JAC3xC",
-        "sticker_bpFEiP",
-        "sticker_GmVXjP"
+        "shape_divider_4CmxAR",
+        "shape_divider_UzyDV3"
       ],
-      "custom_css": [
-        ".site-header {border: none !important; /* Remove any existing border */ outline: none !important; /* Remove any existing outline */}",
-        ".site-header {border: 10px solid #ff129f !important; /* Bright pink border */}",
-        "@media screen and (min-width: 990px) {.mx-auto.w-full {max-width: 35% !important; }}"
-      ],
+      "name": "t:sections.image_with_text_overlay.name",
       "settings": {
-        "image": "shopify://shop_images/Bwownies_Site_Hero.png",
-        "image_mobile": "shopify://shop_images/IMG_7276_cce3e6dc-5707-4aea-9a64-57c60520dcbf.jpg",
+        "image": "shopify://shop_images/ThePurpleOne.jpg",
+        "display_on_card": false,
+        "display_content_below_image_on_mobile": true,
         "style": "full",
-        "height": "pt-screen-height",
-        "logo": "shopify://shop_images/Cropped-Untitled_design_77.png",
-        "logo_max_width": 90,
-        "cta_url": "shopify://collections/all",
-        "cta_text": "Shop Now",
-        "color_scheme": "scheme1",
+        "height": "natural",
+        "place_content": "place-content-center-center",
+        "text_align": "text-center",
+        "title": "Exclusive Christmas BWOWNIES available now!",
+        "heading_size": "heading-standard",
+        "richtext": "",
+        "cta_url": "shopify://collections/shop-christmas",
+        "cta_text": "Shop exclusive Christmas BWOWNIES",
+        "color_scheme": "",
         "use_gradient_background": false
       }
     },
@@ -489,7 +445,7 @@
     }
   },
   "order": [
-    "image_with_logo_overlay_hzLd8e",
+    "image_with_text_overlay_9q3emm",
     "feature_text_columns_rxUEXM",
     "featured_collection_pV9Qck",
     "scrolling_text_with_icons_JyQqt6",
