@@ -23,7 +23,7 @@
         name="id"
         id="variant-{{ variant.id }}"
         value="{{ variant.id }}"
-        {% if product.selected_variant == variant %}
+        {% if product.selected_or_first_available_variant == variant %}
           checked
         {% endif %}
         class="nx:hidden"
