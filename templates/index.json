@@ -41,7 +41,7 @@
       ],
       "name": "t:sections.image_with_text_overlay.name",
       "settings": {
-        "image": "shopify://shop_images/ThePurpleOne.jpg",
+        "image": "shopify://shop_images/All_of_them.jpg",
         "display_on_card": false,
         "display_content_below_image_on_mobile": true,
         "style": "full",
