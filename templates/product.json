@@ -101,7 +101,7 @@
             "product": "{{ closest.product }}",
             "enable_guaranteed_delivery_indicator": true,
             "override_lead_time": true,
-            "lead_time_text": "{{ closest.product.metafields.nilexia.lead_time_override_text | metafield_text }}"
+            "lead_time_text": "Guaranteed Christmas Delivery"
           },
           "blocks": {}
         },
