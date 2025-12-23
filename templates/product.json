@@ -101,7 +101,7 @@
             "product": "{{ closest.product }}",
             "enable_guaranteed_delivery_indicator": true,
             "override_lead_time": true,
-            "lead_time_text": "Guaranteed Christmas Delivery"
+            "lead_time_text": "January Delivery"
           },
           "blocks": {}
         },
