@@ -11,6 +11,8 @@
 %}
 
 <div class="nx:grid nx:gap-1">
-  <div class="nx:font-display nx:text-3xl">{{ variant.unit_price | money }} per {{ unit_price_type }}</div>
-  <p class="nx:font-semibold">{{ variant.price | money }} for the full box of {{ quantity -}}</p>
+  <div class="nx:font-display nx:text-3xl">{{ variant.price | money }} per gift box</div>
+  {% if variant.unit_price %}
+    <p class="nx:font-semibold">Just {{ variant.unit_price | money }} per BWOWNIE</p>
+  {% endif %}
 </div>

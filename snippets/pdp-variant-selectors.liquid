@@ -38,7 +38,13 @@
         <h3 class="nx:text-lg nx:font-display">
           {{ variant.title }}
         </h3>
-        <p class="nx:text-sm nx:font-bold">{{ variant.unit_price | money }} per {{ unit_price_type }}</p>
+        <div class="nx:flex nx:items-center nx:gap-1">
+          <p class="nx:font-bold">{{ variant.price | money }}</p>
+          {% if variant.unit_price %}
+            <span>&bullet;</span>
+            <p class="nx:text-sm">{{ variant.unit_price | money }} per {{ unit_price_type }}</p>
+          {% endif %}
+        </div>
         <p class="nx:text-sm">{{ tagline }}</p>
       </div>
       {% liquid
