@@ -9,6 +9,18 @@
   @param {number} free_shipping_threshold - The threshold to reach free shipping
 {% enddoc %}
 
+{% liquid
+  assign freeDeliveryProgress = cart_value | divided_by: free_shipping_threshold | times: 100
+
+  if cart_value == 0
+    assign freeDeliveryProgress = variant_price | divided_by: free_shipping_threshold | times: 100
+  endif
+
+  if add_to_qualify
+    assign freeDeliveryProgress = 100
+  endif
+%}
+
 <div class="sticky-atc__free-delivery-bar">
   <p class="sticky-atc__free-delivery-text" x-ref="freeDeliveryText">
     {% if free_shipping_qualified %}
@@ -24,7 +36,7 @@
     <div
       class="sticky-atc__bar-inner"
       x-ref="freeDeliveryProgress"
-      style="transform: scaleX({{ cart_value | divided_by: free_shipping_threshold }});"
+      style="transform: scaleX({{ freeDeliveryProgress }}%);"
     ></div>
   </div>
 </div>

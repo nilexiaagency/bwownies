@@ -1,9 +1,11 @@
 {
-  "scripts": {
-    "tailwind": "npx @tailwindcss/cli -i ./assets/tailwind.css -o ./assets/nlx.css --watch"
-  },
+	"scripts": {
+		"tailwind": "npx @tailwindcss/cli -i ./assets/tailwind.css -o ./assets/nlx.css --watch",
+		"shopify": "shopify theme dev -s zg0wh0-vj --theme-editor-sync",
+		"dev": "pnpm tailwind & pnpm shopify"
+	},
 	"dependencies": {
-		"tailwindcss": "^4.1.17",
-		"@tailwindcss/cli": "^4.1.17"
+		"@tailwindcss/cli": "^4.1.17",
+		"tailwindcss": "^4.1.17"
 	}
 }

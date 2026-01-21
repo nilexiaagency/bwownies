@@ -4,10 +4,12 @@
   @param {product} product - The product
 {% enddoc %}
 
-{% liquid
-  if product.options.size > 1
-    render 'pdp-option-selectors', product: product
-  else
-    render 'pdp-variant-selectors', product: product
-  endif
-%}
+<div x-intersect:enter.threshold.50="showStickyAddToCart = false" x-intersect:leave="showStickyAddToCart = true">
+  {% liquid
+    if product.options.size > 1
+      render 'pdp-option-selectors', product: product
+    else
+      render 'pdp-variant-selectors', product: product
+    endif
+  %}
+</div>

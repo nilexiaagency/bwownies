@@ -273,6 +273,7 @@
       {% render 'drawer-cart' %}
     {%- endif -%}
 
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
     <script src="{{ 'global.bundle.js' | asset_url }}" type="module"></script>
 
     {% if settings.enable_sticky_add_to_cart

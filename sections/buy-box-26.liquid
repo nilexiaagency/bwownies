@@ -25,10 +25,15 @@
   document.addEventListener('alpine:init', () => {
     Alpine.data('addToCartForm', () => ({
       addingToCart: false,
+      showStickyAddToCart: true,
+      currentVariantId: null,
+
       init() {
         this.sectionId = this.$el.id;
+        this.currentVariantId = document.querySelector("input[name='id']:checked.value");
       },
       async updateVariant(variantId) {
+        this.currentVariantId = variantId;
         const res = await fetch(window.location.pathname + `?variant=${variantId}` + `&section_id=${this.sectionId}`);
         const text = await res.text();
         const tempDiv = document.createElement('div');
@@ -38,9 +43,29 @@
         this.$refs.productForm.innerHTML = newBuyBox;
 
         // Reflect the selected variant in the URL without reloading
-        const url = new URL(window.location.href);
-        url.searchParams.set('variant', variantId);
-        window.history.replaceState({}, '', url.toString());
+        if (variantId) {
+          const url = new URL(window.location.href);
+
+          url.searchParams.set('variant', variantId);
+          window.history.replaceState({}, '', url.toString());
+        }
+      },
+      async updateOptionValues(e) {
+        const optionValueSelectors = e.target.closest('.optionSelectors');
+
+        const selectedOptionValues = Array.from(
+          optionValueSelectors.querySelectorAll('input[type="radio"]:checked, select')
+        ).map(({ dataset }) => dataset.optionValueId);
+
+        const params = selectedOptionValues.length > 0 ? `&option_values=${selectedOptionValues.join(',')}` : '';
+
+        const res = await fetch(`${window.location.href}?section_id=${this.sectionId}${params}`);
+        const text = await res.text();
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = text;
+
+        const newBuyBox = tempDiv.querySelector('[x-ref="productForm"]').innerHTML;
+        this.$refs.productForm.innerHTML = newBuyBox;
       },
       async handleSubmit() {
         const formData = new FormData(this.$refs.productForm);
@@ -63,6 +88,8 @@
               detail: { response: data, sourceId: formId },
             })
           );
+
+          this.updateVariant(this.currentVariantId);
 
           // Use existing theme events to refresh and open the cart drawer
           document.dispatchEvent(new CustomEvent('theme:update:cart'));
@@ -90,7 +117,8 @@
     { "type": "_pdp-price" },
     { "type": "_pdp-options" },
     { "type": "_pdp-collapsible-group" },
-    { "type": "_pdp-add-to-cart" }
+    { "type": "_pdp-add-to-cart" },
+    { "type": "_sticky-cart" }
   ],
   "presets": [
     {

@@ -12,6 +12,14 @@
     "main": {
       "type": "buy-box-26",
       "blocks": {
+        "sticky_cart_7J3GUE": {
+          "type": "_sticky-cart",
+          "name": "Sticky add to cart",
+          "settings": {
+            "product": "{{ closest.product }}"
+          },
+          "blocks": {}
+        },
         "product_title_9AGmHY": {
           "type": "_product-title",
           "name": "Product title",
@@ -143,6 +151,7 @@
         }
       },
       "block_order": [
+        "sticky_cart_7J3GUE",
         "product_title_9AGmHY",
         "text_hiBNFm",
         "pdp_price_eVLUYe",

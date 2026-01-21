@@ -7,7 +7,7 @@
 {% assign variants = product.variants %}
 
 <div
-  class="nx:grid nx:gap-4"
+  class="nx:grid nx:gap-4 optionSelectors"
   x-data="optionSelectors({ variants: {{ variants | json | escape }}, optionNames: {{ product.options | json | escape }}, initialOptions: {{ product.selected_or_first_available_variant.options | json | escape }}, selectedVariantId: {{ product.selected_or_first_available_variant.id }} })"
 >
   {% for option in product.options_with_values %}
@@ -21,8 +21,9 @@
               class="nx:hidden"
               name="{{ option.name }}"
               id="{{ option.id }}-{{ value.id }}"
+              data-option-value-id="{{ value.id }}"
               value="{{ value }}"
-              @change="setOption({{ forloop.parentloop.index0 }}, $event.target.value)"
+              @change="updateOptionValues"
               {% if value.selected %}
                 checked
               {% endif %}

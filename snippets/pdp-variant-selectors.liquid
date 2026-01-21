@@ -4,7 +4,7 @@
   @param {product} product - The product
 {% enddoc %}
 
-{% assign variants = product.variants %}
+{% assign variants = product.variants | sort: 'price' %}
 
 <div class="nx:grid nx:gap-3">
   {% for variant in variants %}
