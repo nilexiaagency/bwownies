@@ -108,7 +108,7 @@
           "settings": {
             "product": "{{ closest.product }}",
             "enable_guaranteed_delivery_indicator": true,
-            "override_lead_time": true,
+            "override_lead_time": false,
             "lead_time_text": "January Delivery"
           },
           "blocks": {}
