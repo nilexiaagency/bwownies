@@ -1,63 +1,337 @@
 {% doc %}
-  Renders a 'guaranteed delivery' indicator.
+  Renders a countdown timer for Wednesday 5pm deadline with Friday delivery date.
 
-  @param {product} product - The product to use for delivery information
   @param {block} block - The block rendering the guaranteed delivery indicator
 {% enddoc %}
 
 {% liquid
   assign override_lead_time = block.settings.override_lead_time
   assign lead_time_text = block.settings.lead_time_text
+  assign deadline_day = block.settings.deadline_day | default: '3'
+  assign delivery_day = block.settings.delivery_day | default: '5'
 %}
 
 <div
   class="nx:flex nx:gap-2.5 nx:items-center nx:text-sm nx:font-bold"
   x-data="deliveryBy"
-  data-lead-time="{{ product.metafields.nilexia.lead_time }}"
   data-override="{{ override_lead_time }}"
+  data-deadline-day="{{ deadline_day }}"
+  data-delivery-day="{{ delivery_day }}"
 >
   {% render 'icon', type: 'truck', classes: 'nx:w-5 nx:h-5' %}
-  <span class="nx:flex nx:gap-1 nx:items-center">
-    Order now for
-    <span class="nx:inline-block nx:text-white nx:p-1 nx:rounded nx:bg-plum" x-ref="date">
-      {% if override_lead_time %}
-        {{ lead_time_text }}
-      {% endif %}
-    </span>
+  <span class="nx:flex nx:gap-1 nx:items-center nx:flex-wrap">
+    {% if override_lead_time %}
+      {{ lead_time_text }}
+    {% else %}
+      <span x-text="orderWithinText"></span>
+      <span class="nx:inline-block nx:text-white nx:p-1 nx:rounded nx:bg-plum" x-text="deliveryFriday"></span>
+    {% endif %}
   </span>
 </div>
 
 {% javascript %}
   document.addEventListener('alpine:init', () => {
     Alpine.data('deliveryBy', () => ({
-      leadTimeInDays: null,
-      overridden: null,
+      ukTime: null,
+      deadline: null,
+      deliveryFriday: '',
+      orderWithinText: '',
+      intervalId: null,
+
       init() {
-        this.overridden = this.$el.dataset.override;
-        if (this.overridden === 'true') {
-          return;
-        }
-        this.leadTimeInDays = parseInt(this.$el.dataset.leadTime);
-        console.log(this.leadTimeInDays);
-        if (isNaN(this.leadTimeInDays)) {
-          this.leadTimeInDays = null;
+        const override = this.$el.dataset.override;
+        if (override === 'true') {
           return;
         }
 
-        const date = new Date();
-        const newDate = new Date(date.setDate(date.getDate() + this.leadTimeInDays));
+        // Get configurable days from data attributes
+        this.deadlineDay = parseInt(this.$el.dataset.deadlineDay) || 3; // Default to Wednesday
+        this.deliveryDay = parseInt(this.$el.dataset.deliveryDay) || 5; // Default to Friday
 
-        // Format like "7th November"
+        this.calculateDeadlineAndDelivery();
+        this.updateCountdown();
+        this.intervalId = setInterval(() => this.updateCountdown(), 1000);
+      },
+
+      getUKTimeComponents() {
+        // Get current time components in UK timezone (handles BST/GMT automatically)
+        const now = new Date();
+        const formatter = new Intl.DateTimeFormat('en-GB', {
+          timeZone: 'Europe/London',
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false,
+        });
+
+        const parts = formatter.formatToParts(now);
+        const year = parseInt(parts.find((p) => p.type === 'year').value);
+        const month = parseInt(parts.find((p) => p.type === 'month').value) - 1;
+        const day = parseInt(parts.find((p) => p.type === 'day').value);
+
+        // Get day of week by creating a date at noon UTC (safe from DST transitions)
+        // and checking what weekday it is when formatted in UK timezone
+        const testDateUTC = new Date(Date.UTC(year, month, day, 12, 0, 0));
+        const dayFormatter = new Intl.DateTimeFormat('en-GB', {
+          timeZone: 'Europe/London',
+          weekday: 'short',
+        });
+        const weekdayStr = dayFormatter.format(testDateUTC);
+        // Convert weekday string to number (0=Sunday, 1=Monday, ..., 6=Saturday)
+        const weekdayMap = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+        const dayOfWeek = weekdayMap[weekdayStr] ?? 0;
+
+        return {
+          year: year,
+          month: month,
+          day: day,
+          hour: parseInt(parts.find((p) => p.type === 'hour').value),
+          minute: parseInt(parts.find((p) => p.type === 'minute').value),
+          second: parseInt(parts.find((p) => p.type === 'second').value),
+          dayOfWeek: dayOfWeek,
+        };
+      },
+
+      getUKTimeAsDate(components) {
+        // Convert UK time components to a Date object
+        // We need to find the UTC time that, when formatted in UK timezone, gives us these components
+        const formatter = new Intl.DateTimeFormat('en-GB', {
+          timeZone: 'Europe/London',
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false,
+        });
+
+        // Start with a guess: create UTC date from components
+        // UK is typically UTC+0 (GMT) or UTC+1 (BST), so start with UTC
+        let candidate = new Date(
+          Date.UTC(
+            components.year,
+            components.month,
+            components.day,
+            components.hour,
+            components.minute,
+            components.second
+          )
+        );
+
+        // Adjust until the UK time matches all components
+        for (let i = 0; i < 48; i++) {
+          const candidateParts = formatter.formatToParts(candidate);
+          const candidateYear = parseInt(candidateParts.find((p) => p.type === 'year').value);
+          const candidateMonth = parseInt(candidateParts.find((p) => p.type === 'month').value) - 1;
+          const candidateDay = parseInt(candidateParts.find((p) => p.type === 'day').value);
+          const candidateHour = parseInt(candidateParts.find((p) => p.type === 'hour').value);
+          const candidateMinute = parseInt(candidateParts.find((p) => p.type === 'minute').value);
+
+          // Check if all components match
+          if (
+            candidateYear === components.year &&
+            candidateMonth === components.month &&
+            candidateDay === components.day &&
+            candidateHour === components.hour &&
+            candidateMinute === components.minute
+          ) {
+            return candidate;
+          }
+
+          // Calculate difference in milliseconds
+          // We'll adjust based on the most significant difference
+          let diffMs = 0;
+          if (
+            candidateYear !== components.year ||
+            candidateMonth !== components.month ||
+            candidateDay !== components.day
+          ) {
+            // Day difference - calculate days between dates
+            const targetUTC = Date.UTC(components.year, components.month, components.day);
+            const candidateUTC = Date.UTC(candidateYear, candidateMonth, candidateDay);
+            const daysDiff = Math.round((targetUTC - candidateUTC) / (24 * 60 * 60 * 1000));
+            diffMs = daysDiff * 24 * 60 * 60 * 1000;
+          } else {
+            // Same day, adjust by hours/minutes
+            const hourDiff = components.hour - candidateHour;
+            const minuteDiff = components.minute - candidateMinute;
+            diffMs = (hourDiff * 60 + minuteDiff) * 60 * 1000;
+          }
+
+          candidate = new Date(candidate.getTime() + diffMs);
+        }
+
+        return candidate;
+      },
+
+      calculateDeadlineAndDelivery() {
+        const ukNow = this.getUKTimeComponents();
+
+        // Find next deadline day 5pm in UK time
+        let daysUntilDeadline;
+        if (ukNow.dayOfWeek < this.deadlineDay) {
+          // Before deadline day, go to this week's deadline day
+          daysUntilDeadline = this.deadlineDay - ukNow.dayOfWeek;
+        } else if (ukNow.dayOfWeek === this.deadlineDay) {
+          // It's the deadline day - check if before 5pm
+          if (ukNow.hour < 17 || (ukNow.hour === 17 && ukNow.minute === 0 && ukNow.second === 0)) {
+            daysUntilDeadline = 0; // Today's deadline day before 5pm
+          } else {
+            daysUntilDeadline = 7; // Past 5pm, go to next deadline day
+          }
+        } else {
+          // After deadline day, go to next week's deadline day
+          daysUntilDeadline = 7 - (ukNow.dayOfWeek - this.deadlineDay);
+        }
+
+        // Calculate deadline day 5pm UK time components
+        const deadlineComponents = {
+          year: ukNow.year,
+          month: ukNow.month,
+          day: ukNow.day,
+          hour: 17,
+          minute: 0,
+          second: 0,
+        };
+
+        // Add days to get to deadline day
+        const deadlineDate = new Date(deadlineComponents.year, deadlineComponents.month, deadlineComponents.day);
+        deadlineDate.setDate(deadlineDate.getDate() + daysUntilDeadline);
+        deadlineComponents.year = deadlineDate.getFullYear();
+        deadlineComponents.month = deadlineDate.getMonth();
+        deadlineComponents.day = deadlineDate.getDate();
+
+        // Convert to Date object for deadline
+        this.deadline = this.getUKTimeAsDate(deadlineComponents);
+
+        // Calculate delivery day
+        // Start from the deadline date
+        const deadlineDateObj = new Date(deadlineComponents.year, deadlineComponents.month, deadlineComponents.day);
+        const deadlineDayOfWeek = deadlineDateObj.getDay();
+
+        // Calculate days from deadline day to delivery day
+        let daysFromDeadlineToDelivery;
+        const isBeforeDeadline = daysUntilDeadline > 0 || (daysUntilDeadline === 0 && ukNow.hour < 17);
+
+        if (this.deliveryDay > deadlineDayOfWeek) {
+          // Delivery day is later in the same week
+          daysFromDeadlineToDelivery = this.deliveryDay - deadlineDayOfWeek;
+        } else if (this.deliveryDay === deadlineDayOfWeek) {
+          // Same day - always use next week's delivery day
+          daysFromDeadlineToDelivery = 7;
+        } else {
+          // Delivery day is earlier in the week, so it's next week
+          daysFromDeadlineToDelivery = 7 - (deadlineDayOfWeek - this.deliveryDay);
+        }
+
+        // Calculate the delivery date
+        const deliveryDate = new Date(deadlineDateObj);
+        deliveryDate.setDate(deliveryDate.getDate() + daysFromDeadlineToDelivery);
+
+        const deliveryComponents = {
+          year: deliveryDate.getFullYear(),
+          month: deliveryDate.getMonth(),
+          day: deliveryDate.getDate(),
+          hour: 0,
+          minute: 0,
+          second: 0,
+        };
+
+        // Format delivery date with ordinal suffix
+        this.deliveryFriday = this.formatDeliveryDate(deliveryComponents);
+      },
+
+      formatDeliveryDate(components) {
         const getOrdinal = (n) => {
           const suffixes = ['th', 'st', 'nd', 'rd'];
           const v = n % 100;
           return `${n}${suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0]}`;
         };
-        const day = newDate.getDate();
-        const month = newDate.toLocaleString('en-GB', { month: 'long' });
-        this.formattedDeliveryDate = `${getOrdinal(day)} ${month}`;
 
-        this.$refs.date.innerText = 'Guaranteed Delivery ' + this.formattedDeliveryDate;
+        const date = new Date(components.year, components.month, components.day);
+        const day = components.day;
+        const month = date.toLocaleString('en-GB', { month: 'long' });
+
+        // Get day name
+        const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const dayName = dayNames[date.getDay()];
+
+        return `${dayName} ${getOrdinal(day)} ${month}`;
+      },
+
+      updateCountdown() {
+        const ukNow = this.getUKTimeComponents();
+        const nowDate = this.getUKTimeAsDate(ukNow);
+
+        // Recalculate if deadline has passed
+        if (nowDate >= this.deadline) {
+          this.calculateDeadlineAndDelivery();
+          // Recalculate nowDate after recalculation
+          const newUkNow = this.getUKTimeComponents();
+          const newNowDate = this.getUKTimeAsDate(newUkNow);
+          const diff = this.deadline - newNowDate;
+
+          if (diff <= 0) {
+            this.orderWithinText = '';
+            return;
+          }
+
+          this.formatOrderWithinText(diff);
+          return;
+        }
+
+        const diff = this.deadline - nowDate;
+
+        if (diff <= 0) {
+          this.orderWithinText = '';
+          return;
+        }
+
+        this.formatOrderWithinText(diff);
+      },
+
+      formatOrderWithinText(diffMs) {
+        const totalHours = Math.floor(diffMs / (1000 * 60 * 60));
+
+        // Check if 2 or more days away (48 hours)
+        if (totalHours >= 49) {
+          const days = Math.floor(totalHours / 24);
+          const hours = totalHours % 24;
+          if (hours > 0) {
+            this.orderWithinText = `Order within ${days} ${days === 1 ? 'day' : 'days'} ${hours} ${
+              hours === 1 ? 'hour' : 'hours'
+            } for guaranteed delivery on`;
+          } else {
+            this.orderWithinText = `Order within ${days} ${days === 1 ? 'day' : 'days'} for guaranteed delivery on`;
+          }
+        } else if (totalHours >= 1) {
+          // Under a day but at least an hour - show hours and minutes
+          const hours = Math.floor(diffMs / (1000 * 60 * 60));
+          const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+          if (minutes > 0) {
+            this.orderWithinText = `Order within ${hours} ${hours === 1 ? 'hour' : 'hours'} ${minutes} ${
+              minutes === 1 ? 'minute' : 'minutes'
+            } for guaranteed delivery on`;
+          } else {
+            this.orderWithinText = `Order within ${hours} ${hours === 1 ? 'hour' : 'hours'} for guaranteed delivery on`;
+          }
+        } else {
+          // Less than an hour - show only minutes
+          const minutes = Math.floor(diffMs / (1000 * 60));
+          this.orderWithinText = `Order within ${minutes} ${
+            minutes === 1 ? 'minute' : 'minutes'
+          } for guaranteed delivery on`;
+        }
+      },
+
+      destroy() {
+        if (this.intervalId) {
+          clearInterval(this.intervalId);
+        }
       },
     }));
   });
