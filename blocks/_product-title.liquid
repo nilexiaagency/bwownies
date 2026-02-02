@@ -1,21 +1,27 @@
-{% assign prod = block.settings.product %}
+{% liquid
+  assign product = block.settings.product
+  assign default_review_content = 'products.product.default_review.content' | t
+  assign default_review_author = 'products.product.default_review.author' | t
+  assign review_content = product.metafields.nilexia.featured_review_content | default: default_review_content
+  assign review_author = product.metafields.nilexia.featured_review_author | default: default_review_author
+%}
 
 <div class="nx:space-y-2!">
-  <h1 class="nx:text-[2.5rem]!">{{ prod.title }}</h1>
-  <div class="nx:font-bold nx:flex nx:items-center nx:gap-2">
-    {% if prod.metafields.loox.num_reviews > 0 %}
+  <h1 class="nx:text-[2.5rem]!">{{ product.title }}</h1>
+  {% if product.metafields.loox.num_reviews > 0 %}
+    <a href="#looxReviews" class="nx:font-bold nx:flex nx:items-center nx:gap-2">
       <span>Rated</span>
       <div
         class="loox-rating"
         data-fetch
-        data-id="{{ prod.id }}"
+        data-id="{{ product.id }}"
         data-pattern="by [count] BWOWNIE lovers"
       ></div>
-    {% endif %}
-  </div>
-  <p class="nx:italic">
-    “Great taste, well worth the cost and love supporting a small business” - <strong>Sarah B</strong>
-  </p>
+    </a>
+    <p class="nx:italic">
+      {{ review_content }} - <strong>{{ review_author }}</strong>
+    </p>
+  {% endif %}
 </div>
 
 {% schema %}
