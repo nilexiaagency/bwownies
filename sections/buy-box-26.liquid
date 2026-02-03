@@ -21,7 +21,7 @@
   </div>
 </div>
 
-{% javascript %}
+<script>
   document.addEventListener('alpine:init', () => {
     Alpine.data('addToCartForm', () => ({
       addingToCart: false,
@@ -103,7 +103,7 @@
       },
     }));
   });
-{% endjavascript %}
+</script>
 
 {% schema %}
 {
