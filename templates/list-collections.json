@@ -15,7 +15,9 @@
       "settings": {
         "collections": [
           "shop-bwownies",
-          "shop-bites"
+          "shop-bites",
+          "bundles",
+          "gift-cards"
         ]
       }
     },
