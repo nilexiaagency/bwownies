@@ -44,8 +44,5 @@
       }
     }
   },
-  "order": [
-    "main",
-    "collage"
-  ]
+  "order": ["main", "collage"]
 }
