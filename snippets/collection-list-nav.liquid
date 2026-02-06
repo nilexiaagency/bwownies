@@ -1,0 +1,18 @@
+{% doc %}
+  Renders the collection list navigation
+
+  @param {collection[]} collections - The collections to display
+{% enddoc %}
+<div class="nx:px-3.5 nx:py-6 nx:bg-white nx:flex nx:gap-2 nx:overflow-auto nx:sticky nx:top-0 nx:lg:justify-center nx:lg:gap-4">
+  {% for collection in collections %}
+    <a
+      href="#{{ section.id }}-{{ collection.handle }}"
+      class="nx:px-2 nx:py-1 nx:rounded-full nx:block nx:font-display nx:text-lg nx:leading-none nx:min-w-fit"
+      x-data="{ handle: '{{ section.id }}-{{ collection.handle }}'}"
+      :class="currentCollection == handle ? 'nx:bg-bright-pink' : 'nx:bg-plum'"
+      @click="setCurrentCollection(handle)"
+    >
+      {{ collection.title }}
+    </a>
+  {% endfor %}
+</div>

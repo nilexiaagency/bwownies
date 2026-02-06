@@ -9,6 +9,16 @@
  */
 {
   "sections": {
+    "main_collection_list_trgjtP": {
+      "type": "main-collection-list",
+      "name": "Collection list",
+      "settings": {
+        "collections": [
+          "shop-bwownies",
+          "shop-bites"
+        ]
+      }
+    },
     "main": {
       "type": "main-list-collections",
       "disabled": true,
@@ -45,6 +55,7 @@
     }
   },
   "order": [
+    "main_collection_list_trgjtP",
     "main",
     "collage"
   ]

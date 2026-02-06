@@ -10,17 +10,28 @@
     --nx-color-white: #fff;
     --nx-spacing: 0.25rem;
     --nx-container-7xl: 80rem;
+    --nx-text-xs: 0.75rem;
+    --nx-text-xs--line-height: calc(1 / 0.75);
     --nx-text-sm: 0.875rem;
     --nx-text-sm--line-height: calc(1.25 / 0.875);
+    --nx-text-base: 1rem;
+    --nx-text-base--line-height: calc(1.5 / 1);
     --nx-text-lg: 1.125rem;
     --nx-text-lg--line-height: calc(1.75 / 1.125);
+    --nx-text-2xl: 1.5rem;
+    --nx-text-2xl--line-height: calc(2 / 1.5);
     --nx-text-3xl: 1.875rem;
     --nx-text-3xl--line-height: calc(2.25 / 1.875);
     --nx-font-weight-semibold: 600;
     --nx-font-weight-bold: 700;
+    --nx-leading-tight: 1.25;
+    --nx-leading-normal: 1.5;
     --nx-radius-lg: 0.5rem;
     --nx-radius-xl: 0.75rem;
     --nx-radius-2xl: 1rem;
+    --nx-drop-shadow-md: 0 3px 3px rgb(0 0 0 / 0.12);
+    --nx-drop-shadow-lg: 0 4px 4px rgb(0 0 0 / 0.15);
+    --nx-drop-shadow-2xl: 0 25px 25px rgb(0 0 0 / 0.15);
     --nx-default-transition-duration: 150ms;
     --nx-default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --nx-default-font-family: var(--nx-font-sans);
@@ -180,6 +191,42 @@
   }
 }
 @layer utilities {
+  .nx\:absolute {
+    position: absolute !important;
+  }
+  .nx\:fixed {
+    position: fixed !important;
+  }
+  .nx\:relative {
+    position: relative !important;
+  }
+  .nx\:sticky {
+    position: sticky !important;
+  }
+  .nx\:inset-0 {
+    inset: calc(var(--nx-spacing) * 0) !important;
+  }
+  .nx\:top-0 {
+    top: calc(var(--nx-spacing) * 0) !important;
+  }
+  .nx\:top-2 {
+    top: calc(var(--nx-spacing) * 2) !important;
+  }
+  .nx\:right-2 {
+    right: calc(var(--nx-spacing) * 2) !important;
+  }
+  .nx\:isolate {
+    isolation: isolate !important;
+  }
+  .nx\:z-10 {
+    z-index: 10 !important;
+  }
+  .nx\:z-20 {
+    z-index: 20 !important;
+  }
+  .nx\:z-50 {
+    z-index: 50 !important;
+  }
   .nx\:container {
     width: 100% !important;
     @media (width >= 40rem) {
@@ -198,11 +245,23 @@
       max-width: 96rem !important;
     }
   }
+  .nx\:m-0 {
+    margin: calc(var(--nx-spacing) * 0) !important;
+  }
   .nx\:mx-auto {
     margin-inline: auto !important;
   }
   .nx\:mt-2 {
     margin-top: calc(var(--nx-spacing) * 2) !important;
+  }
+  .nx\:mt-4 {
+    margin-top: calc(var(--nx-spacing) * 4) !important;
+  }
+  .nx\:mt-auto {
+    margin-top: auto !important;
+  }
+  .nx\:mb-1 {
+    margin-bottom: calc(var(--nx-spacing) * 1) !important;
   }
   .nx\:mb-2 {
     margin-bottom: calc(var(--nx-spacing) * 2) !important;
@@ -212,6 +271,9 @@
   }
   .nx\:ml-auto {
     margin-left: auto !important;
+  }
+  .nx\:block {
+    display: block !important;
   }
   .nx\:flex {
     display: flex !important;
@@ -231,6 +293,9 @@
   .nx\:h-5 {
     height: calc(var(--nx-spacing) * 5) !important;
   }
+  .nx\:h-full {
+    height: 100% !important;
+  }
   .nx\:w-4\.5 {
     width: calc(var(--nx-spacing) * 4.5) !important;
   }
@@ -245,6 +310,9 @@
   }
   .nx\:min-w-4\.5 {
     min-width: calc(var(--nx-spacing) * 4.5) !important;
+  }
+  .nx\:min-w-fit {
+    min-width: fit-content !important;
   }
   .nx\:translate-y-0\.5 {
     --tw-translate-y: calc(var(--nx-spacing) * 0.5) !important;
@@ -262,8 +330,14 @@
   .nx\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
+  .nx\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
   .nx\:grid-cols-5 {
     grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+  .nx\:grid-cols-12 {
+    grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
   }
   .nx\:flex-col {
     flex-direction: column !important;
@@ -282,6 +356,9 @@
   }
   .nx\:justify-center {
     justify-content: center !important;
+  }
+  .nx\:justify-end {
+    justify-content: flex-end !important;
   }
   .nx\:gap-1 {
     gap: calc(var(--nx-spacing) * 1) !important;
@@ -311,6 +388,13 @@
       margin-block-end: calc(calc(var(--nx-spacing) * 2) * calc(1 - var(--tw-space-y-reverse))) !important;
     }
   }
+  .nx\:space-y-14 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0 !important;
+      margin-block-start: calc(calc(var(--nx-spacing) * 14) * var(--tw-space-y-reverse)) !important;
+      margin-block-end: calc(calc(var(--nx-spacing) * 14) * calc(1 - var(--tw-space-y-reverse))) !important;
+    }
+  }
   .nx\:divide-y {
     :where(& > :not(:last-child)) {
       --tw-divide-y-reverse: 0 !important;
@@ -328,11 +412,20 @@
       }
     }
   }
+  .nx\:overflow-auto {
+    overflow: auto !important;
+  }
+  .nx\:overflow-clip {
+    overflow: clip !important;
+  }
   .nx\:rounded {
     border-radius: 0.25rem !important;
   }
   .nx\:rounded-2xl {
     border-radius: var(--nx-radius-2xl) !important;
+  }
+  .nx\:rounded-full {
+    border-radius: calc(infinity * 1px) !important;
   }
   .nx\:rounded-lg {
     border-radius: var(--nx-radius-lg) !important;
@@ -389,11 +482,35 @@
   .nx\:p-4 {
     padding: calc(var(--nx-spacing) * 4) !important;
   }
+  .nx\:px-2 {
+    padding-inline: calc(var(--nx-spacing) * 2) !important;
+  }
+  .nx\:px-2\.5 {
+    padding-inline: calc(var(--nx-spacing) * 2.5) !important;
+  }
+  .nx\:px-3\.5 {
+    padding-inline: calc(var(--nx-spacing) * 3.5) !important;
+  }
   .nx\:px-4 {
     padding-inline: calc(var(--nx-spacing) * 4) !important;
   }
+  .nx\:px-6 {
+    padding-inline: calc(var(--nx-spacing) * 6) !important;
+  }
+  .nx\:py-1 {
+    padding-block: calc(var(--nx-spacing) * 1) !important;
+  }
   .nx\:py-3 {
     padding-block: calc(var(--nx-spacing) * 3) !important;
+  }
+  .nx\:py-4 {
+    padding-block: calc(var(--nx-spacing) * 4) !important;
+  }
+  .nx\:py-6 {
+    padding-block: calc(var(--nx-spacing) * 6) !important;
+  }
+  .nx\:py-8 {
+    padding-block: calc(var(--nx-spacing) * 8) !important;
   }
   .nx\:py-20 {
     padding-block: calc(var(--nx-spacing) * 20) !important;
@@ -401,11 +518,18 @@
   .nx\:text-center {
     text-align: center !important;
   }
+  .nx\:text-left {
+    text-align: left !important;
+  }
   .nx\:font-display {
     font-family: var(--nx-font-display) !important;
   }
   .nx\:font-sans {
     font-family: var(--nx-font-sans) !important;
+  }
+  .nx\:text-2xl {
+    font-size: var(--nx-text-2xl) !important;
+    line-height: var(--tw-leading, var(--nx-text-2xl--line-height)) !important;
   }
   .nx\:text-3xl {
     font-size: var(--nx-text-3xl) !important;
@@ -419,12 +543,23 @@
     font-size: var(--nx-text-sm) !important;
     line-height: var(--tw-leading, var(--nx-text-sm--line-height)) !important;
   }
+  .nx\:text-xs {
+    font-size: var(--nx-text-xs) !important;
+    line-height: var(--tw-leading, var(--nx-text-xs--line-height)) !important;
+  }
+  .nx\:text-\[0\.625rem\] {
+    font-size: 0.625rem !important;
+  }
   .nx\:text-\[2\.5rem\]\! {
     font-size: 2.5rem !important;
   }
   .nx\:leading-none {
     --tw-leading: 1 !important;
     line-height: 1 !important;
+  }
+  .nx\:leading-tight {
+    --tw-leading: var(--nx-leading-tight) !important;
+    line-height: var(--nx-leading-tight) !important;
   }
   .nx\:font-bold {
     --tw-font-weight: var(--nx-font-weight-bold) !important;
@@ -438,14 +573,26 @@
     --tw-font-weight: var(--nx-font-weight-semibold) !important;
     font-weight: var(--nx-font-weight-semibold) !important;
   }
+  .nx\:text-balance {
+    text-wrap: balance !important;
+  }
+  .nx\:text-pretty {
+    text-wrap: pretty !important;
+  }
   .nx\:text-plum {
     color: var(--nx-color-plum) !important;
   }
   .nx\:text-white {
     color: var(--nx-color-white) !important;
   }
+  .nx\:uppercase {
+    text-transform: uppercase !important;
+  }
   .nx\:italic {
     font-style: italic !important;
+  }
+  .nx\:opacity-0 {
+    opacity: 0% !important;
   }
   .nx\:opacity-80 {
     opacity: 80% !important;
@@ -458,6 +605,13 @@
   .nx\:group-open\:rotate-180 {
     &:is(:where(.nx\:group):is([open], :popover-open, :open) *) {
       rotate: 180deg !important;
+    }
+  }
+  .nx\:group-hover\:opacity-100 {
+    &:is(:where(.nx\:group):hover *) {
+      @media (hover: hover) {
+        opacity: 100% !important;
+      }
     }
   }
   .nx\:group-has-checked\/variant-selector\:block {
@@ -489,6 +643,21 @@
       }
     }
   }
+  .nx\:disabled\:opacity-50 {
+    &:disabled {
+      opacity: 50% !important;
+    }
+  }
+  .nx\:has-checked\:border-bright-pink {
+    &:has(*:checked) {
+      border-color: var(--nx-color-bright-pink) !important;
+    }
+  }
+  .nx\:has-checked\:bg-bright-pink {
+    &:has(*:checked) {
+      background-color: var(--nx-color-bright-pink) !important;
+    }
+  }
   .nx\:has-checked\:bg-plum\/90 {
     &:has(*:checked) {
       background-color: var(--nx-color-plum) !important;
@@ -512,14 +681,100 @@
       flex-wrap: nowrap !important;
     }
   }
+  .nx\:md\:grid-cols-2 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+  }
+  .nx\:md\:grid-cols-3 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+  }
+  .nx\:lg\:sticky {
+    @media (width >= 64rem) {
+      position: sticky !important;
+    }
+  }
+  .nx\:lg\:top-0 {
+    @media (width >= 64rem) {
+      top: calc(var(--nx-spacing) * 0) !important;
+    }
+  }
+  .nx\:lg\:col-span-4 {
+    @media (width >= 64rem) {
+      grid-column: span 4 / span 4 !important;
+    }
+  }
+  .nx\:lg\:col-span-8 {
+    @media (width >= 64rem) {
+      grid-column: span 8 / span 8 !important;
+    }
+  }
+  .nx\:lg\:grid {
+    @media (width >= 64rem) {
+      display: grid !important;
+    }
+  }
   .nx\:lg\:grid-cols-2 {
     @media (width >= 64rem) {
       grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     }
   }
+  .nx\:lg\:grid-cols-3 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+  }
+  .nx\:lg\:justify-center {
+    @media (width >= 64rem) {
+      justify-content: center !important;
+    }
+  }
+  .nx\:lg\:gap-4 {
+    @media (width >= 64rem) {
+      gap: calc(var(--nx-spacing) * 4) !important;
+    }
+  }
+  .nx\:lg\:gap-10 {
+    @media (width >= 64rem) {
+      gap: calc(var(--nx-spacing) * 10) !important;
+    }
+  }
   .nx\:lg\:gap-18 {
     @media (width >= 64rem) {
       gap: calc(var(--nx-spacing) * 18) !important;
+    }
+  }
+  .nx\:lg\:space-y-28 {
+    @media (width >= 64rem) {
+      :where(& > :not(:last-child)) {
+        --tw-space-y-reverse: 0 !important;
+        margin-block-start: calc(calc(var(--nx-spacing) * 28) * var(--tw-space-y-reverse)) !important;
+        margin-block-end: calc(calc(var(--nx-spacing) * 28) * calc(1 - var(--tw-space-y-reverse))) !important;
+      }
+    }
+  }
+  .nx\:lg\:self-start {
+    @media (width >= 64rem) {
+      align-self: flex-start !important;
+    }
+  }
+  .nx\:lg\:py-16 {
+    @media (width >= 64rem) {
+      padding-block: calc(var(--nx-spacing) * 16) !important;
+    }
+  }
+  .nx\:lg\:text-base {
+    @media (width >= 64rem) {
+      font-size: var(--nx-text-base) !important;
+      line-height: var(--tw-leading, var(--nx-text-base--line-height)) !important;
+    }
+  }
+  .nx\:lg\:text-sm {
+    @media (width >= 64rem) {
+      font-size: var(--nx-text-sm) !important;
+      line-height: var(--tw-leading, var(--nx-text-sm--line-height)) !important;
     }
   }
   .nx\:\[\&_svg\]\:w-3\.5 {

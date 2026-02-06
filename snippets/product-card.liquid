@@ -1,0 +1,95 @@
+{% doc %}
+  Renders a product card
+
+  @param {product} product - The product to display
+{% enddoc %}
+{% assign excerpt = product.metafields.nilexia.product_card_tagline %}
+<article
+  class="nx:rounded-xl nx:overflow-clip nx:h-full nx:bg-white nx:flex nx:flex-col nx:relative nx:group"
+  x-data="{...productCard(), inStock: {{ product.selected_or_first_available_variant.available }}, inStockString: '{{ 'products.product.add_to_cart_price' | t }}', initialPrice: '{{ product.selected_or_first_available_variant.price | money }}' }"
+>
+  <a href="{{ product.url }}" class="nx:absolute nx:inset-0 nx:w-full nx:h-full nx:z-10"></a>
+  {% comment %} media {% endcomment %}
+  {% if product.featured_image %}
+    <div class="nx:aspect-square nx:relative nx:isolate">
+      {{
+        product.featured_image
+        | image_url: width: 800
+        | image_tag: class: 'nx:absolute nx:inset-0 nx:w-full nx:h-full nx:object-cover'
+      }}
+      {% if product.images[1] %}
+        {{
+          product.images[1]
+          | image_url: width: 800
+          | image_tag:
+            class: 'nx:absolute nx:inset-0 nx:w-full nx:h-full nx:object-cover nx:opacity-0 nx:group-hover:opacity-100'
+        }}
+      {% endif %}
+      <div class="nx:absolute nx:top-2 nx:right-2 nx:gap-1 nx:w-full nx:flex nx:justify-end nx:flex-wrap">
+        {% if product.compare_at_price > product.price %}
+          {% render 'badge', text: 'Sale', class: 'nx:text-white nx:m-0' %}
+        {% endif %}
+        {% if product.metafields.custom.badge_text %}
+          {% render 'badge', text: product.metafields.custom.badge_text, class: 'nx:text-white nx:m-0' %}
+        {% endif %}
+        <span
+          class="tag nx:text-white"
+          x-show="!inStock"
+          {% unless product.selected_or_first_available_variant.available == false %}
+            x-cloak
+          {% endunless %}
+        >
+          {{ 'products.product.out_of_stock' | t }}
+        </span>
+      </div>
+    </div>
+  {% endif %}
+  {% comment %} main {% endcomment %}
+  <div class="nx:flex nx:flex-col nx:px-2.5 nx:py-4 nx:gap-2.5 nx:bg-white nx:text-center nx:h-full">
+    <h3>{{ product.title }}</h3>
+    <div class="nx:font-bold nx:flex nx:justify-center nx:items-center nx:text-xs nx:gap-2">
+      <div
+        class="loox-rating"
+        data-fetch
+        data-id="{{ product.id }}"
+        data-pattern="[count] reviews"
+      ></div>
+    </div>
+    {% if excerpt %}
+      <p class="nx:leading-tight nx:text-sm nx:lg:text-base">{{ excerpt }}</p>
+    {% endif %}
+    {% if product.options.size <= 1 %}
+      {% render 'product-card-atc', product: product %}
+    {% else %}
+      <a
+        class="nx:bg-bright-pink p-2.5 nx:mt-auto nx:rounded-lg nx:font-display nx:text-white nx:text-sm nx:w-full"
+        href="{{ product.url }}"
+        >Choose options</a
+      >
+    {% endif %}
+  </div>
+</article>
+
+{% javascript %}
+  window.addEventListener('alpine:init', () => {
+    Alpine.data('productCard', () => ({
+      variants: null,
+      variantPrice: this.initialPrice,
+      addingToCart: false,
+      init() {
+        this.inStockText = this.inStockString + this.initialPrice;
+        const variantScriptEl = this.$refs.variants;
+        if (variantScriptEl) {
+          const variantData = variantScriptEl.textContent;
+          this.variants = JSON.parse(variantData);
+        }
+      },
+      handleVariantChange(newVariantId) {
+        const newVariant = this.variants.find((variant) => variant.id == newVariantId);
+        console.log(newVariant);
+        this.inStock = newVariant.available;
+        this.inStockText = `${this.inStockString} ${formatMoney(newVariant.price)}`;
+      },
+    }));
+  });
+{% endjavascript %}

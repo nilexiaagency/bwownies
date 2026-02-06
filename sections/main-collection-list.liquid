@@ -1,0 +1,48 @@
+{% assign collections = section.settings.collections %}
+<div class="nx:bg-light-pink" x-data="collectionListPage">
+  {% render 'collection-list-nav', collections: collections %}
+  <div class="nx:container nx:max-w-7xl nx:mx-auto nx:py-8 nx:px-6 nx:text-plum nx:space-y-14 nx:lg:py-16 nx:lg:space-y-28">
+    {% for collection in collections %}
+      {% render 'collection-list-item', collection: collection %}
+    {% endfor %}
+  </div>
+</div>
+
+{% javascript %}
+  window.addEventListener('alpine:init', () => {
+    Alpine.data('collectionListPage', () => ({
+      currentCollection: null,
+      init() {
+        console.log('collection list page');
+
+        this.$watch('this.currentCollection', (value, oldValue) => {
+          console.log(value);
+        });
+      },
+      setCurrentCollection(handle) {
+        this.currentCollection = handle;
+        console.log(this.currentCollection);
+      },
+    }));
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Collection list",
+  "enabled_on": { "templates": ["list-collections"] },
+  "settings": [
+    {
+      "type": "collection_list",
+      "id": "collections",
+      "label": "Collections"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Nilexia",
+      "name": "Collection list"
+    }
+  ]
+}
+{% endschema %}

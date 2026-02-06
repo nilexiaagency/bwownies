@@ -1,0 +1,57 @@
+{% doc %}
+  Renders a product card form
+
+  @param {product} product - The product to display
+{% enddoc %}
+
+{% assign variants = product.variants | sort: 'price' %}
+
+{% form 'product', product, class: 'nx:mt-auto nx:relative nx:z-20' %}
+  {% if product.variants.size > 1 %}
+    <script type="application/json" x-ref="variants">
+      {{ product.variants | json }}
+    </script>
+    <span class="nx:block nx:text-left nx:mb-1 nx:text-sm nx:font-bold nx:lg:text-base">How many do you fancy?</span>
+    <div class="nx:grid nx:grid-cols-3 nx:gap-2 nx:mb-2" @change="handleVariantChange(event.target.value)">
+      {% for variant in variants %}
+        <label
+          for="{{ product.id }}-{{ variant.id }}"
+          class="nx:rounded-full nx:cursor-pointer nx:p-1 nx:border nx:border-plum nx:font-bold nx:uppercase nx:text-[0.625rem] nx:lg:text-sm nx:has-checked:bg-bright-pink nx:has-checked:border-bright-pink nx:has-checked:text-white"
+        >
+          <input
+            type="radio"
+            name="id"
+            id="{{ product.id }}-{{ variant.id }}"
+            value="{{ variant.id }}"
+            class="nx:hidden"
+            {% if product.selected_or_first_available_variant == variant %}
+              checked
+            {% endif %}
+          >
+          {%- assign formatted_title = variant.title | downcase | remove: 'gift box of' | strip -%}
+          {{ formatted_title }}
+        </label>
+      {% endfor %}
+    </div>
+  {% else %}
+    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+  {% endif %}
+  <button
+    type="submit"
+    class="nx:bg-bright-pink p-2.5 nx:rounded-lg nx:font-display nx:text-white nx:text-sm nx:w-full nx:disabled:opacity-50"
+    {% if product.selected_or_first_available_variant.available == false %}
+      disabled
+    {% endif %}
+    :disabled="!inStock"
+  >
+    <span x-text="inStock ? inStockText : '{{ 'products.product.out_of_stock' | t }}'">
+      {% if product.selected_or_first_available_variant.available %}
+        {{ 'products.product.add_to_cart_price' | t }}
+        &nbsp;
+        {{ product.selected_or_first_available_variant.price | money }}
+      {% else %}
+        {{ 'products.product.sold_out' | t }}
+      {% endif %}
+    </span>
+  </button>
+{% endform %}
