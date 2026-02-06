@@ -39,12 +39,9 @@
   item_count: columns.size
 -%}
 
-{%- render 'static-sticker-defs',
-  shape: section.settings.index_shape,
-  id: index_id
--%}
+{%- render 'static-sticker-defs', shape: section.settings.index_shape, id: index_id -%}
 <section
-  class="relative bg-scheme-background text-scheme-text  {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} relative overflow-hidden"
+  class="relative bg-scheme-background text-scheme-text  {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} relative nx:overflow-clip"
   data-color-scheme="{{ section.settings.color_scheme }}"
 >
   <div class="section-content relative z-10 py-section-vertical-spacing {% if slideshow_on_mobile %}lg:px-section lg:max-w-site lg:mx-auto{% else %}px-section{% endif %}">
@@ -157,9 +154,7 @@
                 <div class="rte {% if block.settings.title != '' %}mt-2.5{% endif %}">
                   {{ block.settings.text }}
                 </div>
-                {% if block.settings.cta_link
-                  and block.settings.cta_text != blank
-                %}
+                {% if block.settings.cta_link and block.settings.cta_text != blank %}
                   <div class="relative z-10 mt-5">
                     <a
                       href="{{ block.settings.cta_link }}"
@@ -172,9 +167,7 @@
                   </div>
                 {% endif %}
               </div>
-              {%- if section.settings.show_index_on_blocks
-                and block.settings.show_image
-              -%}
+              {%- if section.settings.show_index_on_blocks and block.settings.show_image -%}
                 {%- liquid
                   assign text = forloop.index
                   assign id = 'sticker-' | append: section.id | append: '-' | append: forloop.index
@@ -2358,11 +2351,7 @@
     }
   ],
   "disabled_on": {
-    "groups": [
-      "header",
-      "footer",
-      "aside"
-    ]
+    "groups": ["header", "footer", "aside"]
   }
 }
 {% endschema %}

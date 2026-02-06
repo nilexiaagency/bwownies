@@ -238,7 +238,7 @@
     </a>
     {%- sections 'header-group' -%}
     {% render 'header-group-support' %}
-    <main id="MainContent" class="overflow-hidden">
+    <main id="MainContent" class="nx:overflow-clip">
       {{ content_for_layout }}
     </main>
 
@@ -275,6 +275,7 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
     <script src="{{ 'global.bundle.js' | asset_url }}" type="module"></script>
+    <script src="{{ 'nilexia.js' | asset_url }}" defer></script>
 
     {% if settings.enable_sticky_add_to_cart
       and template.name == 'product'

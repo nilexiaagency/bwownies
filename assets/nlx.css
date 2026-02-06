@@ -482,6 +482,9 @@
   .nx\:p-4 {
     padding: calc(var(--nx-spacing) * 4) !important;
   }
+  .nx\:px-1 {
+    padding-inline: calc(var(--nx-spacing) * 1) !important;
+  }
   .nx\:px-2 {
     padding-inline: calc(var(--nx-spacing) * 2) !important;
   }
@@ -496,6 +499,9 @@
   }
   .nx\:px-6 {
     padding-inline: calc(var(--nx-spacing) * 6) !important;
+  }
+  .nx\:py-0\.5 {
+    padding-block: calc(var(--nx-spacing) * 0.5) !important;
   }
   .nx\:py-1 {
     padding-block: calc(var(--nx-spacing) * 1) !important;
@@ -701,6 +707,11 @@
       top: calc(var(--nx-spacing) * 0) !important;
     }
   }
+  .nx\:lg\:top-40 {
+    @media (width >= 64rem) {
+      top: calc(var(--nx-spacing) * 40) !important;
+    }
+  }
   .nx\:lg\:col-span-4 {
     @media (width >= 64rem) {
       grid-column: span 4 / span 4 !important;
@@ -714,6 +725,11 @@
   .nx\:lg\:grid {
     @media (width >= 64rem) {
       display: grid !important;
+    }
+  }
+  .nx\:lg\:scroll-mt-40 {
+    @media (width >= 64rem) {
+      scroll-margin-top: calc(var(--nx-spacing) * 40) !important;
     }
   }
   .nx\:lg\:grid-cols-2 {

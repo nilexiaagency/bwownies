@@ -1,5 +1,5 @@
 <section
-  class="relative overflow-hidden bg-scheme-background text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} {% if collection.image != blank and section.settings.show_collection_image and section.settings.collection_image_style == 'full' %}full-bleed-section{% endif %}"
+  class="relative nx:overflow-clip bg-scheme-background text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} {% if collection.image != blank and section.settings.show_collection_image and section.settings.collection_image_style == 'full' %}full-bleed-section{% endif %}"
   data-color-scheme="{{ section.settings.color_scheme }}"
 >
   {%- liquid

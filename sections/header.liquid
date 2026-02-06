@@ -248,7 +248,7 @@
                 <span class="svg-scale rotate ml-1 mr-1 inline-block h-2 w-2 shrink-0 origin-center transform align-middle transition-transform duration-150" :class="{'rotate-180': menuOpen.menu{{ counter }}}">{% render 'icon-chevron-down' %}</span>
               </span>
             </button>
-            <div class="no-js-focus-container z-100 absolute top-full {% unless nested_nav_style == 'dropdown' %}left-0 py-half-section-vertical-spacing {% endunless %} {{ menu_style_classes }} transform {% if layout contains 'navigation_center' and nested_nav_style == 'mega_menu' %}text-center{% else %}text-left{% endif %} overflow-hidden overflow-y-auto bg-[--active-color-scheme-background] text-[--active-color-scheme-text]"
+            <div class="no-js-focus-container z-100 absolute top-full {% unless nested_nav_style == 'dropdown' %}left-0 py-half-section-vertical-spacing {% endunless %} {{ menu_style_classes }} transform {% if layout contains 'navigation_center' and nested_nav_style == 'mega_menu' %}text-center{% else %}text-left{% endif %} nx:overflow-clip overflow-y-auto bg-[--active-color-scheme-background] text-[--active-color-scheme-text]"
               :class="
                 {
                   'z-header-dropdown': menuOpen.menu{{ counter }},
@@ -520,7 +520,7 @@
         </div>
       </template>
       <template x-if="resultsOpen">
-        <div x-show="resultsOpen" class="relative z-50 max-h-three-quarters-screen-height scroll-pb-5 {% unless nested_nav_style == 'dropdown' %}overflow-hidden overflow-y-auto{% endunless %} bg-scheme-background px-section pb-5 lg:scroll-pb-10 lg:pb-10" x-ref="results">
+        <div x-show="resultsOpen" class="relative z-50 max-h-three-quarters-screen-height scroll-pb-5 {% unless nested_nav_style == 'dropdown' %}nx:overflow-clip overflow-y-auto{% endunless %} bg-scheme-background px-section pb-5 lg:scroll-pb-10 lg:pb-10" x-ref="results">
         </div>
       </template>
     </div>
@@ -561,7 +561,7 @@
       {%- endif -%}
     </button>
 
-    <div class="no-js-focus-container z-100 absolute top-full {% unless nested_nav_style == 'dropdown' %}left-0 py-section-vertical-spacing px-section transform{% endunless %} hidden w-11/12 md:w-7/12 lg:w-5/12 {% if layout contains 'navigation_center' and nested_nav_style == 'mega_menu' %}text-center{% else %}text-left{% endif %} max-h-three-quarters-screen-height overflow-hidden overflow-y-auto bg-scheme-background text-scheme-text">
+    <div class="no-js-focus-container z-100 absolute top-full {% unless nested_nav_style == 'dropdown' %}left-0 py-section-vertical-spacing px-section transform{% endunless %} hidden w-11/12 md:w-7/12 lg:w-5/12 {% if layout contains 'navigation_center' and nested_nav_style == 'mega_menu' %}text-center{% else %}text-left{% endif %} max-h-three-quarters-screen-height nx:overflow-clip overflow-y-auto bg-scheme-background text-scheme-text">
       {%- render 'no-js-sidebar-nav' %}
     </div>
   </div>
@@ -734,7 +734,7 @@
       class="z-10"
     >
       <div
-        class="{% unless nested_nav_style == 'dropdown' %}overflow-hidden{% endunless %} px-section py-2 lg:py-0"
+        class="{% unless nested_nav_style == 'dropdown' %}nx:overflow-clip{% endunless %} px-section py-2 lg:py-0"
       >
         {%- liquid
           unless layout == 'logo_left_navigation_center'

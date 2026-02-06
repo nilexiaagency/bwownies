@@ -11,7 +11,7 @@
 -%}
 
 <section
-  class="relative overflow-hidden bg-scheme-background text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %}"
+  class="relative nx:overflow-clip bg-scheme-background text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %}"
   data-color-scheme="{{ section.settings.color_scheme }}"
 >
   <div class="section-content py-section-vertical-spacing">
@@ -80,11 +80,7 @@
                   {%- endif -%}
                   <blockquote class="text-center {% if block.settings.image != blank %}mt-5{% endif %}">
                     {%- if block.settings.rating != 'none' -%}
-                      {%- assign stars = block.settings.rating
-                        | split: '_'
-                        | first
-                        | plus: 0
-                      -%}
+                      {%- assign stars = block.settings.rating | split: '_' | first | plus: 0 -%}
                       <span class="mb-5 block text-center tracking-rating">
                         {%- for i in (1..stars) -%}
                           ★
@@ -93,11 +89,7 @@
                     {%- endif -%}
 
                     <div class="inline-rte font-body text-base">
-                      {{
-                        block.settings.quote
-                        | replace: '<p>', '<p>&#8220;'
-                        | replace: '</p>', '&#8221;</p>'
-                      }}
+                      {{ block.settings.quote | replace: '<p>', '<p>&#8220;' | replace: '</p>', '&#8221;</p>' }}
                     </div>
                     {% if block.settings.source != blank %}
                       <footer class="font-heading mt-5 break-words">
@@ -2214,11 +2206,7 @@
     }
   ],
   "disabled_on": {
-    "groups": [
-      "header",
-      "footer",
-      "aside"
-    ]
+    "groups": ["header", "footer", "aside"]
   }
 }
 {% endschema %}

@@ -8,7 +8,7 @@
 -%}
 {%- paginate collections by 6 -%}
   <section
-    class="relative bg-scheme-background py-section-vertical-spacing text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} overflow-hidden"
+    class="relative bg-scheme-background py-section-vertical-spacing text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} nx:overflow-clip"
     data-color-scheme="{{ section.settings.color_scheme }}"
   >
     <div class="mx-auto grid max-w-site px-section lg:grid-flow-row-dense lg:auto-rows-auto lg:grid-cols-12 {% if section.settings.title != '' %}section-content-top-margin{% endif %} gap-theme">
@@ -69,11 +69,7 @@
           {% endif %}
         >
           <a href="{{ url }}" class="group block w-full">
-            {%- render 'shape-defs',
-              shape: image_shape,
-              shape_id: shape_id,
-              index: forloop.index0
-            -%}
+            {%- render 'shape-defs', shape: image_shape, shape_id: shape_id, index: forloop.index0 -%}
 
             {%- if image != blank -%}
               <div class="w-full">

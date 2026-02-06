@@ -11,17 +11,13 @@
       assign link_class = 'text-scheme-text hover:text-scheme-accent-2'
   endcase
 -%}
-{%- unless template == 'index'
-  or template == 'cart'
-  or template == 'list-collections'
-  or template == '404'
--%}
+{%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
   {%- assign t = template | split: '.' | first -%}
   {%- capture separator -%}
   <span class="inline-block" role="presentation">{{ section.settings.separator }}</span>
 {%- endcapture -%}
   <section
-    class="relative overflow-hidden bg-scheme-background text-scheme-text"
+    class="relative nx:overflow-clip bg-scheme-background text-scheme-text"
     data-color-scheme="{{ section.settings.color_scheme }}"
   >
     <div class="section-content px-section py-4">
@@ -45,10 +41,7 @@
             {%- when 'product' -%}
               {%- if collection.url -%}
                 <li class="{{ list_item_class  }}">
-                  {{
-                    collection.title
-                    | link_to: collection.url, class: link_class
-                  }}
+                  {{ collection.title | link_to: collection.url, class: link_class }}
                   {{ separator }}
                 </li>
               {%- endif -%}
@@ -64,10 +57,7 @@
             {%- when 'collection' and collection.handle -%}
               {%- if current_tags -%}
                 <li class="{{ list_item_class  }}">
-                  {{
-                    collection.title
-                    | link_to: collection.url, class: link_class
-                  }}
+                  {{ collection.title | link_to: collection.url, class: link_class }}
                   {{ separator }}
                 </li>
                 <li>
@@ -269,12 +259,7 @@
     }
   ],
   "disabled_on": {
-    "templates": [
-      "index",
-      "cart",
-      "list-collections",
-      "404"
-    ]
+    "templates": ["index", "cart", "list-collections", "404"]
   }
 }
 {% endschema %}

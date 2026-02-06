@@ -5,7 +5,7 @@
 -%}
 
 <section
-  class="relative bg-scheme-background text-scheme-text  {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} relative overflow-hidden"
+  class="relative bg-scheme-background text-scheme-text  {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} relative nx:overflow-clip"
   data-color-scheme="{{ section.settings.color_scheme }}"
 >
   <div class="section-content relative z-10 px-section py-section-vertical-spacing">
@@ -46,11 +46,7 @@
 
                 assign sizes = max_width | append: 'px'
               %}
-              {{
-                block.settings.image
-                | image_url: width: max_width_3x
-                | image_tag: widths: widths, sizes: sizes
-              }}
+              {{ block.settings.image | image_url: width: max_width_3x | image_tag: widths: widths, sizes: sizes }}
               {%- if block.settings.link != blank -%}
                 </a>
               {%- endif -%}
@@ -1667,10 +1663,7 @@
     }
   ],
   "disabled_on": {
-    "groups": [
-      "header",
-      "aside"
-    ]
+    "groups": ["header", "aside"]
   }
 }
 {% endschema %}

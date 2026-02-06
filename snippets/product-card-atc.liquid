@@ -16,7 +16,7 @@
       {% for variant in variants %}
         <label
           for="{{ product.id }}-{{ variant.id }}"
-          class="nx:rounded-full nx:cursor-pointer nx:p-1 nx:border nx:border-plum nx:font-bold nx:uppercase nx:text-[0.625rem] nx:lg:text-sm nx:has-checked:bg-bright-pink nx:has-checked:border-bright-pink nx:has-checked:text-white"
+          class="nx:rounded-full nx:cursor-pointer nx:px-1 nx:py-0.5 nx:border nx:border-plum nx:font-bold nx:uppercase nx:text-sm nx:has-checked:bg-bright-pink nx:has-checked:border-bright-pink nx:has-checked:text-white"
         >
           <input
             type="radio"
@@ -28,7 +28,7 @@
               checked
             {% endif %}
           >
-          {%- assign formatted_title = variant.title | downcase | remove: 'gift box of' | strip -%}
+          {%- assign formatted_title = variant.title | downcase | remove: 'gift box of' | remove: 'pack' | strip -%}
           {{ formatted_title }}
         </label>
       {% endfor %}

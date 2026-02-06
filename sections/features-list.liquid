@@ -81,7 +81,7 @@
 {%- endfor -%}
 
 <section
-  class="features-list bg-scheme-background text-scheme-text {% if use_gradient_background %}bg-scheme-gradient{% endif %} relative overflow-hidden"
+  class="features-list bg-scheme-background text-scheme-text {% if use_gradient_background %}bg-scheme-gradient{% endif %} relative nx:overflow-clip"
   data-color-scheme="{{ color_scheme }}"
 >
   <div class="section-content relative z-10 px-section py-section-vertical-spacing">
@@ -1796,11 +1796,7 @@
     }
   ],
   "disabled_on": {
-    "groups": [
-      "header",
-      "footer",
-      "aside"
-    ]
+    "groups": ["header", "footer", "aside"]
   }
 }
 {% endschema %}

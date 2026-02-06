@@ -40,10 +40,10 @@
 -%}
 
 <section
-  class="relative overflow-hidden bg-scheme-background text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} full-bleed-section"
+  class="relative nx:overflow-clip bg-scheme-background text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} full-bleed-section"
   data-color-scheme="{{ section.settings.color_scheme }}"
 >
-  <div class="offset-gallery-container {{ section.settings.height }} relative z-10 overflow-hidden">
+  <div class="offset-gallery-container {{ section.settings.height }} relative z-10 nx:overflow-clip">
     <div
       id="FeatureGallery-{{ section.id }}"
       class="grid {{ mobile_grid_class }}  {{ desktop_grid_class }} absolute left-1/2 top-1/2 w-full gap-theme"
@@ -2207,11 +2207,7 @@
     }
   ],
   "disabled_on": {
-    "groups": [
-      "header",
-      "footer",
-      "aside"
-    ]
+    "groups": ["header", "footer", "aside"]
   }
 }
 {% endschema %}

@@ -1,8 +1,8 @@
 <section
-  class="relative bg-scheme-background text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} overflow-hidden"
+  class="relative bg-scheme-background text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} nx:overflow-clip"
   data-color-scheme="{{ section.settings.color_scheme }}"
 >
-  <div class="section-content relative relative z-10 flex items-center justify-center overflow-hidden px-section py-section-vertical-spacing">
+  <div class="section-content relative relative z-10 flex items-center justify-center nx:overflow-clip px-section py-section-vertical-spacing">
     <div class="mx-auto {{ section.settings.content_width_desktop }} {% if section.settings.display_on_card %}card{% endif %}">
       <div class="{% if section.settings.display_on_card %}card__surface p-5 lg:p-10{% endif %} section-content relative z-10 mx-auto text-center">
         {%- if section.settings.title != blank -%}
@@ -1646,10 +1646,7 @@
     }
   ],
   "disabled_on": {
-    "groups": [
-      "header",
-      "aside"
-    ]
+    "groups": ["header", "aside"]
   }
 }
 {% endschema %}

@@ -34,7 +34,7 @@
 {%- endfor -%}
 
 <section
-  class="bg-scheme-background text-scheme-text {% if use_gradient_background %}bg-scheme-gradient{% endif %} relative overflow-hidden"
+  class="bg-scheme-background text-scheme-text {% if use_gradient_background %}bg-scheme-gradient{% endif %} relative nx:overflow-clip"
   data-color-scheme="{{ color_scheme }}"
 >
   <div
@@ -64,11 +64,7 @@
         {% for i in (1..3) %}
           {% assign tab_key = 'tab_' | append: i %}
           {% assign tab_value = section.settings[tab_key] %}
-          {% assign tabpanel_key = section.id
-            | append: '-'
-            | append: 'tabpanel_'
-            | append: i
-          %}
+          {% assign tabpanel_key = section.id | append: '-' | append: 'tabpanel_' | append: i %}
 
           {% if tab_value != blank %}
             <button
@@ -149,10 +145,7 @@
                         assign price = block.settings[price]
                         assign description = block.settings[description]
                       -%}
-                      {% if title != blank
-                        or price != blank
-                        or description != blank
-                      %}
+                      {% if title != blank or price != blank or description != blank %}
                         <div
                           class="grow-1 mb-4 basis-full self-stretch md:basis-[48%]"
                         >
@@ -2086,11 +2079,7 @@
     }
   ],
   "disabled_on": {
-    "groups": [
-      "header",
-      "footer",
-      "aside"
-    ]
+    "groups": ["header", "footer", "aside"]
   }
 }
 {% endschema %}

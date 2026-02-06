@@ -79,12 +79,10 @@
     {%- endif -%}
 
     <div
-      class="section-content relative z-10 mx-auto w-full max-w-site overflow-hidden px-section  pb-section-vertical-spacing pt-half-section-vertical-spacing"
+      class="section-content relative z-10 mx-auto w-full max-w-site nx:overflow-clip px-section  pb-section-vertical-spacing pt-half-section-vertical-spacing"
       id="facets-filterable"
     >
-      {%- if section.settings.enable_filtering
-        or section.settings.enable_sorting
-      -%}
+      {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
         <div class="flex items-center justify-between gap-5 pb-5 lg:pb-10">
           {%- if section.settings.enable_filtering -%}
             {%- liquid
@@ -112,15 +110,9 @@
             </button>
             <div class="hidden" id="facets-results-count">
               {%- if collection.products_count == 1 -%}
-                {{
-                  'collections.general.items_with_count.one'
-                  | t: count: collection.products_count
-                }}
+                {{ 'collections.general.items_with_count.one' | t: count: collection.products_count }}
               {%- else -%}
-                {{
-                  'collections.general.items_with_count.other'
-                  | t: count: collection.products_count
-                }}
+                {{ 'collections.general.items_with_count.other' | t: count: collection.products_count }}
               {%- endif -%}
             </div>
           {%- endif -%}

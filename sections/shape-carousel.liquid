@@ -17,15 +17,11 @@
 -%}
 
 {%- for block in section.blocks -%}
-  {%- render 'shape-defs',
-    shape: block.settings.image_shape,
-    shape_id: block.id,
-    index: forloop.index0
-  -%}
+  {%- render 'shape-defs', shape: block.settings.image_shape, shape_id: block.id, index: forloop.index0 -%}
 {%- endfor -%}
 
 <section
-  class="gallery relative overflow-hidden bg-scheme-background text-scheme-text  {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %}"
+  class="gallery relative nx:overflow-clip bg-scheme-background text-scheme-text  {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %}"
   data-color-scheme="{{ section.settings.color_scheme }}"
 >
   <div class="section-content relative py-section-vertical-spacing">
@@ -3441,11 +3437,7 @@
     }
   ],
   "disabled_on": {
-    "groups": [
-      "header",
-      "footer",
-      "aside"
-    ]
+    "groups": ["header", "footer", "aside"]
   }
 }
 {% endschema %}

@@ -5,11 +5,11 @@
 {% enddoc %}
 
 <section
-  class="nx:lg:grid nx:grid-cols-12 nx:lg:gap-10"
+  class="nx:lg:grid nx:grid-cols-12 nx:lg:gap-10 nx:lg:scroll-mt-40"
   id="{{ section.id }}-{{ collection.handle }}"
   x-intersect:enter="setCurrentCollection('{{ section.id }}-{{ collection.handle }}')"
 >
-  <header class="mb-8 nx:lg:col-span-4 nx:lg:self-start nx:lg:sticky nx:lg:top-0">
+  <header class="mb-8 nx:lg:col-span-4 nx:lg:self-start nx:lg:sticky nx:lg:top-40">
     <h2 class="nx:text-2xl">{{ collection.title }}</h2>
     {% if collection.description %}
       <div class="nx:font-sans nx:mt-4 nx:leading-tight">
