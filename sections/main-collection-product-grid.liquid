@@ -79,7 +79,7 @@
     {%- endif -%}
 
     <div
-      class="section-content relative z-10 mx-auto w-full max-w-site nx:overflow-clip px-section  pb-section-vertical-spacing pt-half-section-vertical-spacing"
+      class="section-content relative z-10 mx-auto w-full nx:container nx:overflow-clip px-section  pb-section-vertical-spacing pt-half-section-vertical-spacing"
       id="facets-filterable"
     >
       {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
@@ -170,18 +170,7 @@
                     assign product_tile_loading = 'eager'
                   endif
                 -%}
-                {%- render 'product-tile',
-                  product: product,
-                  shape_id: shape_id,
-                  display_on_card: section.settings.display_on_card,
-                  class: class,
-                  odd_even: odd_even,
-                  index: forloop.index0,
-                  products_per_row_mobile: section.settings.products_per_row_mobile,
-                  enable_quick_buy: section.settings.enable_quick_buy,
-                  loading: product_tile_loading,
-                  sizes: sizes
-                -%}
+                {%- render 'product-card', product: product -%}
               </li>
             {%- endfor -%}
           </ul>
@@ -226,6 +215,7 @@
 {% schema %}
 {
   "name": "t:sections.product_grid.name",
+  "class": "nx:border-0",
   "settings": [
     {
       "type": "range",

@@ -6,13 +6,15 @@
 {% assign excerpt = product.metafields.nilexia.product_card_tagline %}
 <article
   class="nx:rounded-xl nx:overflow-clip nx:h-full nx:bg-white nx:flex nx:flex-col nx:relative nx:group nx:isolate"
-  x-data="productCard({
-    inStock: {{ product.selected_or_first_available_variant.available }},
-    inStockString: '{{ 'products.product.add_to_cart_price' | t }}',
-    initialPrice: '{{ product.selected_or_first_available_variant.price | money }}'
-  })"
+  x-data="
+    productCard({
+      inStock: {{ product.selected_or_first_available_variant.available }},
+      inStockString: '{{ 'products.product.add_to_cart_price' | t }}',
+      initialPrice: '{{ product.selected_or_first_available_variant.price | money }}'
+    })
+  "
 >
-  <a href="{{ product.url }}" class="nx:absolute nx:inset-0 nx:w-full nx:h-full nx:z-10"></a>
+  <a href="{{ product.url }}" class="nx:absolute nx:inset-0 nx:w-full nx:h-full nx:z-10 nx:@container"></a>
   {% comment %} media {% endcomment %}
   {% if product.featured_image %}
     <div class="nx:aspect-square nx:relative nx:isolate">
@@ -49,8 +51,8 @@
     </div>
   {% endif %}
   {% comment %} main {% endcomment %}
-  <div class="nx:flex nx:flex-col nx:px-2.5 nx:py-4 nx:gap-2.5 nx:bg-white nx:text-center nx:h-full">
-    <h3>{{ product.title }}</h3>
+  <div class="nx:flex nx:flex-col nx:px-2.5 nx:py-4 nx:gap-2.5 nx:bg-white nx:text-center nx:@min-[334px]:p-8 nx:h-full">
+    <h3 class="nx:lg:text-2xl">{{ product.title }}</h3>
     <div class="nx:font-bold nx:flex nx:justify-center nx:items-center nx:text-xs nx:gap-2">
       <div
         class="loox-rating"
@@ -60,7 +62,7 @@
       ></div>
     </div>
     {% if excerpt %}
-      <p class="nx:leading-tight nx:text-sm nx:lg:text-base">{{ excerpt }}</p>
+      <p class="nx:leading-tight nx:text-sm nx:lg:text-base nx:xl:text-lg">{{ excerpt }}</p>
     {% endif %}
     {% if product.options.size <= 1 %}
       {% render 'product-card-atc', product: product %}

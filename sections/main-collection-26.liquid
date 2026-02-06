@@ -1,0 +1,32 @@
+{{ collection.handle }}
+
+{% if collection.handle == 'all' and request.design_mode == false %}
+  <script>
+    window.location.href = '/collections/';
+  </script>
+{% endif %}
+
+<div class="nx:bg-light-pink">
+  <div class="nx:container">
+    {% paginate collection.products by 12 %}
+      <div class="nx:grid nx:grid-cols-2">
+        {% for product in collection.products %}
+          {% render 'product-card' %}
+        {% endfor %}
+      </div>
+    {% endpaginate %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection grid",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Collection grid",
+      "category": "Nilexia"
+    }
+  ]
+}
+{% endschema %}

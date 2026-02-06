@@ -18,8 +18,15 @@
     {% endif %}
   </header>
   <main class="nx:grid nx:grid-cols-2 nx:gap-4 nx:md:grid-cols-3 nx:lg:col-span-8">
-    {% for product in collection.products %}
+    {% for product in collection.products limit: 6 %}
       {% render 'product-card', product: product %}
     {% endfor %}
+    {% if collection.products.size > 6 %}
+      <a
+        href="{{ collection.url }}"
+        class="nx:bg-bright-pink p-2.5 nx:rounded-lg nx:font-display nx:text-white nx:text-center nx:w-fit nx:px-4 nx:justify-self-center nx:md:col-start-2 nx:mt-6"
+        >View all {{ collection.title -}}
+      </a>
+    {% endif %}
   </main>
 </section>
