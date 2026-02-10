@@ -17,7 +17,7 @@
       assign sizes = 'min(1820px, 100vw)'
     else
       assign sizes = '100vw'
-      assign image_class = 'nx:aspect-[26/15] nx:object-cover nx:max-h-125 nx:object-center'
+      assign image_class = 'nx:aspect-[26/15] nx:object-cover nx:max-h-125 nx:object-center nx:w-full'
     endif
   -%}
   <div class="{% if collection_image_style == 'inset' %}pt-half-section-vertical-spacing px-section mx-auto w-full{% endif %}">
