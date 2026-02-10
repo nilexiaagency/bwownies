@@ -489,6 +489,11 @@
       }
     }
   }
+  .nx\:disabled\:opacity-50 {
+    &:disabled {
+      opacity: 50% !important;
+    }
+  }
   .nx\:has-checked\:bg-plum\/90 {
     &:has(*:checked) {
       background-color: var(--nx-color-plum) !important;
