@@ -34,14 +34,28 @@
   </div>
   <button
     type="submit"
-    class="nx:bg-bright-pink nx:text-white nx:flex nx:items-center nx:justify-center nx:gap-2.5 nx:p-2.5 nx:rounded-lg nx:w-full"
+    class="nx:bg-bright-pink nx:text-white nx:flex nx:items-center nx:justify-center nx:gap-2.5 nx:p-2.5 nx:rounded-lg nx:w-full nx:disabled:opacity-50"
+    {% if product.selected_or_first_available_variant.available == false %}
+      disabled
+    {% endif %}
   >
-    <span class="nx:font-display nx:text-lg nx:leading-none" x-text="addingToCart ? 'Adding...' : 'Add to cart'"
-      >Add to cart</span
+    <span
+      class="nx:font-display nx:text-lg nx:leading-none"
+      {% if product.selected_or_first_available_variant.available %}
+        x-text="addingToCart ? 'Adding...' : '{{ 'products.product.add_to_cart' | t }}'"
+      {% endif %}
     >
-    <span class="nx:font-bold nx:text-sm nx:leading-none nx:opacity-80 nx:translate-y-0.5">
-      {{ product.selected_or_first_available_variant.price | money }}
+      {% if product.selected_or_first_available_variant.available %}
+        {{ 'products.product.add_to_cart' | t }}
+      {% else %}
+        {{ 'products.product.sold_out' | t }}
+      {% endif %}
     </span>
+    {% if product.selected_or_first_available_variant.available %}
+      <span class="nx:font-bold nx:text-sm nx:leading-none nx:opacity-80 nx:translate-y-0.5">
+        {{ product.selected_or_first_available_variant.price | money }}
+      </span>
+    {% endif %}
   </button>
   {% liquid
     if block.settings.enable_guaranteed_delivery_indicator

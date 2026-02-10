@@ -23,7 +23,6 @@
       "type": "main-collection-banner",
       "settings": {
         "display_on_card": false,
-        "show_collection_image": true,
         "show_collection_title": true,
         "show_collection_description": true,
         "linklist": "",

@@ -683,11 +683,6 @@
       color: var(--nx-color-white) !important;
     }
   }
-  .nx\:min-\[334px\]\:p-8 {
-    @media (width >= 334px) {
-      padding: calc(var(--nx-spacing) * 8) !important;
-    }
-  }
   .nx\:sm\:w-auto {
     @media (width >= 40rem) {
       width: auto !important;
