@@ -13,12 +13,7 @@
       "type": "main-collection-list",
       "name": "Collection list",
       "settings": {
-        "collections": [
-          "shop-bwownies",
-          "shop-bites",
-          "bundles",
-          "gift-cards"
-        ]
+        "collections": ["shop-bwownies", "shop-bites", "bundles", "gift-cards"]
       }
     },
     "main": {
@@ -56,9 +51,5 @@
       }
     }
   },
-  "order": [
-    "main_collection_list_trgjtP",
-    "main",
-    "collage"
-  ]
+  "order": ["main_collection_list_trgjtP", "main", "collage"]
 }
