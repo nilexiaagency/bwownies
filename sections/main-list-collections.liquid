@@ -9,7 +9,7 @@
 
 {%- paginate collections by 6 -%}
   <section
-    class="relative overflow-hidden bg-scheme-background py-section-vertical-spacing text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %}"
+    class="relative nx:overflow-clip bg-scheme-background py-section-vertical-spacing text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %}"
     data-color-scheme="{{ section.settings.color_scheme }}"
   >
     <div class="space-y-double-section-vertical-spacing">
@@ -30,9 +30,7 @@
           <h2 class="font-heading heading-standard  heading-style break-words text-center {{ settings.heading_drop_shadow_style }}">
             {{ collection.title }}
           </h2>
-          {%- if collection.description != blank
-            and section.settings.show_collection_description
-          -%}
+          {%- if collection.description != blank and section.settings.show_collection_description -%}
             <div class="rte mx-auto mt-5 max-w-lg text-center">
               {{ collection.description }}
             </div>

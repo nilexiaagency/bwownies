@@ -33,7 +33,7 @@
   on="before:visible"
 >
   <div
-    class="js-enabled relative w-full overflow-hidden"
+    class="js-enabled relative w-full nx:overflow-clip"
     {% if pause_on_hover %}
       @mouseover="pause" @mouseleave="play"
     {% endif %}
@@ -263,11 +263,7 @@
     }
   ],
   "disabled_on": {
-    "groups": [
-      "header",
-      "footer",
-      "aside"
-    ]
+    "groups": ["header", "footer", "aside"]
   }
 }
 {% endschema %}

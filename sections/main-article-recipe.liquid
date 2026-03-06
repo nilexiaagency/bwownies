@@ -35,7 +35,7 @@
 -%}
 
 <section
-  class="recipe relative overflow-hidden bg-scheme-background text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} mx-auto"
+  class="recipe relative nx:overflow-clip bg-scheme-background text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} mx-auto"
   data-color-scheme="{{ section.settings.color_scheme }}"
 >
   <div class="section-content mx-auto w-full {{ desktop_max_width }} px-section">
@@ -109,11 +109,7 @@
                       endif
                     -%}
 
-                    {%- render 'collection-shape-defs',
-                      shape: shape,
-                      section_id: block.id,
-                      item_count: 3
-                    -%}
+                    {%- render 'collection-shape-defs', shape: shape, section_id: block.id, item_count: 3 -%}
 
                     {% for i in (1..3) %}
                       {% assign product_key = 'product_' | append: i %}
@@ -176,23 +172,15 @@
               <p class="mb-2.5 space-y-1.5 text-center text-sm text-scheme-text lg:space-y-0">
                 {% if section.settings.show_date %}
                   <span class="block lg:inline">
-                    {{-
-                      article.published_at
-                      | time_tag: format: 'month_day_year'
-                    -}}
+                    {{- article.published_at | time_tag: format: 'month_day_year' -}}
                   </span>
                 {% endif %}
-                {% if section.settings.show_date
-                  and section.settings.show_author
-                %}
+                {% if section.settings.show_date and section.settings.show_author %}
                   <span class="hidden lg:inline">&#183;</span>
                 {% endif %}
                 {% if section.settings.show_author %}
                   <span class="block lg:inline">
-                    {{-
-                      'blogs.article.by_author'
-                      | t: author: article.author
-                    -}}
+                    {{- 'blogs.article.by_author' | t: author: article.author -}}
                   </span>
                 {% endif %}
               </p>
@@ -255,23 +243,14 @@
               -%}
               <div class="mt-10">
                 <h3 class="font-heading heading-standard  heading-style break-words text-center {{ settings.heading_drop_shadow_style }}">
-                  {{
-                    'blogs.comments.comments_with_count'
-                    | t: count: number_of_comments
-                  }}
+                  {{ 'blogs.comments.comments_with_count' | t: count: number_of_comments }}
                 </h3>
 
                 {% paginate article.comments by 6 %}
                   <div d="comments" class="mt-5">
-                    {% if comment
-                      and comment.status
-                      and comment.id != blank
-                      and paginate.current_page == 1
-                    %}
+                    {% if comment and comment.status and comment.id != blank and paginate.current_page == 1 %}
                       <p class="form-success mb-5 bg-scheme-accent-1 p-5 text-scheme-accent-1-contrast">
-                        {% if blog.moderated?
-                          and comment.status != 'published'
-                        %}
+                        {% if blog.moderated? and comment.status != 'published' %}
                           {{ 'blogs.comments.success_moderated' | t }}
                         {% else %}
                           {{ 'blogs.comments.success' | t }}
@@ -287,10 +266,7 @@
                           Display comment from URL parameters if it is waiting moderation
                           We added "comment.id" check to make sure we don't display markup if there are form errors
                         {% endcomment %}
-                        {% if comment
-                          and comment.status != 'published'
-                          and comment.id != blank
-                        %}
+                        {% if comment and comment.status != 'published' and comment.id != blank %}
                           <li
                             class="{{ comment_classes }} "
                             id="{{ comment.id }}"
@@ -300,10 +276,7 @@
                             </div>
                             {% capture date %}{{ comment.created_at | time_tag: format: 'month_day_year' }}{% endcapture %}
                             <p class="{{ date_classes }}">
-                              {{
-                                'blogs.article.comment_meta_html'
-                                | t: author: comment.author, date: date
-                              }}
+                              {{ 'blogs.article.comment_meta_html' | t: author: comment.author, date: date }}
                             </p>
                           </li>
                         {% endif %}
@@ -318,10 +291,7 @@
                             </div>
                             {% capture date %}{{ comment.created_at | time_tag: format: 'month_day_year' }}{% endcapture %}
                             <p class="{{ date_classes }}">
-                              {{
-                                'blogs.article.comment_meta_html'
-                                | t: author: comment.author, date: date
-                              }}
+                              {{ 'blogs.article.comment_meta_html' | t: author: comment.author, date: date }}
                             </p>
                           </li>
                         {% endfor %}

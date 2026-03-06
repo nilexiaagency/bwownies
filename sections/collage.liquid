@@ -8,7 +8,7 @@
 -%}
 <!-- sections/gallery.liquid -->
 <section
-  class="gallery  relative bg-scheme-background text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} overflow-hidden"
+  class="gallery  relative bg-scheme-background text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} nx:overflow-clip"
   data-color-scheme="{{ section.settings.color_scheme }}"
 >
   <div class="section-content px-section py-section-vertical-spacing">
@@ -101,11 +101,7 @@
               <a href="{{ url }}" class="group block w-full">
             {% endif %}
 
-            {%- render 'shape-defs',
-              shape: block.settings.image_shape,
-              shape_id: block.id,
-              index: forloop.index0
-            -%}
+            {%- render 'shape-defs', shape: block.settings.image_shape, shape_id: block.id, index: forloop.index0 -%}
 
             {%- if image != blank -%}
               <div class="w-full">
@@ -3383,11 +3379,7 @@
     }
   ],
   "disabled_on": {
-    "groups": [
-      "header",
-      "footer",
-      "aside"
-    ]
+    "groups": ["header", "footer", "aside"]
   }
 }
 {% endschema %}

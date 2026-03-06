@@ -1,7 +1,7 @@
 <data-island
   x-data="CartItems"
   data-cart-items
-  class="flex flex-auto flex-col {% unless template == 'cart' %}overflow-hidden overflow-y-auto px-section{% endunless %}"
+  class="flex flex-auto flex-col {% unless template == 'cart' %}nx:overflow-clip overflow-y-auto px-section{% endunless %}"
   on="idle"
 >
   {% if settings.enable_free_shipping_progress_in_cart and template == 'cart' %}
@@ -23,7 +23,7 @@
       method="post"
       id="cart"
     >
-      <div class="flex-auto overflow-hidden overflow-y-auto border-t-general border-scheme-text  pb-16 pt-4">
+      <div class="flex-auto nx:overflow-clip overflow-y-auto border-t-general border-scheme-text  pb-16 pt-4">
         {% if template == 'cart' %}
           <div class="hidden lg:grid {{ cart_item_grid_container }} mb-5 items-end border-b-section border-scheme-text pb-5">
             <p class="justify-self-start lg:col-span-8">
@@ -37,9 +37,7 @@
             </p>
           </div>
         {% endif %}
-        {% if settings.enable_free_shipping_progress_in_cart
-          and template != 'cart'
-        %}
+        {% if settings.enable_free_shipping_progress_in_cart and template != 'cart' %}
           {% render 'free-shipping-progress' %}
         {% endif %}
         <ul :key="cart-items" class="gap-gutter grid grid-cols-1">
@@ -174,9 +172,7 @@
                     {% unless item.properties == empty %}
                       {% for p in item.properties %}
                         {% assign first_character_in_key = p.first | slice: 0 %}
-                        {% unless p.last == blank
-                          or first_character_in_key == '_'
-                        %}
+                        {% unless p.last == blank or first_character_in_key == '_' %}
                           <p class="text-xs">
                             {{ p.first }}:
                             {% if p.last contains '/uploads/' %}
@@ -191,9 +187,7 @@
                       {% endfor %}
                     {% endunless %}
                   </a>
-                  {%- if item.line_level_discount_allocations != blank
-                    or item.unit_price_measurement
-                  -%}
+                  {%- if item.line_level_discount_allocations != blank or item.unit_price_measurement -%}
                     <div
                       {% if template == 'cart' %}
                         class="lg:mb-1"
@@ -219,9 +213,7 @@
                       {%- if item.unit_price_measurement -%}
                         <div class="text-xs {% if item.original_price != item.final_price %} inline-block bg-scheme-accent-1 text-scheme-accent-1-contrast p-1 rounded-button -mx-1 {% else %} text-scheme-text {% endif %}">
                           {{ item.unit_price | money }} /&nbsp;
-                          {%- if item.unit_price_measurement.reference_value
-                              != 1
-                          -%}
+                          {%- if item.unit_price_measurement.reference_value != 1 -%}
                             {{- item.unit_price_measurement.reference_value -}}
                           {%- endif -%}
                           {{ item.unit_price_measurement.reference_unit }}

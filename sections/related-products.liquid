@@ -41,7 +41,7 @@
     <div class="related-products">
       <section
         data-related-products-section
-        class="relative overflow-hidden bg-scheme-background text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} "
+        class="relative nx:overflow-clip bg-scheme-background text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} "
         data-color-scheme="{{ section.settings.color_scheme | default: 'primary' }}"
       >
         {%- render 'collection-shape-defs',
@@ -2127,9 +2127,7 @@
     }
   ],
   "enabled_on": {
-    "templates": [
-      "product"
-    ]
+    "templates": ["product"]
   },
   "presets": [
     {

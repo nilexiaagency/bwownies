@@ -7,7 +7,7 @@
 -%}
 
 <section
-  class="relative overflow-hidden bg-scheme-background text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %}"
+  class="relative nx:overflow-clip bg-scheme-background text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %}"
   data-color-scheme="{{ section.settings.color_scheme }}"
 >
   <div class="section-content relative z-10 mx-auto max-w-site px-section py-section-vertical-spacing">
@@ -1939,11 +1939,7 @@
     }
   ],
   "disabled_on": {
-    "groups": [
-      "header",
-      "footer",
-      "aside"
-    ]
+    "groups": ["header", "footer", "aside"]
   }
 }
 {% endschema %}

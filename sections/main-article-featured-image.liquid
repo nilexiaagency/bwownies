@@ -20,7 +20,7 @@
 
 {%- if article.image -%}
   <section
-    class="overflow-hidden bg-scheme-background text-scheme-text {% unless style == 'inset' %}full-bleed-section{% endunless %} {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %}"
+    class="nx:overflow-clip bg-scheme-background text-scheme-text {% unless style == 'inset' %}full-bleed-section{% endunless %} {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %}"
     data-color-scheme="{{ section.settings.color_scheme }}"
   >
     <div class="section-content  {% if style == 'inset' %}py-section-vertical-spacing{% endif %}">

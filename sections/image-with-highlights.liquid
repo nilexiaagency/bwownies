@@ -123,7 +123,7 @@
 {%- endfor -%}
 
 <section
-  class="relative bg-scheme-background text-scheme-text  {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} relative overflow-hidden"
+  class="relative bg-scheme-background text-scheme-text  {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} relative nx:overflow-clip"
   data-color-scheme="{{ section.settings.color_scheme }}"
   style="--image-max-width: {{ image_max_width }}px;"
 >
@@ -2312,11 +2312,7 @@
     }
   ],
   "disabled_on": {
-    "groups": [
-      "header",
-      "footer",
-      "aside"
-    ]
+    "groups": ["header", "footer", "aside"]
   }
 }
 {% endschema %}

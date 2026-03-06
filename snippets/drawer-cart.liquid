@@ -8,7 +8,7 @@
     <template data-should-teleport="#right-drawer-slot">
       <div
         x-show="$store.modals.rightDrawer.contents === 'cart'"
-        class="flex h-screen max-h-full flex-col overflow-hidden"
+        class="flex h-screen max-h-full flex-col nx:overflow-clip"
         :data-modal-label="$store.modals.rightDrawer.contents === 'cart'? '{{ 'cart.general.title' | t }}' : false"
         data-cart-drawer
       >
@@ -30,7 +30,7 @@
             <span class="inline-block h-5 w-5">{% render 'icon-close' %}</span>
           </button>
         </div>
-        <div class="flex flex-auto flex-col overflow-hidden">
+        <div class="flex flex-auto flex-col nx:overflow-clip">
           {% render 'cart-items' %}
           <div class="relative  px-section pb-safe-bottom pt-5">
             <div

@@ -41,15 +41,11 @@
 -%}
 
 {%- for block in section.blocks -%}
-  {%- render 'shape-defs',
-    shape: block.settings.image_shape,
-    shape_id: block.id,
-    index: forloop.index0
-  -%}
+  {%- render 'shape-defs', shape: block.settings.image_shape, shape_id: block.id, index: forloop.index0 -%}
 {%- endfor -%}
 
 <section
-  class="relative overflow-hidden bg-scheme-background  text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} overflow-hidden"
+  class="relative nx:overflow-clip bg-scheme-background  text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} nx:overflow-clip"
   data-color-scheme="{{ section.settings.color_scheme }}"
 >
   <div class="section-content relative z-10 mx-auto w-full max-w-site px-section py-section-vertical-spacing">
@@ -2127,11 +2123,7 @@
     }
   ],
   "disabled_on": {
-    "groups": [
-      "header",
-      "footer",
-      "aside"
-    ]
+    "groups": ["header", "footer", "aside"]
   }
 }
 {% endschema %}

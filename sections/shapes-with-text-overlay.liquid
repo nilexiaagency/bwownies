@@ -14,15 +14,11 @@
 -%}
 
 {%- for block in shapes -%}
-  {%- render 'shape-defs',
-    shape: block.settings.shape,
-    shape_id: block.id,
-    index: forloop.index0
-  -%}
+  {%- render 'shape-defs', shape: block.settings.shape, shape_id: block.id, index: forloop.index0 -%}
 {%- endfor -%}
 
 <section
-  class="relative bg-scheme-background text-scheme-text  {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} relative overflow-hidden"
+  class="relative bg-scheme-background text-scheme-text  {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} relative nx:overflow-clip"
   data-color-scheme="{{ section.settings.color_scheme }}"
   style="--shape-padding: {{ section.settings.shape_padding }}rem;"
 >
@@ -69,10 +65,7 @@
               {{ block.shopify_attributes }}
             >
               <div class="p-4 text-center">
-                {%- if shape contains 'default'
-                  or shape == ''
-                  or shape == blank
-                -%}
+                {%- if shape contains 'default' or shape == '' or shape == blank -%}
                   <div class="media media--css-only  {% if disable_shape_style %}media--disable-styles{% endif %} {{ shape | split: '_' | last }}">
                     <div class="media__styled-element media__shape-styled-element {{ crop_class }} flex items-center justify-center p-[var(--shape-padding)] {{ section.settings.background_color }}">
                       {{ block_content }}
@@ -108,14 +101,9 @@
                     {%- comment -%}
                       Drop shadow and border
                     {%- endcomment -%}
-                    {%- if settings.media_drop_shadow_size > 0
-                      and is_card == false
-                      and disable_shape_style == false
-                    -%}
+                    {%- if settings.media_drop_shadow_size > 0 and is_card == false and disable_shape_style == false -%}
                       <div class="media__drop-shadow-container">
-                        {%- unless settings.media_shadow_color
-                            == 'color-scheme-gradient'
-                        -%}
+                        {%- unless settings.media_shadow_color == 'color-scheme-gradient' -%}
                           <svg
                             class="media__svg media__drop-shadow  media__drop-shadow--shape"
                             viewBox="0 0 200 200"
@@ -2205,11 +2193,7 @@
     }
   ],
   "disabled_on": {
-    "groups": [
-      "header",
-      "footer",
-      "aside"
-    ]
+    "groups": ["header", "footer", "aside"]
   }
 }
 {% endschema %}

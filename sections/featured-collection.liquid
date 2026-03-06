@@ -17,7 +17,7 @@
   endif
 -%}
 <section
-  class="relative overflow-hidden bg-scheme-background  text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} overflow-hidden"
+  class="relative nx:overflow-clip bg-scheme-background  text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} nx:overflow-clip"
   data-color-scheme="{{ section.settings.color_scheme }}"
 >
   <div class="section-content relative z-10 py-section-vertical-spacing {% unless section.settings.layout == 'carousel' %}px-section w-full max-w-site mx-auto{% endunless %}">
@@ -33,11 +33,7 @@
       </div>
     {%- endif -%}
 
-    {%- render 'featured-collection',
-      item: section,
-      collection: collection,
-      image_shape: image_shape
-    -%}
+    {%- render 'featured-collection', item: section, collection: collection, image_shape: image_shape -%}
   </div>
 
   {%- liquid
@@ -2155,11 +2151,7 @@
     }
   ],
   "disabled_on": {
-    "groups": [
-      "header",
-      "footer",
-      "aside"
-    ]
+    "groups": ["header", "footer", "aside"]
   }
 }
 {% endschema %}

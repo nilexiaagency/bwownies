@@ -45,7 +45,7 @@
 -%}
 <data-island
   role="banner"
-  class="relative overflow-hidden bg-scheme-background text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} "
+  class="relative nx:overflow-clip bg-scheme-background text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} "
   data-color-scheme="{{ section.settings.color_scheme }}"
   x-data="Filterable"
 >
@@ -62,9 +62,7 @@
   <div class="section-content px-section py-section-vertical-spacing">
     <h1 class="font-heading heading-feature  heading-style text-center {{ settings.heading_drop_shadow_style }}">
       {% if search.performed %}
-        <span class="visually-hidden">
-          {{- 'general.search.title_with_results' | t }}:</span
-        >
+        <span class="visually-hidden">{{- 'general.search.title_with_results' | t }}:</span>
         {{ 'general.search.title_with_results' | t }}
       {% else %}
         {{ 'general.search.title' | t }}
@@ -106,35 +104,23 @@
           {%- if search.results_count -%}
             {{
               'general.search.results_with_count'
-              | t:
-                terms: search.results.terms,
-                count: search.results.results_count
+              | t: terms: search.results.terms, count: search.results.results_count
             }}
           {%- endif -%}
         </div>
       {%- endif -%}
       {%- if search.performed -%}
         <div class="mt-10 text-center">
-          {%- unless section.settings.enable_filtering
-            or section.settings.enable_sorting
-          -%}
+          {%- unless section.settings.enable_filtering or section.settings.enable_sorting -%}
             {%- if search.results_count > 0 -%}
               <p role="status">
-                {{
-                  'general.search.results_with_count'
-                  | t: terms: search.terms, count: search.results_count
-                }}
+                {{ 'general.search.results_with_count' | t: terms: search.terms, count: search.results_count }}
               </p>
             {%- endif -%}
           {%- endunless -%}
-          {%- if section.settings.enable_filtering
-            and search.filters == empty
-          -%}
+          {%- if section.settings.enable_filtering and search.filters == empty -%}
             <p role="status">
-              {{
-                'general.search.results_with_count'
-                | t: terms: search.terms, count: search.results_count
-              }}
+              {{ 'general.search.results_with_count' | t: terms: search.terms, count: search.results_count }}
             </p>
           {%- endif -%}
           {%- if search.results_count == 0 and search.filters == empty -%}
@@ -144,9 +130,7 @@
           {%- endif -%}
         </div>
         {%- if search.filters != empty -%}
-          {%- if section.settings.enable_filtering
-            or section.settings.enable_sorting
-          -%}
+          {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
             <div class="flex items-center justify-between gap-5 pb-5 lg:pb-10">
               {%- if section.settings.enable_filtering -%}
                 {%- liquid
@@ -173,10 +157,7 @@
                   </span>
                 </button>
                 <div>
-                  {{
-                    'general.search.results_with_count'
-                    | t: terms: search.terms, count: search.results_count
-                  }}
+                  {{ 'general.search.results_with_count' | t: terms: search.terms, count: search.results_count }}
                 </div>
               {%- endif -%}
               {%- if section.settings.enable_sorting -%}
@@ -196,13 +177,8 @@
         <div id="facets-results">
           {%- if search.results.size == 0 and search.filters != empty -%}
             {{ 'general.search.no_results' | t: terms: search.terms }}
-            {% if search.filters != empty
-              and section.settings.enable_filtering
-            %}
-              {{
-                'facets.filters.use_fewer_filters_html'
-                | t: link: search_url, class: 'underline'
-              -}}
+            {% if search.filters != empty and section.settings.enable_filtering %}
+              {{ 'facets.filters.use_fewer_filters_html' | t: link: search_url, class: 'underline' -}}
               .
             {% endif %}
           {%- else -%}
@@ -319,10 +295,7 @@
                                 class="font-body mt-2.5 block text-base"
                                 datetime="{{ article.published_at | date: '%Y-%m-%d' }}"
                               >
-                                {{-
-                                  article.published_at
-                                  | date: format: 'month_day_year'
-                                -}}
+                                {{- article.published_at | date: format: 'month_day_year' -}}
                               </time>
                             {%- else -%}
                               <div class="aspect-h-1 aspect-w-1 flex items-center justify-center">
@@ -338,10 +311,7 @@
                                   class="font-body mt-2.5 block text-base"
                                   datetime="{{ article.published_at | date: '%Y-%m-%d' }}"
                                 >
-                                  {{-
-                                    article.published_at
-                                    | date: format: 'month_day_year'
-                                  -}}
+                                  {{- article.published_at | date: format: 'month_day_year' -}}
                                 </time>
                               </div>
                             {%- endif -%}

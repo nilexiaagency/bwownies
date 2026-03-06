@@ -11,7 +11,7 @@
 -%}
 
 <section
-  class="relative overflow-hidden bg-scheme-background text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %}"
+  class="relative nx:overflow-clip bg-scheme-background text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %}"
   data-color-scheme="{{ section.settings.color_scheme }}"
 >
   <div class="section-content py-section-vertical-spacing">
@@ -45,11 +45,7 @@
                   <div class="{% if section.settings.display_on_card %}bg-scheme-card card__surface p-5 h-full{% endif %} break-words text-center">
                     <blockquote class="text-center">
                       {%- if block.settings.rating != 'none' -%}
-                        {%- assign stars = block.settings.rating
-                          | split: '_'
-                          | first
-                          | plus: 0
-                        -%}
+                        {%- assign stars = block.settings.rating | split: '_' | first | plus: 0 -%}
                         <span class="mb-5 block text-center tracking-rating">
                           {%- for i in (1..stars) -%}
                             ★
@@ -58,16 +54,10 @@
                       {%- endif -%}
 
                       <div class="{% if section.settings.font == 'font-heading' %}inline-heading-rte{% else %}inline-rte{% endif %} {{ section.settings.font }} {% render 'type-scale-classes', mobile_text_scale: section.settings.mobile_text_scale, desktop_text_scale: section.settings.desktop_text_scale %}">
-                        {{
-                          block.settings.quote
-                          | replace: '<p>', '<p>&#8220;'
-                          | replace: '</p>', '&#8221;</p>'
-                        }}
+                        {{ block.settings.quote | replace: '<p>', '<p>&#8220;' | replace: '</p>', '&#8221;</p>' }}
                       </div>
 
-                      {% if block.settings.image != blank
-                        or block.settings.source != blank
-                      %}
+                      {% if block.settings.image != blank or block.settings.source != blank %}
                         <div class="mt-10 space-y-5">
                           {%- if block.settings.image != blank -%}
                             {%- liquid
@@ -2240,11 +2230,7 @@
     }
   ],
   "disabled_on": {
-    "groups": [
-      "header",
-      "footer",
-      "aside"
-    ]
+    "groups": ["header", "footer", "aside"]
   }
 }
 {% endschema %}

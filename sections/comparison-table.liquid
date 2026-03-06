@@ -29,7 +29,7 @@ class="mx-auto block w-8 lg:w-10 rounded-full {% if section.settings.show_border
 {%- endcapture -%}
 
 <section
-  class="relative overflow-hidden bg-scheme-background text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %}"
+  class="relative nx:overflow-clip bg-scheme-background text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %}"
   data-color-scheme="{{ section.settings.color_scheme }}"
   style="{% if section.settings.highlighted_column_color == 'accent-2' %}--color-highlight: var(--color-scheme-accent-2); --color-highlight-overlay: var(--color-scheme-accent-2-contrast);{% else %}--color-highlight: var(--color-scheme-accent-1); --color-highlight-overlay: var(--color-scheme-accent-1-contrast);{% endif %}"
 >
@@ -42,7 +42,7 @@ class="mx-auto block w-8 lg:w-10 rounded-full {% if section.settings.show_border
           </h2>
         {% endif %}
 
-        <div class="custom-scroll overflow-x-scroll lg:overflow-hidden {% if section.settings.display_on_card %}-mx-5 lg:mx-auto{% endif %}">
+        <div class="custom-scroll overflow-x-scroll lg:nx:overflow-clip {% if section.settings.display_on_card %}-mx-5 lg:mx-auto{% endif %}">
           <div class="table px-section lg:mx-auto">
             <table
               class="comparison-table mx-auto w-full table-fixed {% if section.settings.title != '' or section.settings.richtext != blank %}section-content-top-margin{% endif %}"
@@ -66,22 +66,14 @@ class="mx-auto block w-8 lg:w-10 rounded-full {% if section.settings.show_border
                 </th>
                 <th class="font-heading heading-secondary break-words {{ th_td_classes }} {% if section.settings.highlighted_column == '1' %}{{ highlight_classes }}{%  endif %}">
                   {% if section.settings.column_1_image != blank %}
-                    {{
-                      section.settings.column_1_image
-                      | image_url: width: 500
-                      | image_tag: sizes: sizes
-                    }}
+                    {{ section.settings.column_1_image | image_url: width: 500 | image_tag: sizes: sizes }}
                   {% else %}
                     {{ section.settings.column_1_title }}
                   {% endif %}
                 </th>
                 <th class="font-heading heading-secondary break-words {{ th_td_classes }} {% if section.settings.highlighted_column == '2' %}{{ highlight_classes }}{%  endif %}">
                   {% if section.settings.column_2_image != blank %}
-                    {{
-                      section.settings.column_2_image
-                      | image_url: width: 500
-                      | image_tag: sizes: sizes
-                    }}
+                    {{ section.settings.column_2_image | image_url: width: 500 | image_tag: sizes: sizes }}
                   {% else %}
                     {{ section.settings.column_2_title }}
                   {% endif %}
@@ -89,11 +81,7 @@ class="mx-auto block w-8 lg:w-10 rounded-full {% if section.settings.show_border
                 {%- if section.settings.enable_column_3 -%}
                   <th class="font-heading heading-secondary break-words {{ th_td_classes }} {% if section.settings.highlighted_column == '3' %}{{ highlight_classes }}{%  endif %}">
                     {% if section.settings.column_3_image != blank %}
-                      {{
-                        section.settings.column_3_image
-                        | image_url: width: 500
-                        | image_tag: sizes: sizes
-                      }}
+                      {{ section.settings.column_3_image | image_url: width: 500 | image_tag: sizes: sizes }}
                     {% else %}
                       {{ section.settings.column_3_title }}
                     {% endif %}
@@ -102,11 +90,7 @@ class="mx-auto block w-8 lg:w-10 rounded-full {% if section.settings.show_border
                 {%- if section.settings.enable_column_4 -%}
                   <th class="font-heading heading-secondary break-words {{ th_td_classes }} {% if section.settings.highlighted_column == '4' %}{{ highlight_classes }}{%  endif %}">
                     {% if section.settings.column_4_image != blank %}
-                      {{
-                        section.settings.column_4_image
-                        | image_url: width: 500
-                        | image_tag: sizes: sizes
-                      }}
+                      {{ section.settings.column_4_image | image_url: width: 500 | image_tag: sizes: sizes }}
                     {% else %}
                       {{ section.settings.column_4_title }}
                     {% endif %}
@@ -125,9 +109,7 @@ class="mx-auto block w-8 lg:w-10 rounded-full {% if section.settings.show_border
                       <span
                         {{ icon_attrs }}
                       >
-                        {%- render 'theme-icon',
-                          icon: row.settings.column_1_icon
-                        -%}
+                        {%- render 'theme-icon', icon: row.settings.column_1_icon -%}
                       </span>
                     {%- endif -%}
                     <div class="inline-rte {% if row.settings.column_1_icon != '' %}mt-2{% endif %}">
@@ -139,9 +121,7 @@ class="mx-auto block w-8 lg:w-10 rounded-full {% if section.settings.show_border
                       <span
                         {{ icon_attrs }}
                       >
-                        {%- render 'theme-icon',
-                          icon: row.settings.column_2_icon
-                        -%}
+                        {%- render 'theme-icon', icon: row.settings.column_2_icon -%}
                       </span>
                     {%- endif -%}
                     <div class="inline-rte {% if row.settings.column_2_icon != '' %}mt-2{% endif %}">
@@ -154,9 +134,7 @@ class="mx-auto block w-8 lg:w-10 rounded-full {% if section.settings.show_border
                         <span
                           {{ icon_attrs }}
                         >
-                          {%- render 'theme-icon',
-                            icon: row.settings.column_3_icon
-                          -%}
+                          {%- render 'theme-icon', icon: row.settings.column_3_icon -%}
                         </span>
                       {%- endif -%}
                       <div class="inline-rte {% if row.settings.column_3_icon != '' %}mt-2{% endif %}">
@@ -170,9 +148,7 @@ class="mx-auto block w-8 lg:w-10 rounded-full {% if section.settings.show_border
                         <span
                           {{ icon_attrs }}
                         >
-                          {%- render 'theme-icon',
-                            icon: row.settings.column_4_icon
-                          -%}
+                          {%- render 'theme-icon', icon: row.settings.column_4_icon -%}
                         </span>
                       {%- endif -%}
                       <div class="inline-rte {% if row.settings.column_4_icon != '' %}mt-2{% endif %}">
@@ -2135,11 +2111,7 @@ class="mx-auto block w-8 lg:w-10 rounded-full {% if section.settings.show_border
     }
   ],
   "disabled_on": {
-    "groups": [
-      "header",
-      "footer",
-      "aside"
-    ]
+    "groups": ["header", "footer", "aside"]
   }
 }
 {% endschema %}

@@ -18,14 +18,10 @@
 -%}
 
 {%- paginate blog.articles by 6 -%}
-  {%- render 'collection-shape-defs',
-    shape: section.settings.image_shape,
-    section_id: section.id,
-    item_count: 6
-  -%}
+  {%- render 'collection-shape-defs', shape: section.settings.image_shape, section_id: section.id, item_count: 6 -%}
 
   <section
-    class="relative overflow-hidden bg-scheme-background text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} "
+    class="relative nx:overflow-clip bg-scheme-background text-scheme-text {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} "
     data-color-scheme="{{ section.settings.color_scheme }}"
   >
     <div class="section-content px-section py-section-vertical-spacing">
@@ -133,10 +129,7 @@
                     class="font-body mt-2.5 block text-base"
                     datetime="{{ article.published_at | date: '%Y-%m-%d' }}"
                   >
-                    {{-
-                      article.published_at
-                      | date: format: 'month_day_year'
-                    -}}
+                    {{- article.published_at | date: format: 'month_day_year' -}}
                   </time>
                 {%- endif -%}
                 {% if section.settings.blog_show_author %}

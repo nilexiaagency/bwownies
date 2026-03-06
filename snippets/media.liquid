@@ -38,7 +38,7 @@
         <data-island
           x-data="Video{% if autoplay %}('inline', 'autoplay'){% endif %}"
           id="video-{{ section.id }}-{{ media.id }}"
-          class="media-style relative w-full overflow-hidden"
+          class="media-style relative w-full nx:overflow-clip"
           style="padding-top: {{ 100.00 | divided_by: media_aspect_ratio }}%;"
           x-intersect:leave="pause"
         >
@@ -70,17 +70,10 @@
                     }}
                   </div>
                 {% when 'external_video' %}
-                  {% assign video_object_class = video_object_class
-                    | append: ' js-'
-                    | append: media.host
-                  %}
+                  {% assign video_object_class = video_object_class | append: ' js-' | append: media.host %}
                   {% case media.host %}
                     {% when 'youtube' %}
-                      {% assign player_id = 'youtube-player-'
-                        | append: section.id
-                        | append: '-'
-                        | append: media.id
-                      %}
+                      {% assign player_id = 'youtube-player-' | append: section.id | append: '-' | append: media.id %}
                       <data-island
                         class="contents"
                         x-data="YouTubeEmbed"
@@ -114,13 +107,8 @@
                       >
                         {{
                           media
-                          | external_video_url:
-                            autoplay: true,
-                            loop: section.settings.enable_video_looping
-                          | external_video_tag:
-                            class: video_object_class,
-                            loading: loading,
-                            x-ref: 'video'
+                          | external_video_url: autoplay: true, loop: section.settings.enable_video_looping
+                          | external_video_tag: class: video_object_class, loading: loading, x-ref: 'video'
                         }}
                       </data-island>
                   {% endcase %}
@@ -136,10 +124,7 @@
               {{
                 media
                 | image_url: width: 2000
-                | image_tag:
-                  sizes: sizes,
-                  preload: preload,
-                  class: 'absolute inset-0 w-full h-full'
+                | image_tag: sizes: sizes, preload: preload, class: 'absolute inset-0 w-full h-full'
               }}
             </div>
             <div class="absolute inset-0 h-full w-full opacity-0 transition-opacity duration-500 group-hover:opacity-30">
